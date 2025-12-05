@@ -1,0 +1,8 @@
+{
+  "name": "api",
+  "private": true,
+  "scripts": {
+    "dev": "go run main.go",
+    "build": "go build -o dist/server main.go"
+  }
+}
