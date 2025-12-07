@@ -151,12 +151,6 @@ export default function AgeGate({ onVerified }: { onVerified: () => void }) {
             </Button>
           </div>
         )}
-        {/* Stage 5 → Angry redirect message */}
-        {stage === 5 && (
-          <div className="text-center text-red-400 pt-3 font-semibold">
-            lets go..
-          </div>
-        )}
       </DialogContent>
     </Dialog>
   );
