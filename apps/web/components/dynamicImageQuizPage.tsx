@@ -21,12 +21,13 @@ export default function QuizPage({ params }: any) {
   // 🔥 Load data dynamically based on lesson/section
   useEffect(() => {
     async function loadData() {
+      let data;
       try {
         const module = await import(
           `@/data/data_lesson_${lessonId}_section_${sectionId}`
         );
 
-        const data = module.data;
+        data = module.data;
 
         const shuffled = fisherYatesShuffle(data).map((q) => ({
           ...q,
@@ -36,7 +37,7 @@ export default function QuizPage({ params }: any) {
         setQuestions(shuffled);
       } catch (e) {
         console.error("Data file not found:", e);
-        return <div>Lesson data not found.</div>;
+        data = [];
       }
     }
 
