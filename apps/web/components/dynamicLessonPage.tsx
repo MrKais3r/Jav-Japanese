@@ -1,59 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Header } from "@/components/header";
+import { Header } from "@/components/Header";
+import { data } from "@/data/mainLesson";
+import SectionStatus from "./SectionStatus";
 
-// Example dynamic lesson structure
-// You can later fetch this from Supabase or a local JSON file
-const lessons = {
-  0: {
-    title: "Writing System, Greetings, and Numbers",
-    sections: [
-      {
-        header: "Japanese Writing System",
-        items: [
-          { label: "Hiragana — Basics", section: 1 },
-          { label: "Hiragana — Diacritical Marks", section: 2 },
-          { label: "Hiragana — Combination Sounds", section: 3 },
-          { label: "Katakana — Basics", section: 4 },
-          { label: "Katakana — Diacritical Marks", section: 5 },
-          { label: "Katakana — Combination Sounds", section: 6 },
-          { label: "Katakana — Extra Combo Patterns", section: 7, done: true },
-          { label: "Bonus Practice: Match Hiragana & Katakana", done: true },
-        ],
-      },
-      {
-        header: "Greetings",
-        items: [
-          { label: "Greetings — Part 1", section: 8 },
-          { label: "Greetings — Part 2", section: 9 },
-          { label: "Culture Note: Japanese Greetings & Bowing" },
-          { label: "Practice: Greetings Drill" },
-        ],
-      },
-      {
-        header: "Numbers",
-        items: [
-          { label: "Vocabulary: Numbers 0–14", section: 10 },
-          { label: "Vocabulary: Numbers 15–100", section: 11 },
-          { label: "Practice: Reading Numbers — Drill A" },
-          { label: "Practice: Reading Numbers — Drill B" },
-          { label: "Practice: Reading Numbers — Drill C" },
-        ],
-      },
-      {
-        header: "Workbook Practice",
-        items: [
-          { label: "Workbook: Greetings — Exercises" },
-          { label: "Workbook: Numbers — Exercises" },
-        ],
-      },
-    ],
-  },
-};
-
-export default function Lesson({ params }) {
+export default function Lesson({ params }: { params: { lessonId: string } }) {
   const { lessonId } = params;
-  const lesson = lessons[lessonId];
+  const lesson = data[lessonId];
 
   return (
     <div className="min-h-dvh w-full flex flex-col items-center justify-start gap-10 bg-gradient-to-b from-black-900/20 to-black text-black-300">
@@ -69,7 +24,7 @@ export default function Lesson({ params }) {
         <CardContent className="flex flex-col gap-8 p-6 text-sm text-black-200 leading-relaxed">
           {lesson?.sections?.map((sec, i) => (
             <div key={i} className="space-y-4">
-              <h2 className="text-lg font-semibold text-black-100 drop-shadow">
+              <h2 className="text-lg font-semibold text-black-100 drop-shadow text-pink-400">
                 {sec.header}
               </h2>
 
@@ -87,9 +42,10 @@ export default function Lesson({ params }) {
                       <span>{item.label}</span>
                     )}
 
-                    {item.done && (
-                      <span className="ml-2 text-green-300">✔</span>
-                    )}
+                    <SectionStatus
+                      lessonId={Number(lessonId)}
+                      sectionId={item.section}
+                    />
                   </li>
                 ))}
               </ul>

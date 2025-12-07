@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { fisherYatesShuffle } from "@/lib/utils";
+import { markSectionComplete, saveSectionResult } from "@/lib/storage";
+import { Header } from "./Header";
 
 export default function QuizPage({ params }: any) {
   const { lessonId, sectionId } = params;
@@ -14,6 +16,7 @@ export default function QuizPage({ params }: any) {
   const [timer, setTimer] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
+  const [saved, setSaved] = useState(false);
 
   // 🔥 Load data dynamically based on lesson/section
   useEffect(() => {
@@ -62,7 +65,16 @@ export default function QuizPage({ params }: any) {
   }
   // Quiz complete
 
-  console.log(q);
+  useEffect(() => {
+    if (questions.length > 0 && index >= questions.length && !saved) {
+      const score = Math.round((correct / questions.length) * 100);
+
+      saveSectionResult(lessonId, sectionId, score);
+      markSectionComplete(lessonId, sectionId);
+      setSaved(true);
+    }
+  }, [index, questions, saved]);
+
   if (!q)
     return (
       <div className="flex flex-col items-center justify-center h-dvh text-white text-center px-4">
@@ -107,7 +119,8 @@ export default function QuizPage({ params }: any) {
     )}`;
 
   return (
-    <div className="min-h-dvh w-full flex flex-col items-center py-10 text-gray-200">
+    <div className="min-h-dvh w-full flex flex-col items-center  gap-10 text-gray-200">
+      <Header />
       <Card className="w-full max-w-3xl bg-black/40 border-white/10 shadow-xl">
         <CardHeader>
           <CardTitle className="text-center text-pink-400">

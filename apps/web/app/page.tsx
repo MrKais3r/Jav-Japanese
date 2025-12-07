@@ -1,12 +1,26 @@
+"use client";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Header } from "@/components/header";
+import { Header } from "@/components/Header";
 import { data } from "@/data/mainLesson";
+import { useState } from "react";
+import AgeGate from "@/components/AgeGate";
+import { getAppData } from "@/lib/storage"; // import your storage utils
+import { CheckCircle } from "lucide-react"; // optional icon library
 
-export default async function Home() {
+export default function Home() {
+  const [verified, setVerified] = useState(false);
+  const appData = getAppData();
+  const isLessonTouched = (lessonId: number) => {
+    const lessonKey = `lesson_${lessonId}`;
+    return appData.progress[lessonKey]?.sectionsCompleted?.length > 0;
+  };
+
   return (
     <div className="min-h-dvh w-full flex flex-col items-center justify-start gap-10">
       {/* Header */}
+      {!verified && <AgeGate onVerified={() => setVerified(true)} />}
+
       <Header />
 
       {/* Intro */}
@@ -48,23 +62,26 @@ export default async function Home() {
       {/* Quick Navigation */}
       <Card className="border max-w-6xl w-full border-white/10 bg-background/60 backdrop-blur-md shadow-xl">
         <CardHeader>
-          <CardTitle>Quick Navigation</CardTitle>
+          <CardTitle>Select Lesson</CardTitle>
         </CardHeader>
 
         <CardContent className="flex flex-col gap-6 p-6">
           <div className="flex flex-col gap-2">
             {Object.keys(data).map((id) => {
-              const lesson = data[parseInt(id)];
+              const lesson = (data as any)[parseInt(id)];
+
+              const touched = isLessonTouched(parseInt(id));
               return (
                 <Link
                   key={id}
                   href={`/lesson/${id}`}
-                  className="text-sm px-3 py-2 rounded-md hover:bg-gray-800 hover:text-white transition border border-white/5"
+                  className="flex gap-2 text-sm px-3 py-2 rounded-md hover:bg-gray-800 hover:text-white transition border border-white/5"
                 >
                   <span className="text-pink-300 font-semibold">
                     Lesson {id}
                   </span>{" "}
-                  : <span>{lesson.title}</span>
+                  : <span>{lesson.title} </span>
+                  {touched && "🥵"}
                 </Link>
               );
             })}

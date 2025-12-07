@@ -270,7 +270,7 @@ export const data = [
   {
     id: 37,
     character: "ゆ",
-    options: ["yu", "you", "u", "yo"],
+    options: ["yu", "mo", "u", "yo"],
     answer: "yu",
     imageSrc: "/lesson/0/section/1/yu.jpg",
   },
@@ -286,7 +286,7 @@ export const data = [
   {
     id: 39,
     character: "ら",
-    options: ["ra", "ri", "da", "la"],
+    options: ["ra", "ri", "ka", "ni"],
     answer: "ra",
     imageSrc: "/lesson/0/section/1/ra.jpg",
   },
@@ -339,7 +339,7 @@ export const data = [
   {
     id: 46,
     character: "ん",
-    options: ["n", "mu", "nu", "nn"],
+    options: ["n", "mu", "nu", "ne"],
     answer: "n",
     imageSrc: "/lesson/0/section/1/n.jpg",
   },

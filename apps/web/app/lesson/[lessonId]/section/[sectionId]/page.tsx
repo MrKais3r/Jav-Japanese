@@ -1,4 +1,4 @@
-import QuizPage from "@/components/dynamicImageQuizPage";
+import QuizPage from "@/components/DynamicImageQuizPage";
 
 export default async function Page({ params }: any) {
   const resolved = await params; // unwrap the promise
