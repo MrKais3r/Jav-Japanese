@@ -141,7 +141,7 @@ export default function QuizPage({ params }: any) {
           />
 
           <div className="space-y-3">
-            {q.options.map((opt, i) => (
+            {q.options.map((opt: string, i: number) => (
               <button
                 key={i}
                 onClick={() => handleSelect(opt)}
@@ -151,7 +151,7 @@ export default function QuizPage({ params }: any) {
               >
                 <span className="font-bold">
                   {String.fromCharCode(65 + i)}:
-                </span>
+                </span>{" "}
                 {opt}
               </button>
             ))}

@@ -3,17 +3,21 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/Header";
 import { data } from "@/data/mainLesson";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AgeGate from "@/components/AgeGate";
 import { getAppData } from "@/lib/storage"; // import your storage utils
-import { CheckCircle } from "lucide-react"; // optional icon library
 
 export default function Home() {
   const [verified, setVerified] = useState(false);
-  const appData = getAppData();
+  const [appData, setAppData] = useState<any>(null); // SSR safe
+  useEffect(() => {
+    // this runs only on client, so localStorage is available
+    setAppData(getAppData());
+  }, []);
   const isLessonTouched = (lessonId: number) => {
+    if (!appData) return false; // SSR safe fallback
     const lessonKey = `lesson_${lessonId}`;
-    return appData.progress[lessonKey]?.sectionsCompleted?.length > 0;
+    return appData.progress?.[lessonKey]?.sectionsCompleted?.length > 0;
   };
 
   return (
@@ -68,7 +72,7 @@ export default function Home() {
         <CardContent className="flex flex-col gap-6 p-6">
           <div className="flex flex-col gap-2">
             {Object.keys(data).map((id) => {
-              const lesson = (data as any)[parseInt(id)];
+              const lesson = data[id as keyof typeof data];
 
               const touched = isLessonTouched(parseInt(id));
               return (

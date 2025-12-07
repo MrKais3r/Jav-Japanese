@@ -8,7 +8,7 @@ import SectionStatus from "./SectionStatus";
 
 export default function Lesson({ params }: { params: { lessonId: string } }) {
   const { lessonId } = params;
-  const lesson = data[lessonId];
+  const lesson = data[lessonId as keyof typeof data];
 
   return (
     <div className="min-h-dvh w-full flex flex-col items-center justify-start gap-10 bg-gradient-to-b from-black-900/20 to-black text-black-300">
@@ -42,10 +42,12 @@ export default function Lesson({ params }: { params: { lessonId: string } }) {
                       <span>{item.label}</span>
                     )}
 
-                    <SectionStatus
-                      lessonId={Number(lessonId)}
-                      sectionId={item.section}
-                    />
+                    {item.section && (
+                      <SectionStatus
+                        lessonId={Number(lessonId)}
+                        sectionId={item.section}
+                      />
+                    )}
                   </li>
                 ))}
               </ul>
