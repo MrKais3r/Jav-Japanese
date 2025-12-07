@@ -36,6 +36,7 @@ export default function QuizPage({ params }: any) {
         setQuestions(shuffled);
       } catch (e) {
         console.error("Data file not found:", e);
+        return <div>Lesson data not found.</div>;
       }
     }
 
