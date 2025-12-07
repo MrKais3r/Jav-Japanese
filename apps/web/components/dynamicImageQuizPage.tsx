@@ -7,6 +7,8 @@ import { fisherYatesShuffle } from "@/lib/utils";
 import { markSectionComplete, saveSectionResult } from "@/lib/storage";
 import { Header } from "./Header";
 
+const availableSections = new Set(["1", "4"]); // only these sections exist
+
 export default function QuizPage({ params }: any) {
   const { lessonId, sectionId } = params;
 
@@ -21,6 +23,13 @@ export default function QuizPage({ params }: any) {
   // 🔥 Load data dynamically based on lesson/section
   useEffect(() => {
     async function loadData() {
+      if (!availableSections.has(sectionId)) {
+        console.warn(
+          `Section ${sectionId} for lesson ${lessonId} does not exist`
+        );
+        setQuestions([]);
+        return;
+      }
       let data;
       try {
         const module = await import(
