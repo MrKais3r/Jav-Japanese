@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { fisherYatesShuffle } from "@/lib/utils";
 import { markSectionComplete, saveSectionResult } from "@/lib/storage";
-import { Header } from "./Header";
+import { Header } from "./header";
 import { quizData } from "@/data/quizData";
 
 const availableSections = new Set(["1", "4"]); // only these sections exist

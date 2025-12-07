@@ -6,7 +6,7 @@ import { data } from "@/data/mainLesson";
 import { useEffect, useState } from "react";
 import AgeGate from "@/components/AgeGate";
 import { getAppData } from "@/lib/storage"; // import your storage utils
-import { Header } from "@/components/Header";
+import { Header } from "@/components/header";
 
 export default function Home() {
   const [verified, setVerified] = useState(false);
