@@ -6,41 +6,41 @@ export const data = {
         header: "Japanese Writing System",
         items: [
           { label: "Hiragana — Basics", section: 1 },
-          { label: "Hiragana — Diacritical Marks", section: 2 },
-          { label: "Hiragana — Combination Sounds", section: 3 },
+          // { label: "Hiragana — Diacritical Marks", section: 2 },
+          // { label: "Hiragana — Combination Sounds", section: 3 },
           { label: "Katakana — Basics", section: 4 },
-          { label: "Katakana — Diacritical Marks", section: 5 },
-          { label: "Katakana — Combination Sounds", section: 6 },
-          { label: "Katakana — Extra Combo Patterns", section: 7, done: true },
-          { label: "Bonus Practice: Match Hiragana & Katakana", done: true },
+          // { label: "Katakana — Diacritical Marks", section: 5 },
+          // { label: "Katakana — Combination Sounds", section: 6 },
+          // { label: "Katakana — Extra Combo Patterns", section: 7, done: true },
+          // { label: "Bonus Practice: Match Hiragana & Katakana", done: true },
         ],
       },
-      {
-        header: "Greetings",
-        items: [
-          { label: "Greetings — Part 1", section: 8 },
-          { label: "Greetings — Part 2", section: 9 },
-          { label: "Culture Note: Japanese Greetings & Bowing" },
-          { label: "Practice: Greetings Drill" },
-        ],
-      },
-      {
-        header: "Numbers",
-        items: [
-          { label: "Vocabulary: Numbers 0–14", section: 10 },
-          { label: "Vocabulary: Numbers 15–100", section: 11 },
-          { label: "Practice: Reading Numbers — Drill A" },
-          { label: "Practice: Reading Numbers — Drill B" },
-          { label: "Practice: Reading Numbers — Drill C" },
-        ],
-      },
-      {
-        header: "Workbook Practice",
-        items: [
-          { label: "Workbook: Greetings — Exercises" },
-          { label: "Workbook: Numbers — Exercises" },
-        ],
-      },
+      // {
+      //   header: "Greetings",
+      //   items: [
+      //     { label: "Greetings — Part 1", section: 8 },
+      //     { label: "Greetings — Part 2", section: 9 },
+      //     { label: "Culture Note: Japanese Greetings & Bowing" },
+      //     { label: "Practice: Greetings Drill" },
+      //   ],
+      // },
+      // {
+      //   header: "Numbers",
+      //   items: [
+      //     { label: "Vocabulary: Numbers 0–14", section: 10 },
+      //     { label: "Vocabulary: Numbers 15–100", section: 11 },
+      //     { label: "Practice: Reading Numbers — Drill A" },
+      //     { label: "Practice: Reading Numbers — Drill B" },
+      //     { label: "Practice: Reading Numbers — Drill C" },
+      //   ],
+      // },
+      // {
+      //   header: "Workbook Practice",
+      //   items: [
+      //     { label: "Workbook: Greetings — Exercises" },
+      //     { label: "Workbook: Numbers — Exercises" },
+      //   ],
+      // },
     ],
   },
   "1": { title: "New Friends", sections: [] },
