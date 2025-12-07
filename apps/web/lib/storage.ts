@@ -80,6 +80,12 @@ export function getSectionResult(lessonId: number, sectionId: number): number {
   return data.progress[`lesson_${lessonId}`]?.sectionResults?.[sectionId] ?? 0;
 }
 
+export function getName(): string {
+  const data = getAppData();
+  console.log("Retrieved name from storage:", data.user.name);
+  return data.user.name;
+}
+
 export function saveAppData(data: AppData) {
   localStorage.setItem(APP_KEY, JSON.stringify(data));
 }

@@ -26,7 +26,7 @@ export default function SectionStatus({
     <>
       <span className="ml-2 text-pink-400 font-bold">✔</span>
       <span className="ml-2 text-ppink-300">
-        {done}% {done === 100 ? "💦" : "👅"}
+        {done}% {done === 100 ? "💦" : ""}
       </span>
     </>
   );

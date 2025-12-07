@@ -122,6 +122,12 @@ export default function QuizPage({ params }: any) {
   return (
     <div className="min-h-dvh w-full flex flex-col items-center  gap-10 text-gray-200">
       <Header />
+      <Link
+        href={`/lesson/${lessonId}`}
+        className="text-black-400 hover:text-black-200 underline text-sm"
+      >
+        {`← Back to lesson ${lessonId} overview`}
+      </Link>
       <Card className="w-full max-w-3xl bg-black/40 border-white/10 shadow-xl">
         <CardHeader>
           <CardTitle className="text-center text-pink-400">
@@ -130,16 +136,16 @@ export default function QuizPage({ params }: any) {
         </CardHeader>
 
         <CardContent className="space-y-8">
-          <div className="w-full bg-pink-500/90 text-black text-sm p-3 rounded">
-            Choose the correct Romaji for:
-            <span className="text-white"> {q.character}</span>
-          </div>
-
           <img
             src={q.imageSrc}
             alt="lesson visual"
             className="w-full rounded-lg"
           />
+
+          <div className="w-full bg-pink-500/90 text-black text-sm p-3 rounded text-center">
+            Choose the correct Romaji for:
+            <span className="text-white"> {q.character}</span>
+          </div>
 
           <div className="space-y-3">
             {q.options.map((opt: string, i: number) => (
