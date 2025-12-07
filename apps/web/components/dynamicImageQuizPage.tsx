@@ -6,6 +6,7 @@ import Link from "next/link";
 import { fisherYatesShuffle } from "@/lib/utils";
 import { markSectionComplete, saveSectionResult } from "@/lib/storage";
 import { Header } from "./Header";
+import { quizData } from "@/data/quizData";
 
 const availableSections = new Set(["1", "4"]); // only these sections exist
 
@@ -23,30 +24,19 @@ export default function QuizPage({ params }: any) {
   // 🔥 Load data dynamically based on lesson/section
   useEffect(() => {
     async function loadData() {
-      if (!availableSections.has(sectionId)) {
-        console.warn(
-          `Section ${sectionId} for lesson ${lessonId} does not exist`
-        );
+      const sectionKey = `lesson${lessonId}_section${sectionId}`;
+
+      const array = quizData[sectionKey as keyof typeof quizData];
+
+      if (!array) {
         setQuestions([]);
         return;
-      }
-      let data;
-      try {
-        const module = await import(
-          `@/data/data_lesson_${lessonId}_section_${sectionId}`
-        );
-
-        data = module.data;
-
-        const shuffled = fisherYatesShuffle(data).map((q) => ({
+      } else {
+        const shuffled = fisherYatesShuffle(array).map((q) => ({
           ...q,
           options: fisherYatesShuffle(q.options),
         }));
-
         setQuestions(shuffled);
-      } catch (e) {
-        console.error("Data file not found:", e);
-        data = [];
       }
     }
 

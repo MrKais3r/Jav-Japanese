@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Header } from "@/components/Header";
+
 import { data } from "@/data/mainLesson";
 import { useEffect, useState } from "react";
 import AgeGate from "@/components/AgeGate";
 import { getAppData } from "@/lib/storage"; // import your storage utils
+import { Header } from "@/components/Header";
 
 export default function Home() {
   const [verified, setVerified] = useState(false);
