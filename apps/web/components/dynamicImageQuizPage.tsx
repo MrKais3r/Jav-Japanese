@@ -8,7 +8,11 @@ import { markSectionComplete, saveSectionResult } from "@/lib/storage";
 import { Header } from "./header";
 import { quizData } from "@/data/quizData";
 
-const availableSections = new Set(["1", "4"]); // only these sections exist
+const selectedCssMap: { [key: string]: string } = {
+  correct: "bg-green-500 text-black",
+  wrong: "bg-red-500 text-black",
+  select: "bg-pink-500 text-black",
+};
 
 export default function QuizPage({ params }: any) {
   const { lessonId, sectionId } = params;
@@ -20,6 +24,7 @@ export default function QuizPage({ params }: any) {
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [saved, setSaved] = useState(false);
+  const [selectedCss, setSelectedCss] = useState(selectedCssMap["select"]);
 
   // 🔥 Load data dynamically based on lesson/section
   useEffect(() => {
@@ -52,17 +57,24 @@ export default function QuizPage({ params }: any) {
   }, []);
 
   function handleSelect(option: string) {
+    setSelected(option);
     const isCorrect = option === q.answer;
 
-    if (isCorrect) setCorrect((c) => c + 1);
-    else setWrong((w) => w + 1);
-
-    setSelected(option);
+    setTimeout(() => {
+      if (isCorrect) {
+        setCorrect((c) => c + 1);
+        setSelectedCss(selectedCssMap["correct"]);
+      } else {
+        setWrong((w) => w + 1);
+        setSelectedCss(selectedCssMap["wrong"]);
+      }
+    }, 200);
 
     setTimeout(() => {
       setSelected(null);
       setIndex((prev) => prev + 1);
-    }, 500);
+      setSelectedCss(selectedCssMap["select"]);
+    }, 600);
   }
   // Quiz complete
 
@@ -136,29 +148,29 @@ export default function QuizPage({ params }: any) {
         </CardHeader>
 
         <CardContent className="space-y-8">
+          <div className="w-full bg-pink-500/90 text-black text-sm p-3 rounded text-center">
+            Choose the correct Romaji for:
+            <span className="text-white"> {q.character}</span>
+          </div>
           <img
             src={q.imageSrc}
             alt="lesson visual"
             className="w-full rounded-lg"
           />
 
-          <div className="w-full bg-pink-500/90 text-black text-sm p-3 rounded text-center">
-            Choose the correct Romaji for:
-            <span className="text-white"> {q.character}</span>
-          </div>
-
           <div className="space-y-3">
             {q.options.map((opt: string, i: number) => (
               <button
                 key={i}
                 onClick={() => handleSelect(opt)}
+                disabled={!!selected}
                 className={`w-full text-left px-4 py-3 rounded border border-white/10 transition ${
-                  selected === opt ? "bg-pink-500 text-black" : "bg-black/40"
+                  selected === opt ? selectedCss : "bg-black/40"
                 }`}
               >
                 <span className="font-bold">
                   {String.fromCharCode(65 + i)}:
-                </span>{" "}
+                </span>
                 {opt}
               </button>
             ))}
