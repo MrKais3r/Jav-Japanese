@@ -794,4 +794,78 @@ export const vocabData: Record<string, VocabEntry[]> = {
         { japanese: "どうぞ", romaji: "douzo", english: "Please.; Here it is." },
         { japanese: "どうも", romaji: "doumo", english: "Thank you." },
     ],
+
+        "2-vocab-7": [
+        { japanese: "ひゃく", romaji: "ひゃく", english: "100" },
+        { japanese: "にひゃく", romaji: "にひゃく", english: "200" },
+        { japanese: "さんびゃく", romaji: "さんびゃく", english: "300" },
+        { japanese: "よんひゃく", romaji: "よんひゃく", english: "400" },
+        { japanese: "ごひゃく", romaji: "ごひゃく", english: "500" },
+        { japanese: "ろっぴゃく", romaji: "ろっぴゃく", english: "600" },
+        { japanese: "ななひゃく", romaji: "ななひゃく", english: "700" },
+        { japanese: "はっぴゃく", romaji: "はっぴゃく", english: "800" },
+        { japanese: "きゅうひゃく", romaji: "きゅうひゃく", english: "900" }
+    ],
+        "2-vocab-8": [
+        { japanese: "せん", romaji: "せん", english: "1,000" },
+        { japanese: "にせん", romaji: "にせん", english: "2,000" },
+        { japanese: "さんぜん", romaji: "さんぜん", english: "3,000" },
+        { japanese: "よんせん", romaji: "よんせん", english: "4,000" },
+        { japanese: "ごせん", romaji: "ごせん", english: "5,000" },
+        { japanese: "ろくせん", romaji: "ろくせん", english: "6,000" },
+        { japanese: "ななせん", romaji: "ななせん", english: "7,000" },
+        { japanese: "はっせん", romaji: "はっせん", english: "8,000" },
+        { japanese: "きゅうせん", romaji: "きゅうせん", english: "9,000" }
+    ],
+        "2-vocab-9": [
+        { japanese: "いちまん", romaji: "いちまん", english: "10,000" },
+        { japanese: "にまん", romaji: "にまん", english: "20,000" },
+        { japanese: "さんまん", romaji: "さんまん", english: "30,000" },
+        { japanese: "よんまん", romaji: "よんまん", english: "40,000" },
+        { japanese: "ごまん", romaji: "ごまん", english: "50,000" },
+        { japanese: "ろくまん", romaji: "ろくまん", english: "60,000" },
+        { japanese: "ななまん", romaji: "ななまん", english: "70,000" },
+        { japanese: "はちまん", romaji: "はちまん", english: "80,000" },
+        { japanese: "きゅうまん", romaji: "きゅうまん", english: "90,000" }
+    ],
+        "2-vocab-10": [
+        { japanese: "ていしょく", romaji: "ていしょく", english: "set meal; special (of the day)" },
+        { japanese: "パスタ", romaji: "パスタ", english: "pasta" },
+        { japanese: "カレー", romaji: "カレー", english: "curry" },
+        { japanese: "そば", romaji: "そば", english: "soba" },
+        { japanese: "うどん", romaji: "うどん", english: "udon" },
+        { japanese: "サンドイッチ", romaji: "サンドイッチ", english: "sandwich" },
+        { japanese: "アイスクリーム", romaji: "アイスクリーム", english: "ice cream" },
+        { japanese: "ラーメン", romaji: "ラーメン", english: "ramen" },
+        { japanese: "ハンバーガー", romaji: "ハンバーガー", english: "hamburger" },
+        { japanese: "コーヒー", romaji: "コーヒー", english: "coffee" },
+        { japanese: "コーラ", romaji: "コーラ", english: "cola" },
+        { japanese: "サラダ", romaji: "サラダ", english: "salad" },
+        { japanese: "こうちゃ", romaji: "こうちゃ", english: "black tea" },
+        { japanese: "ジュース", romaji: "ジュース", english: "juice" },
+        { japanese: "ミルク", romaji: "ミルク", english: "milk" }
+    ],
+        "2-vocab-11": [
+        { japanese: "こくばん", romaji: "こくばん", english: "blackboard" },
+        { japanese: "でんき", romaji: "でんき", english: "light" },
+        { japanese: "ドア", romaji: "ドア", english: "door" },
+        { japanese: "カーテン", romaji: "カーテン", english: "curtain" },
+        { japanese: "まど", romaji: "まど", english: "window" },
+        { japanese: "いす", romaji: "いす", english: "chair" },
+        { japanese: "つくえ", romaji: "つくえ", english: "desk" },
+        { japanese: "けしゴム", romaji: "けしゴム", english: "eraser" },
+        { japanese: "ほん", romaji: "ほん", english: "book" },
+        { japanese: "じしょ", romaji: "じしょ", english: "dictionary" },
+        { japanese: "えんぴつ", romaji: "えんぴつ", english: "pencil" }
+    ],
+        "2-vocab-12": [
+        { japanese: "わかりましたか。", romaji: "わかりましたか。", english: "Do you understand?" },
+        { japanese: "わかりました。", romaji: "わかりました。", english: "I understand./I understood." },
+        { japanese: "わかりません。", romaji: "わかりません。", english: "I don\'t understand./I don\'t know." },
+        { japanese: "ゆっくりいってください。", romaji: "ゆっくりいってください。", english: "Please say it slowly." },
+        { japanese: "もういちどいってください。", romaji: "もういちどいってください。", english: "Please say it again." },
+        { japanese: "ちょっとまってください。", romaji: "ちょっとまってください。", english: "Please wait for a while." },
+        { japanese: "きいてください。", romaji: "きいてください。", english: "Please listen./Please ask." },
+        { japanese: "10ページをみてください。", romaji: "10ページをみてください。", english: "Please look at page 10." }
+    ],
 };

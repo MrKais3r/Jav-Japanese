@@ -726,6 +726,18 @@ const L1_FAMILY_TABLE = {
     ]
 };
 
+
+// ── Lesson 2 shared reference table (shown above MCQ questions) ──────────────
+const L2_CHAR_TABLE = {
+    headers: ["", "メアリー・ハート<br><small>Hart, Mary</small>", "きむら　たけし<br><small>Kimura Takeshi</small>", "ソラ・キム<br><small>Kim, Sora</small>", "ロバート・スミス<br><small>Smith, Robert</small>", "やましたせんせい<br><small>Yamashita sensei</small>"],
+    rows: [
+        ["Nationality", "American", "Japanese", "Korean", "British", "Japanese"],
+        ["School", "University of Arizona", "Sakura University", "Seoul University", "University of London", "Sakura University"],
+        ["Major", "Japanese", "history", "computer", "business", "Japanese teacher"],
+        ["Year", "2nd year", "4th year", "3rd year", "4th year", "—"]
+    ]
+};
+
 export const grammarQuizData: Record<string, {
     id: number;
     character: string;
@@ -735,6 +747,133 @@ export const grammarQuizData: Record<string, {
     imageSrc?: string;
     tableContext?: { headers: string[]; rows: string[][] };
 }[]> = {
+    "2-grammar-1": [
+        { id: 1, prompt: "Choose the correct answer:", character: "34", options: ["さんじゅうよん", "さんじゅうし", "よんじゅうさん", "じゅうさんよん"], answer: "さんじゅうよん"},
+        { id: 2, prompt: "Choose the correct answer:", character: "67", options: ["ろくじゅうなな", "ろくじゅうしち", "ろくじゅういち", "ろくじゅうはち"], answer: "ろくじゅうなな"},
+        { id: 3, prompt: "Choose the correct answer:", character: "83", options: ["はちじゅうさん", "はちじゅうよん", "いちじゅうさん", "じゅうはちさん"], answer: "はちじゅうさん"},
+        { id: 4, prompt: "Choose the correct answer:", character: "99", options: ["きゅうじゅうきゅう", "きゅうじゅうく", "くじゅうきゅう", "くじゅうく"], answer: "きゅうじゅうきゅう"},
+        { id: 5, prompt: "Choose the correct answer:", character: "125", options: ["ひゃくにじゅうご", "にひゃくご", "ひゃくごじゅうに", "ひゃくじゅうご"], answer: "ひゃくにじゅうご"},
+        { id: 6, prompt: "Choose the correct answer:", character: "515", options: ["ごひゃくじゅうご", "ひゃくごじゅうご", "にひゃくじゅうに", "ごひゃくごじゅう"], answer: "ごひゃくじゅうご"},
+        { id: 7, prompt: "Choose the correct answer:", character: "603", options: ["ろっぴゃくさん", "ろくひゃくさん", "ろっびゃくさん", "ろっひゃくさん"], answer: "ろっぴゃくさん"},
+        { id: 8, prompt: "Choose the correct answer:", character: "850", options: ["はっぴゃくごじゅう", "はちひゃくごじゅう", "はっびゃくごじゅう", "はっひゃくごじゅう"], answer: "はっぴゃくごじゅう"},
+        { id: 9, prompt: "Choose the correct answer:", character: "1,300", options: ["せんさんびゃく", "せんさんひゃく", "せんさんぴゃく", "いちせんさんびゃく"], answer: "せんさんびゃく"},
+        { id: 10, prompt: "Choose the correct answer:", character: "3,400", options: ["さんぜんよんひゃく", "さんせんよんひゃく", "よんせんさんびゃく", "よんぜんさんびゃく"], answer: "さんぜんよんひゃく"},
+        { id: 11, prompt: "Choose the correct answer:", character: "8,900", options: ["はっせんきゅうひゃく", "はちせんきゅうひゃく", "はっぜんきゅうひゃく", "はっせんくひゃく"], answer: "はっせんきゅうひゃく"},
+        { id: 12, prompt: "Choose the correct answer:", character: "35,000", options: ["さんまんごせん", "さんじゅうごせん", "よんまんにせん", "よんじゅうごせん"], answer: "さんまんごせん"},
+        { id: 13, prompt: "Choose the correct answer:", character: "64,500", options: ["ろくまんよんせんごひゃく", "ろくじゅうよんせんごひゃく", "ろくまんさんぜんにひゃく", "ろくまんさんぜんごひゃく"], answer: "ろくまんよんせんごひゃく"},
+        { id: 14, prompt: "Choose the correct answer:", character: "92,340", options: ["きゅうまんにせんさんびゃくよんじゅう", "きゅうまんにせんさんひゃくよんじゅう", "きゅうじゅうにせんさんびゃくさんじゅう", "くまんごせんよんひゃくさんじゅう"], answer: "きゅうまんにせんさんびゃくよんじゅう"},
+    ],
+    "2-grammar-2": [
+        { id: 1, prompt: "Choose the correct answer:", character: "ペンはいくらですか。 | Price: ￥80", options: ["はちじゅうえんです。", "はちじゅうです。", "いちじゅうえんです。", "いちじゅうです。"], answer: "はちじゅうえんです。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "ノートはいくらですか。 | Price: ￥450", options: ["よんひゃくごじゅうえんです。", "よんひゃくごじゅうです。", "さんびゃくごじゅうえんです。", "さんびゃくごじゅうです。"], answer: "よんひゃくごじゅうえんです。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "かさはいくらですか。 | Price: ￥1,000", options: ["せんえんです。", "いちせんえんです。", "いちせんです。", "せんです。"], answer: "せんえんです。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "しんぶんはいくらですか。 | Price: ￥160", options: ["ひゃくろくじゅうえんです。", "ろくひゃくじゅうえんです。", "ひゃくじゅうえんです。", "ひゃくじゅうろくえんです。"], answer: "ひゃくろくじゅうえんです。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "ほんはいくらですか。 | Price: ￥1,500", options: ["せんごひゃくえんです。", "ごせんひゃくえんです。", "せんひゃくごえんです。", "せんひゃくえんです。"], answer: "せんごひゃくえんです。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "くつはいくらですか。 | Price: ￥3,500", options: ["さんぜんごひゃくえんです。", "さんせんごひゃくえんです。", "さんぜんひゃくごえんです。", "よんせんごひゃくえんです。"], answer: "さんぜんごひゃくえんです。"},
+        { id: 7, prompt: "Choose the correct answer:", character: "とけいはいくらですか。 | Price: ￥10,000", options: ["いちまんえんです。", "まんえんです。", "じゅうせんえんです。", "じゅうまんえんです。"], answer: "いちまんえんです。"},
+        { id: 8, prompt: "Choose the correct answer:", character: "かばんはいくらですか。 | Price: ￥20,000", options: ["にまんえんです。", "にじゅうまんえんです。", "にじゅうせんえんです。", "にせんえんです。"], answer: "にまんえんです。"},
+        { id: 9, prompt: "Choose the correct answer:", character: "さいふはいくらですか。 | Price: ￥8,000", options: ["はっせんえんです。", "はちせんえんです。", "はっぜんえんです。", "はちぜんえんです。"], answer: "はっせんえんです。"},
+        { id: 10, prompt: "Choose the correct answer:", character: "ジーンズはいくらですか。 | Price: ￥9,000", options: ["きゅうせんえんです。", "きゅうまんえんです。", "じゅうせんえんです。", "きゅうひゃくえんです。"], answer: "きゅうせんえんです。"},
+        { id: 11, prompt: "Choose the correct answer:", character: "じてんしゃはいくらですか。 | Price: ￥25,000", options: ["にまんごせんえんです。", "にせんごまんえんです。", "ごまんにせんえんです。", "にじゅうごまんえんです。"], answer: "にまんごせんえんです。"},
+        { id: 12, prompt: "Choose the correct answer:", character: "スマホはいくらですか。 | Price: ￥34,000", options: ["さんまんよんせんえんです。", "さんぜんよんまんえんです。", "よんまんさんぜんえんです。", "さんじゅうよんまんえんです。"], answer: "さんまんよんせんえんです。"},
+        { id: 13, prompt: "Choose the correct answer:", character: "ぼうしはいくらですか。 | Price: ￥2,800", options: ["にせんはっぴゃくえんです。", "にせんはちひゃくえんです。", "にせんはっびゃくえんです。", "にせんはちぴゃくえんです。"], answer: "にせんはっぴゃくえんです。"},
+    ],
+    "2-grammar-3": [
+        { id: 1, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to a pen*</em>", options: ["これはペンです。", "それはペンです。", "これはかさです。", "それはかさです。"], answer: "これはペンです。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to a bike*</em>", options: ["これはじてんしゃです。", "それはじてんしゃです。", "これはしんぶんです。", "それはしんぶんです。"], answer: "これはじてんしゃです。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to a hat*</em>", options: ["これはぼうしです。", "それはぼうしです。", "これはかばんです。", "それはかばんです。"], answer: "これはぼうしです。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to a pair of jeans*</em>", options: ["これはジーンズです。", "それはジーンズです。", "これはTシャツです。", "それはTシャツです。"], answer: "これはジーンズです。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to an umbrella*</em>", options: ["これはかさです。", "それはかさです。", "これはくつです。", "それはくつです。"], answer: "これはかさです。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to a smartphone*</em>", options: ["これはスマホです。", "それはスマホです。", "これはノートです。", "それはノートです。"], answer: "これはスマホです。"},
+        { id: 7, prompt: "Choose the correct answer:", character: "それはなんですか。 | <em>*points to a bag*</em>", options: ["これはかばんです。", "それはかばんです。", "これはとけいです。", "それはとけいです。"], answer: "これはかばんです。"},
+        { id: 8, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a t-shirt*</em>", options: ["それはTシャツです。", "これはTシャツです。", "これはジーンズです。", "それはジーンズです。"], answer: "それはTシャツです。"},
+        { id: 9, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a wallet*</em>", options: ["それはさいふです。", "これはさいふです。", "これはぼうしです。", "それはぼうしです。"], answer: "それはさいふです。"},
+        { id: 10, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a Japanese book*</em>", options: ["それはにほんごのほんです。", "それはほんです。", "これはにほんごのほんです。", "これはほんです。"], answer: "それはにほんごのほんです。"},
+        { id: 11, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a notebook*</em>", options: ["それはノートです。", "これはノートです。", "これはスマホです。", "それはスマホです。"], answer: "それはノートです。"},
+        { id: 12, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a pair of shoes*</em>", options: ["それはくつです。", "これはくつです。", "これはペンです。", "それはペンです。"], answer: "それはくつです。"},
+        { id: 13, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a watch*</em>", options: ["それはとけいです。", "これはとけいです。", "これはさいふです。", "それはさいふです。"], answer: "それはとけいです。"},
+        { id: 14, prompt: "Choose the correct answer:", character: "これはなんですか。 | <em>*points to a newspaper*</em>", options: ["それはしんぶんです。", "これはしんぶんです。", "これはじてんしゃです。", "それはじてんしゃです。"], answer: "それはしんぶんです。"},
+    ],
+    "2-grammar-4": [
+        { id: 1, prompt: "Choose the correct answer:", character: "あれはなんですか。 | <em>*points to the library*</em>", options: ["あれはとしょかんです。", "それはとしょかんです。", "あれはゆうびんきょくです。", "それはゆうびんきょくです。"], answer: "あれはとしょかんです。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "あれはなんですか。 | <em>*points to the university*</em>", options: ["あれはだいがくです。", "これはだいがくです。", "あれはぎんこうです。", "これはぎんこうです。"], answer: "あれはだいがくです。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "あれはなんですか。 | <em>*points to the bank*</em>", options: ["あれはぎんこうです。", "それはぎんこうです。", "あれはだいがくです。", "それはだいがくです。"], answer: "あれはぎんこうです。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "あれはなんですか。 | <em>*points to the post office*</em>", options: ["あれはゆうびんきょくです。", "これはゆうびんきょくです。", "あれはとしょかんです。", "これはとしょかんです。"], answer: "あれはゆうびんきょくです。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "あれはなんですか。 | <em>*points to the convenience store*</em>", options: ["あれはコンビニです。", "それはコンビニです。", "あれはぎんこうです。", "それはぎんこうです。"], answer: "あれはコンビニです。"},
+    ],
+    "2-grammar-5": [
+        { id: 1, prompt: "Choose the correct answer:", character: "Item: Watch | Price: ￥5,000 | Distance: Close to you", options: ["このとけいはごせんえんです。", "そのとけいはごせんえんです。", "このとけいはせんえんです。", "そのとけいはにせんえんです。"], answer: "このとけいはごせんえんです。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "Item: Pen | Price: ￥290 | Distance: Close to listener", options: ["そのペンはにひゃくきゅうじゅうえんです。", "このペンはにひゃくきゅうじゅうえんです。", "そのペンはひゃくきゅうじゅうえんです。", "このペンはにひゃくじゅうきゅうえんです。"], answer: "そのペンはにひゃくきゅうじゅうえんです。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "Item: Computer | Price: ￥68,000 | Distance: Far from both", options: ["あのコンピューターはろくまんはっせんえんです。", "あのコンピューターはろくまんはちせんえんです。", "そのコンピューターはろくまんはっせんえんです。", "そのコンピューターはろくまんはちせんえんです。"], answer: "あのコンピューターはろくまんはっせんえんです。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "Item: Wallet | Price: ￥4,300 | Distance: Close to listener", options: ["そのさいふはよんせんさんびゃくえんです。", "そのさいふはよんせんさんひゃくえんです。", "このさいふはよんせんさんびゃくえんです。", "このさいふはよんせんさんひゃくえんです。"], answer: "そのさいふはよんせんさんびゃくえんです。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "Item: Book | Price: ￥3,500 | Distance: Close to you", options: ["このほんはさんぜんごひゃくえんです。", "このほんはさんせんごひゃくえんです。", "そのほんはさんぜんごひゃくえんです。", "そのほんはさんせんごひゃくえんです。"], answer: "このほんはさんぜんごひゃくえんです。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "Item: Bike | Price: ￥17,000 | Distance: Far from both", options: ["あのじてんしゃはいちまんななせんえんです。", "あのじてんしゃはじゅうななせんえんです。", "このじてんしゃはいちまんななせんえんです。", "このじてんしゃはじゅうななせんえんです。"], answer: "あのじてんしゃはいちまんななせんえんです。"},
+    ],
+    "2-grammar-6": [
+        { id: 1, prompt: "Choose the correct answer:", character: "You can't find the <strong>bank</strong>.", options: ["すみません。ぎんこうはどこですか。", "すみません。どこはぎんこうですか。", "すみません。としょかんはどこですか。", "すみません。どこはとしょかんですか。"], answer: "すみません。ぎんこうはどこですか。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "You need to go to the <strong>bathroom</strong>, but can't find it.", options: ["すみません。トイレはどこですか。", "すみません。どこはトイレですか。", "すみません。メニューはどこですか。", "すみません。どこはメニューですか。"], answer: "すみません。トイレはどこですか。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "You can't find the <strong>library</strong> to return your book.", options: ["すみません。としょかんはどこですか。", "すみません。どこはとしょかんですか。", "すみません。としょかんはここですか。", "すみません。ここはとしょかんですか。"], answer: "すみません。としょかんはどこですか。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "You need to get going, but you can't find your <strong>shoes</strong>.", options: ["すみません。くつはどこですか。", "すみません。どこはくつですか。", "すみません。かさはどこですか。", "すみません。どこはかさですか。"], answer: "すみません。くつはどこですか。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "You can't find where the <strong>vegetables</strong> are in the store.", options: ["すみません。やさいはどこですか。", "すみません。どこはやさいですか。", "すみません。やさいはそこですか。", "すみません。そこはやさいですか。"], answer: "すみません。やさいはどこですか。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "You're at a restaurant and can't find the <strong>menu</strong>.", options: ["すみません。メニューはどこですか。", "すみません。どこはメニューですか。", "すみません。スマホはどこですか。", "すみません。どこはスマホですか。"], answer: "すみません。メニューはどこですか。"},
+        { id: 7, prompt: "Choose the correct answer:", character: "You're searching for an <strong>English book</strong> in the library, but can't find it.", options: ["すみません。えいごのほんはどこですか。", "すみません。どこはえいごのほんですか。", "すみません。ほんはどこですか。", "すみません。どこはほんですか。"], answer: "すみません。えいごのほんはどこですか。"},
+    ],
+    "2-grammar-7": [
+        { id: 1, prompt: "Choose the correct answer:", character: "すみません。ぎんこうはどこですか。 | Distance: Far from both", options: ["あそこです。", "そこです。", "ここです。", "どこです。"], answer: "あそこです。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "すみません。トイレはどこですか。 | Distance: Close to you", options: ["ここです。", "そこです。", "あそこです。", "どこです。"], answer: "ここです。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "すみません。としょかんはどこですか。 | Distance: Far from both", options: ["あそこです。", "そこです。", "ここです。", "どこです。"], answer: "あそこです。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "すみません。くつはどこですか。 | Distance: Close to listener", options: ["そこです。", "あそこです。", "ここです。", "どこです。"], answer: "そこです。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "すみません。やさいはどこですか。 | Distance: Far from both", options: ["あそこです。", "そこです。", "ここです。", "どこです。"], answer: "あそこです。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "すみません。メニューはどこですか。 | Distance: Close to listener", options: ["そこです。", "あそこです。", "ここです。", "どこです。"], answer: "そこです。"},
+        { id: 7, prompt: "Choose the correct answer:", character: "すみません。えいごのほんはどこですか。 | Distance: In your hands", options: ["ここです。", "そこです。", "あそこです。", "どこです。"], answer: "ここです。"},
+    ],
+    "2-grammar-8": [
+        { id: 1, prompt: "Choose the correct answer:", character: "Shoes", options: ["これはだれのくつですか。", "これはくつのだれですか。", "これはだれのかさですか。", "これはかさのだれですか。"], answer: "これはだれのくつですか。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "Umbrella", options: ["これはだれのかさですか。", "だれはこれのかさですか。", "これはだれのくつですか。", "だれはこれのくつですか。"], answer: "これはだれのかさですか。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "Book", options: ["これはだれのほんですか。", "だれはこれのほんですか。", "これはだれのぼうしですか。", "だれはこれのぼうしですか。"], answer: "これはだれのほんですか。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "Bag", options: ["これはだれのかばんですか。", "これはかばんのだれですか。", "これはだれのさいふですか。", "これはさいふのだれですか。"], answer: "これはだれのかばんですか。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "Bicycle", options: ["これはだれのじてんしゃですか。", "だれはこれのじてんしゃですか。", "これはだれのしんぶんですか。", "だれはこれのしんぶんですか。"], answer: "これはだれのじてんしゃですか。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "これはだれのぼうしですか。 | Owner: Takeshi", options: ["たけしさんのぼうしです。", "ぼうしのたけしさんです。", "だれのぼうしです。", "ぼうしのだれです。"], answer: "たけしさんのぼうしです。"},
+        { id: 7, prompt: "Choose the correct answer:", character: "これはだれのかばんですか。 | Owner: Naomi", options: ["ナオミさんのかばんです。", "かばんのナオミさんです。", "ナオミさんのさいふです。", "さいふのナオミさんです。"], answer: "ナオミさんのかばんです。"},
+        { id: 8, prompt: "Choose the correct answer:", character: "これはだれのスマホですか。 | Owner: Mary", options: ["メアリーさんのスマホです。", "スマホのメアリーさんです。", "メアリーさんのノートです。", "ノートのメアリーさんです。"], answer: "メアリーさんのスマホです。"},
+        { id: 9, prompt: "Choose the correct answer:", character: "これはだれのぼうしですか。 | Owner: Naomi", options: ["ナオミさんのぼうしです。", "ぼうしのナオミさんです。", "だれのぼうしです。", "ぼうしのだれです。"], answer: "ナオミさんのぼうしです。"},
+        { id: 10, prompt: "Choose the correct answer:", character: "これはだれのTシャツですか。 | Owner: Karurosu", options: ["カルロスさんのTシャツです。", "Tシャツのカルロスさんです。", "カルロスさんのジーンズです。", "ジーンズのカルロスさんです。"], answer: "カルロスさんのTシャツです。"},
+    ],
+    "2-grammar-9": [
+        { id: 1, prompt: "Choose the correct answer:", character: "Father and Mother/Both Japanese", options: ["おとうさんはにほんじんです。<br>おかあさんもにほんじんです。", "おとうさんもにほんじんです。<br>おかあさんはにほんじんです。", "おとうさんはにほんじんです。<br>おかあさんはにほんじんです。", "おとうさんもにほんじんです。<br>おかあさんもにほんじんです。"], answer: "おとうさんはにほんじんです。<br>おかあさんもにほんじんです。"},
+        { id: 2, prompt: "Choose the correct answer:", character: "Mary and Masato/Both second years", options: ["メアリーさんはにねんせいです。<br>まさとさんもにねんせいです。", "メアリーさんもにねんせいです。<br>まさとさんはにねんせいです。", "メアリーさんはにねんせいです。<br>まさとさんはにねんせいです。", "メアリーさんもにねんせいです。<br>まさとさんもにねんせいです。"], answer: "メアリーさんはにねんせいです。<br>まさとさんもにねんせいです。"},
+        { id: 3, prompt: "Choose the correct answer:", character: "Bag (in hand) and Bag (far away)/Both cost ￥5,800", options: ["このかばんはごせんはっぴゃくえんです。<br>あのかばんもごせんはっぴゃくえんです。", "このかばんもごせんはっぴゃくえんです。<br>そのかばんはごせんはっぴゃくえんです。", "このかばんはごせんはちひゃくえんです。<br>あのかばんもごせんはちひゃくえんです。", "あのかばんもごせんはちひゃくえんです。<br>このかばんはごせんはちひゃくえんです。"], answer: "このかばんはごせんはっぴゃくえんです。<br>あのかばんもごせんはっぴゃくえんです。"},
+        { id: 4, prompt: "Choose the correct answer:", character: "Takeshi and Robert/Both 22-years old", options: ["たけしさんはにじゅうにさいです。<br>ロバートさんもにじゅうにさいです。", "たけしさんはにじゅうにさいです。<br>ロバートさんはにじゅうにさいです。", "たけしさんはにじゅうごさいです。<br>ロバートさんもにじゅうごさいです。", "たけしさんはにじゅうごさいです。<br>ロバートさんはにじゅうごさいです。"], answer: "たけしさんはにじゅうにさいです。<br>ロバートさんもにじゅうにさいです。"},
+        { id: 5, prompt: "Choose the correct answer:", character: "Seoul and Tokyo/Both 07:00", options: ["ソウルはしちじです。<br>とうきょうもしちじです。", "ソウルはしちじです。<br>とうきょうはしちじです。", "ソウルはななじです。<br>とうきょうもななじです。", "ソウルはななじです。<br>とうきょうはななじです。"], answer: "ソウルはしちじです。<br>とうきょうもしちじです。"},
+        { id: 6, prompt: "Choose the correct answer:", character: "Food (in hand) and Food (far away)/Both vegetables", options: ["これはやさいです。<br>あれもやさいです。", "あれはやさいです。<br>これもやさいです。", "これはやさいです。<br>それもやさいです。", "それはやさいです。<br>これもやさいです。"], answer: "これはやさいです。<br>あれもやさいです。"},
+        { id: 7, prompt: "Choose the correct answer:", character: "Robert and Naomi/Both University of London students", options: ["ロバートさんはロンドンだいがくのがくせいです。<br>ナオミさんもロンドンだいがくのがくせいです。", "ロバートさんはがくせいのロンドンだいがくです。<br>ナオミさんもがくせいのロンドンだいがくです。", "ロバートさんはロンドンだいがくのがくせいです。<br>ナオミさんはロンドンだいがくのがくせいです。", "ロバートさんもがくせいのロンドンだいがくです。<br>ナオミさんもがくせいのロンドンだいがくです。"], answer: "ロバートさんはロンドンだいがくのがくせいです。<br>ナオミさんもロンドンだいがくのがくせいです。"},
+    ],
+    "2-grammar-10": [
+        { id: 1, prompt: "Choose the correct answer:", character: "メアリーさんはにほんじんですか。", options: ["いいえ、にほんじんじゃないです。アメリカじんです。", "いいえ、にほんじんです。アメリカじんじゃないです。", "いいえ、にほんじんじゃないです。イギリスじんです。", "いいえ、にほんじんです。イギリスじんじゃないです。", "はい、そうです。"], answer: "いいえ、にほんじんじゃないです。アメリカじんです。", tableContext: L2_CHAR_TABLE },
+        { id: 2, prompt: "Choose the correct answer:", character: "たけしさんはちゅうごくじんですか。", options: ["いいえ、ちゅうごくじんじゃないです。にほんじんです。", "いいえ、にほんじんじゃないです。ちゅうごくじんです。", "いいえ、かんこくじんじゃないです。にほんじんです。", "いいえ、にほんじんじゃないです。かんこくじんです。", "はい、そうです。"], answer: "いいえ、ちゅうごくじんじゃないです。にほんじんです。", tableContext: L2_CHAR_TABLE },
+        { id: 3, prompt: "Choose the correct answer:", character: "ロバートさんはアメリカじんですか。", options: ["いいえ、アメリカじんじゃないです。イギリスじんです。", "いいえ、イギリスじんじゃないです。アメリカじんです。", "いいえ、アメリカじんです。イギリスじんです。", "いいえ、イギリスじんです。アメリカじんです。", "いいえ、イギリスじんです。アメリカじんです。", "はい、そうです。"], answer: "いいえ、アメリカじんじゃないです。イギリスじんです。", tableContext: L2_CHAR_TABLE },
+        { id: 4, prompt: "Choose the correct answer:", character: "やましたせんせいはかんこくじんですか。", options: ["いいえ、かんこくじんじゃないです。にほんじんです。", "いいえ、かんこくじんです。にほんじんじゃないです。", "いいえ、かんこくじんじゃないです。ちゅうごくじんです。", "いいえ、かんこくじんです。ちゅうごくじんじゃないです。", "はい、そうです。"], answer: "いいえ、かんこくじんじゃないです。にほんじんです。", tableContext: L2_CHAR_TABLE },
+        { id: 5, prompt: "Choose the correct answer:", character: "たけしさんのせんこうはにほんごですか。", options: ["いいえ、にほんごじゃないです。れきしです。", "いいえ、れきしじゃないです。にほんごです。", "いいえ、にほんごじゃないです。けいざいです。", "いいえ、けいざいじゃないです。にほんごです。", "はい、そうです。"], answer: "いいえ、にほんごじゃないです。れきしです。", tableContext: L2_CHAR_TABLE },
+        { id: 6, prompt: "Choose the correct answer:", character: "ソラさんのせんこうはけいざいですか。", options: ["いいえ、けいざいじゃないです。コンピューターです。", "いいえ、けいざいです。コンピューターじゃないです。", "いいえ、けいざいじゃないです。ビジネスです", "いいえ、けいざいです。ビジネスじゃないです", "はい、そうです。"], answer: "いいえ、けいざいじゃないです。コンピューターです。", tableContext: L2_CHAR_TABLE },
+        { id: 7, prompt: "Choose the correct answer:", character: "たけしさんはさくらだいがくのがくせいですか。", options: ["はい、そうです。", "いいえ、さくらだいがくのがくせいじゃないです。アリゾナだいがくのがくせいです。", "いいえ、さくらだいがくのがくせいです。アリゾナだいがくのがくせいじゃないです。", "いいえ、さくらだいがくのがくせいじゃないです。ロンドンだいがくのがくせいです。", "いいえ、さくらだいがくのがくせいです。ロンドンだいがくのがくせいです。"], answer: "はい、そうです。", tableContext: L2_CHAR_TABLE },
+        { id: 8, prompt: "Choose the correct answer:", character: "メアリーさんはロンドンだいがくのがくせいですか。", options: ["いいえ、ロンドンだいがくのがくせいじゃないです。アリゾナだいがくのがくせいです。", "いいえ、ロンドンだいがくのがくせいです。アリゾナだいがくのがくせいじゃないです。", "いいえ、ロンドンだいがくのがくせいじゃないです。ソウルだいがくのがくせいです。", "いいえ、ロンドンだいがくのがくせいです。ソウルだいがくのがくせいです。", "はい、そうです。"], answer: "いいえ、ロンドンだいがくのがくせいじゃないです。アリゾナだいがくのがくせいです。", tableContext: L2_CHAR_TABLE },
+        { id: 9, prompt: "Choose the correct answer:", character: "たけしさんはにねんせいですか。", options: ["いいえ、にねんせいじゃないです。よねんせいです。", "いいえ、にねんせいです。よねんせいじゃないです。", "いいえ、にねんせいじゃないです。さんねんせいです。", "いいえ、にねんせいです。さんねんせいです。", "はい、そうです。"], answer: "いいえ、にねんせいじゃないです。よねんせいです。", tableContext: L2_CHAR_TABLE },
+        { id: 10, prompt: "Choose the correct answer:", character: "ソラさんはいちねんせいですか。", options: ["いいえ、いちねんせいじゃないです。さんねんせいです。", "いいえ、いちねんせいじゃないです。よねんせいです。", "いいえ、いちねんせいじゃないです。にねんせいです。", "いいえ、さんねんせいじゃないです。いちねんせいです。", "はい、そうです。"], answer: "いいえ、いちねんせいじゃないです。さんねんせいです。", tableContext: L2_CHAR_TABLE },
+        { id: 11, prompt: "Choose the correct answer:", character: "ロバートさんはよねんせいですか。", options: ["はい、そうです。", "いいえ、よねんせいじゃないです。にねんせいです。", "いいえ、にねんせいです。よねんせいじゃないです。", "いいえ、よねんせいです。にねんせいです。", "いいえ、にねんせいです。よねんせいです。"], answer: "はい、そうです。", tableContext: L2_CHAR_TABLE },
+    ],
+    "2-culture-1": [
+        { id: 1, prompt: "Choose the correct answer:", character: "Who appears on the 1,000 yen bill?", options: ["Hideyo Noguchi", "Hideyo Amamoto", "Hideyo Yamamoto"], answer: "Hideyo Noguchi"},
+        { id: 2, prompt: "Choose the correct answer:", character: "What appears on the 2,000 yen bill?", options: ["Shurei Gate", "Shuri Castle", "Okinawa"], answer: "Shurei Gate"},
+        { id: 3, prompt: "Choose the correct answer:", character: "Who appears on the 5,000 yen bill?", options: ["Ichiyoo Higuchi", "Ichiyo Shimizu", "Ichiyo Habuchi"], answer: "Ichiyoo Higuchi"},
+        { id: 4, prompt: "Choose the correct answer:", character: "Who appears on the 10,000 yen bill.", options: ["Yukichi Fukuzawa", "Yukichi Chuganji", "Yukichi Watabe"], answer: "Yukichi Fukuzawa"},
+        { id: 5, prompt: "Choose the correct answer:", character: "Which of these did Hideyo Noguchi do?", options: ["Devoted himself to yellow fever research.", "Devoted himself to scarlet fever research.", "Devoted himself to lassa fever research."], answer: "Devoted himself to yellow fever research."},
+        { id: 6, prompt: "Choose the correct answer:", character: "Where is Shurei Gate located?", options: ["Shuri Castle in Okinawa.", "Osaka Castle in Osaka.", "Odawara Castle in Odawara."], answer: "Shuri Castle in Okinawa."},
+        { id: 7, prompt: "Choose the correct answer:", character: "Which of these did Ichiyoo Higuchi do?", options: ["She was a writer and a poet.", "She was a singer and musician.", "She was a dancer and actress."], answer: "She was a writer and a poet."},
+        { id: 8, prompt: "Choose the correct answer:", character: "Which of these did Yukichi Fukuzawa do?", options: ["He was a philosopher and founder of Keio University.", "He was an artist and founder of Kyoto University.", "He was a musician and founder of Tokyo University."], answer: "He was a philosopher and founder of Keio University."},
+        { id: 9, prompt: "Choose the correct answer:", character: "All bills and coins are the same sizes.", options: ["false", "true"], answer: "false"},
+        { id: 10, prompt: "Choose the correct answer:", character: "You should always carry some cash on you, because some small businesses do not accept credit card or mobile payments.", options: ["true", "false"], answer: "true"},
+    ],
+
     "1-culture-1": [
         { id: 1, prompt: "Choose the correct answer:", character: "When Japanese give their name, they give their _____ name first.", options: ["family", "given", "middle"], answer: "family" },
         { id: 2, prompt: "Choose the correct answer:", character: "The Japanese give their _____ name last.", options: ["given", "family", "middle"], answer: "given" },
