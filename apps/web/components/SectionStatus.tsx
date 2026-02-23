@@ -1,5 +1,20 @@
-import { isSectionDone } from "@/lib/storage";
+"use client";
+
 import { useEffect, useState } from "react";
+
+// Read directly from localStorage to support both numeric and string section keys
+function getSectionScore(lessonId: number | string, sectionId: number | string): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    const raw = localStorage.getItem("japanese_learning_app");
+    if (!raw) return 0;
+    const data = JSON.parse(raw);
+    const lessonKey = `lesson_${lessonId}`;
+    return data?.progress?.[lessonKey]?.sectionResults?.[String(sectionId)] ?? 0;
+  } catch {
+    return 0;
+  }
+}
 
 export default function SectionStatus({
   lessonId,
@@ -8,25 +23,19 @@ export default function SectionStatus({
   lessonId: number | string;
   sectionId: number | string;
 }) {
-  const [done, setDone] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
-    const lesson = Number(lessonId);
-    const section = Number(sectionId);
-
-    // Only proceed if both are valid numbers
-    if (!Number.isNaN(lesson) && !Number.isNaN(section)) {
-      setDone(isSectionDone(lesson, section));
-    }
+    setScore(getSectionScore(lessonId, sectionId));
   }, [lessonId, sectionId]);
 
-  if (!done) return null;
+  if (!score) return null;
 
   return (
     <>
       <span className="ml-2 text-pink-400 font-bold">✔</span>
-      <span className="ml-2 text-ppink-300">
-        {done}% {done === 100 ? "💦" : ""}
+      <span className="ml-1 text-pink-300 text-xs">
+        {Math.round(score)}%{Math.round(score) === 100 ? " 💦" : ""}
       </span>
     </>
   );
