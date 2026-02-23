@@ -4,9 +4,9 @@
 const REWARD_KEY = "jav_rewards";
 
 export type RewardImage = {
-    src: string;      // e.g. "/rewards/h/a.jpg"
-    kana: string;     // e.g. "あ"
-    romaji: string;   // e.g. "a"
+    src: string; // e.g. "/rewards/h/a.jpg"
+    kana: string; // e.g. "あ"
+    romaji: string; // e.g. "a"
     type: "hiragana" | "katakana";
     sectionId: string; // which section unlocked it, e.g. "0-hiragana-1"
     unlockedAt: number; // timestamp
@@ -14,7 +14,10 @@ export type RewardImage = {
 
 // All possible reward images — maps sectionId → images unlocked upon completion
 // Only hiragana-1 and katakana-1 have images per character
-export const REWARD_MAP: Record<string, { src: string; kana: string; romaji: string; type: "hiragana" | "katakana" }[]> = {
+export const REWARD_MAP: Record<
+    string,
+    { src: string; kana: string; romaji: string; type: "hiragana" | "katakana" }[]
+> = {
     "0-hiragana-1": [
         { src: "/rewards/h/a.jpg", kana: "あ", romaji: "a", type: "hiragana" },
         { src: "/rewards/h/i.jpg", kana: "い", romaji: "i", type: "hiragana" },

@@ -10,7 +10,6 @@ export type VocabEntry = {
 };
 
 export const vocabData: Record<string, VocabEntry[]> = {
-
     // ══════════════════════════════════════════════════════════════
     // LESSON 0 — Writing System, Greetings, Numbers
     // ══════════════════════════════════════════════════════════════
@@ -259,30 +258,148 @@ export const vocabData: Record<string, VocabEntry[]> = {
         { japanese: "デュ", romaji: "", english: "dyu" },
     ],
 
+    "0-kana-match": [
+        { japanese: "ア", romaji: "a", english: "あ" },
+        { japanese: "イ", romaji: "i", english: "い" },
+        { japanese: "ウ", romaji: "u", english: "う" },
+        { japanese: "エ", romaji: "e", english: "え" },
+        { japanese: "オ", romaji: "o", english: "お" },
+        { japanese: "カ", romaji: "ka", english: "か" },
+        { japanese: "キ", romaji: "ki", english: "き" },
+        { japanese: "ク", romaji: "ku", english: "く" },
+        { japanese: "ケ", romaji: "ke", english: "け" },
+        { japanese: "コ", romaji: "ko", english: "こ" },
+        { japanese: "サ", romaji: "sa", english: "さ" },
+        { japanese: "シ", romaji: "shi", english: "し" },
+        { japanese: "ス", romaji: "su", english: "す" },
+        { japanese: "セ", romaji: "se", english: "せ" },
+        { japanese: "ソ", romaji: "so", english: "そ" },
+        { japanese: "タ", romaji: "ta", english: "た" },
+        { japanese: "チ", romaji: "chi", english: "ち" },
+        { japanese: "ツ", romaji: "tsu", english: "つ" },
+        { japanese: "テ", romaji: "te", english: "て" },
+        { japanese: "ト", romaji: "to", english: "と" },
+        { japanese: "ナ", romaji: "na", english: "な" },
+        { japanese: "ニ", romaji: "ni", english: "に" },
+        { japanese: "ヌ", romaji: "nu", english: "ぬ" },
+        { japanese: "ネ", romaji: "ne", english: "ね" },
+        { japanese: "ノ", romaji: "no", english: "の" },
+        { japanese: "ハ", romaji: "ha", english: "は" },
+        { japanese: "ヒ", romaji: "hi", english: "ひ" },
+        { japanese: "フ", romaji: "fu", english: "ふ" },
+        { japanese: "ヘ", romaji: "he", english: "へ" },
+        { japanese: "ホ", romaji: "ho", english: "ほ" },
+        { japanese: "マ", romaji: "ma", english: "ま" },
+        { japanese: "ミ", romaji: "mi", english: "み" },
+        { japanese: "ム", romaji: "mu", english: "む" },
+        { japanese: "メ", romaji: "me", english: "め" },
+        { japanese: "モ", romaji: "mo", english: "も" },
+        { japanese: "ヤ", romaji: "ya", english: "や" },
+        { japanese: "ユ", romaji: "yu", english: "ゆ" },
+        { japanese: "ヨ", romaji: "yo", english: "よ" },
+        { japanese: "ラ", romaji: "ra", english: "ら" },
+        { japanese: "リ", romaji: "ri", english: "り" },
+        { japanese: "ル", romaji: "ru", english: "る" },
+        { japanese: "レ", romaji: "re", english: "れ" },
+        { japanese: "ロ", romaji: "ro", english: "ろ" },
+        { japanese: "ワ", romaji: "wa", english: "わ" },
+        { japanese: "ヲ", romaji: "wo", english: "を" },
+        { japanese: "ン", romaji: "n", english: "ん" },
+    ],
+
     // ── Greetings (keep romaji — it helps with learning)
     "0-greetings-1": [
         { japanese: "おはよう。", romaji: "Ohayou.", english: "Good morning." },
-        { japanese: "おはようございます。", romaji: "Ohayou gozaimasu.", english: "Good morning. (polite)" },
+        {
+            japanese: "おはようございます。",
+            romaji: "Ohayou gozaimasu.",
+            english: "Good morning. (polite)",
+        },
         { japanese: "こんにちは。", romaji: "Konnichiwa.", english: "Good afternoon." },
         { japanese: "こんばんは。", romaji: "Konbanwa.", english: "Good evening." },
         { japanese: "さようなら。", romaji: "Sayounara.", english: "Good-bye." },
         { japanese: "おやすみ（なさい）。", romaji: "Oyasumi (nasai).", english: "Good night." },
         { japanese: "ありがとう。", romaji: "Arigatou.", english: "Thank you." },
-        { japanese: "ありがとうございます。", romaji: "Arigatou gozaimasu.", english: "Thank you. (polite)" },
+        {
+            japanese: "ありがとうございます。",
+            romaji: "Arigatou gozaimasu.",
+            english: "Thank you. (polite)",
+        },
         { japanese: "すみません。", romaji: "Sumimasen.", english: "Excuse me.; I'm sorry." },
     ],
 
     "0-greetings-2": [
         { japanese: "いいえ。", romaji: "Iie.", english: "No.; Not at all." },
         { japanese: "いってきます。", romaji: "Ittekimasu.", english: "I'll go and come back." },
-        { japanese: "いってらっしゃい。", romaji: "Itterasshai.", english: "Please go and come back." },
+        {
+            japanese: "いってらっしゃい。",
+            romaji: "Itterasshai.",
+            english: "Please go and come back.",
+        },
         { japanese: "ただいま。", romaji: "Tadaima.", english: "I'm home." },
         { japanese: "おかえり（なさい）。", romaji: "Okaeri (nasai).", english: "Welcome home." },
-        { japanese: "いただきます。", romaji: "Itadakimasu.", english: "Thank you for the meal. (before eating)" },
-        { japanese: "ごちそうさま（でした）。", romaji: "Gochisousama (deshita).", english: "Thank you for the meal. (after eating)" },
+        {
+            japanese: "いただきます。",
+            romaji: "Itadakimasu.",
+            english: "Thank you for the meal. (before eating)",
+        },
+        {
+            japanese: "ごちそうさま（でした）。",
+            romaji: "Gochisousama (deshita).",
+            english: "Thank you for the meal. (after eating)",
+        },
         { japanese: "はじめまして。", romaji: "Hajimemashite.", english: "How do you do?" },
         { japanese: "～です。", romaji: "~desu.", english: "I am..." },
-        { japanese: "よろしくおねがいします。", romaji: "Yoroshiku onegaishimasu.", english: "Nice to meet you." },
+        {
+            japanese: "よろしくおねがいします。",
+            romaji: "Yoroshiku onegaishimasu.",
+            english: "Nice to meet you.",
+        },
+    ],
+
+    "0-greetings-practice": [
+        {
+            japanese: "It is one o'clock in the afternoon. You see your neighbor Mr. Yamada.",
+            romaji: "Konnichiwa.",
+            english: "こんにちは。",
+        },
+        {
+            japanese: "You come to class in the morning to your teacher.",
+            romaji: "Ohayou gozaimasu.",
+            english: "おはようございます。",
+        },
+        {
+            japanese: "On a crowded train, you stepped on someone's foot.",
+            romaji: "Sumimasen.",
+            english: "すみません。",
+        },
+        {
+            japanese: "You dropped your book. Someone picked it up for you.",
+            romaji: "Arigatou gozaimasu.",
+            english: "ありがとうございます。",
+        },
+        {
+            japanese: "It is eight o'clock at night. You meet your teacher at the store.",
+            romaji: "Konbanwa.",
+            english: "こんばんは。",
+        },
+        {
+            japanese: "You are watching TV with your host family. It is time to go to sleep.",
+            romaji: "Oyasumi (nasai).",
+            english: "おやすみ（なさい）。",
+        },
+        { japanese: "You are leaving home.", romaji: "Ittekimasu.", english: "いってきます。" },
+        { japanese: "You have come back home.", romaji: "Tadaima.", english: "ただいま。" },
+        {
+            japanese: "You are going to start eating.",
+            romaji: "Itadakimasu.",
+            english: "いただきます。",
+        },
+        {
+            japanese: "You have finished eating.",
+            romaji: "Gochisousama (deshita).",
+            english: "ごちそうさま（でした）。",
+        },
     ],
 
     "0-numbers-1": [
@@ -318,6 +435,104 @@ export const vocabData: Record<string, VocabEntry[]> = {
         { japanese: "はちじゅう", romaji: "hachijuu", english: "80" },
         { japanese: "きゅうじゅう", romaji: "kyuujuu", english: "90" },
         { japanese: "ひゃく", romaji: "hyaku", english: "100" },
+    ],
+
+    "0-numbers-practice": [
+        { japanese: "5", romaji: "go", english: "ご" },
+        { japanese: "9", romaji: "kyuu / ku", english: "きゅう／く" },
+        { japanese: "7", romaji: "nana / shichi", english: "なな／しち" },
+        { japanese: "1", romaji: "ichi", english: "いち" },
+        { japanese: "10", romaji: "juu", english: "じゅう" },
+        { japanese: "8", romaji: "hachi", english: "はち" },
+        { japanese: "2", romaji: "ni", english: "に" },
+        { japanese: "6", romaji: "roku", english: "ろく" },
+        { japanese: "4", romaji: "yon / shi", english: "よん／し" },
+        { japanese: "3", romaji: "san", english: "さん" },
+        { japanese: "45", romaji: "yonjuugo", english: "よんじゅうご" },
+        { japanese: "83", romaji: "hachijuusan", english: "はちじゅうさん" },
+        { japanese: "19", romaji: "juukyuu / juuku", english: "じゅうきゅう／じゅうく" },
+        { japanese: "76", romaji: "nanajuuroku", english: "ななじゅうろく" },
+        { japanese: "52", romaji: "gojuuni", english: "ごじゅうに" },
+        { japanese: "100", romaji: "hyaku", english: "ひゃく" },
+        { japanese: "38", romaji: "sanjuuhachi", english: "さんじゅうはち" },
+        { japanese: "61", romaji: "rokujuuichi", english: "ろくじゅういち" },
+        { japanese: "24", romaji: "nijuuyon", english: "にじゅうよん／にじゅうし" },
+        { japanese: "97", romaji: "kyuujuunana", english: "きゅうじゅうなな／きゅうじゅうしち" },
+    ],
+
+    "0-numbers-practice-2": [
+        { japanese: "5+3", romaji: "", english: "はち" },
+        { japanese: "9+1", romaji: "", english: "じゅう" },
+        { japanese: "3+4", romaji: "", english: "なな／しち" },
+        { japanese: "6-6", romaji: "", english: "ゼロ／れい" },
+        { japanese: "10+9", romaji: "", english: "じゅうきゅう／じゅうく" },
+        { japanese: "8-7", romaji: "", english: "いち" },
+        { japanese: "40-25", romaji: "", english: "じゅうご" },
+    ],
+
+    "0-numbers-practice-3": [
+        { japanese: "ご", romaji: "", english: "5" },
+        { japanese: "ぜろ", romaji: "", english: "0" },
+        { japanese: "きゅう", romaji: "", english: "9" },
+        { japanese: "さん", romaji: "", english: "3" },
+        { japanese: "なな", romaji: "", english: "7" },
+        { japanese: "に", romaji: "", english: "2" },
+        { japanese: "ろく", romaji: "", english: "6" },
+        { japanese: "いち", romaji: "", english: "1" },
+        { japanese: "はち", romaji: "", english: "8" },
+        { japanese: "よん", romaji: "", english: "4" },
+        { japanese: "じゅうろく", romaji: "", english: "16" },
+        { japanese: "よんじゅう", romaji: "", english: "40" },
+        { japanese: "にじゅういち", romaji: "", english: "21" },
+        { japanese: "ひゃくろくじゅうよん", romaji: "", english: "164" },
+        { japanese: "きゅうじゅうに", romaji: "", english: "92" },
+        { japanese: "さんじゅうご", romaji: "", english: "35" },
+        { japanese: "ななじゅうろく", romaji: "", english: "76" },
+        { japanese: "じゅうはち", romaji: "", english: "18" },
+        { japanese: "ひゃくごじゅうなな", romaji: "", english: "157" },
+        { japanese: "ひゃくいち", romaji: "", english: "101" },
+    ],
+
+    "0-culture-1": [
+        { japanese: "Japanese people greet each other by _____.", romaji: "", english: "bowing" },
+        {
+            japanese: "Bowing has many other functions, such as...",
+            romaji: "",
+            english: "expressing respect, gratitude, or apologies",
+        },
+        {
+            japanese: "There are different ways of bowing, ranging from...",
+            romaji: "",
+            english: "a small nod of the head to a 45-degree bend at the waist",
+        },
+        {
+            japanese: "The longer and deeper you bow, the more _____ it appears to others.",
+            romaji: "",
+            english: "formal and respectful",
+        },
+        {
+            japanese: "Many Japanese tend to feel uncomfortable with _____.",
+            romaji: "",
+            english: "physical contact",
+        },
+        {
+            japanese:
+                "Handshaking is becoming quite common in business situations, especially those involving _____.",
+            romaji: "",
+            english: "foreigners",
+        },
+        {
+            japanese:
+                "When meeting someone in a business situation for the first time, it is customary to exchange _____ with a small bow.",
+            romaji: "",
+            english: "business cards",
+        },
+        {
+            japanese:
+                "It is important to clearly show your _____ when exchanging meeshi (business cards).",
+            romaji: "",
+            english: "respect",
+        },
     ],
 
     // ══════════════════════════════════════════════════════════════
@@ -386,7 +601,11 @@ export const vocabData: Record<string, VocabEntry[]> = {
         { japanese: "アジアけんきゅう", romaji: "ajia kenkyuu", english: "Asian studies" },
         { japanese: "けいざい", romaji: "keizai", english: "economics" },
         { japanese: "こうがく", romaji: "kougaku", english: "engineering" },
-        { japanese: "こくさいかんけい", romaji: "kokusai kankei", english: "international relations" },
+        {
+            japanese: "こくさいかんけい",
+            romaji: "kokusai kankei",
+            english: "international relations",
+        },
         { japanese: "コンピューター", romaji: "konpyuutaa", english: "computer" },
         { japanese: "せいじ", romaji: "seiji", english: "politics" },
         { japanese: "せいぶつがく", romaji: "seibutsugaku", english: "biology" },
@@ -467,8 +686,16 @@ export const vocabData: Record<string, VocabEntry[]> = {
         { japanese: "いくら", romaji: "ikura", english: "how much" },
         { japanese: "～えん", romaji: "~en", english: "...yen" },
         { japanese: "たかい", romaji: "takai", english: "expensive; high" },
-        { japanese: "いらっしゃいませ", romaji: "irasshaimase", english: "Welcome (to our store)." },
-        { japanese: "（～を）おねがいします", romaji: "(~wo) onegaishimasu", english: "..., please." },
+        {
+            japanese: "いらっしゃいませ",
+            romaji: "irasshaimase",
+            english: "Welcome (to our store).",
+        },
+        {
+            japanese: "（～を）おねがいします",
+            romaji: "(~wo) onegaishimasu",
+            english: "..., please.",
+        },
         { japanese: "（～を）ください", romaji: "(~wo) kudasai", english: "Please give me..." },
         { japanese: "じゃあ", romaji: "jaa", english: "then...; if that is the case,..." },
         { japanese: "どうぞ", romaji: "douzo", english: "Please.; Here it is." },

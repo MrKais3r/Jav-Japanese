@@ -4,29 +4,29 @@ import "./globals.css";
 import RedirectToDashboard from "@/components/RedirectToDashboard";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+    src: "./fonts/GeistVF.woff",
+    variable: "--font-geist-sans",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+    src: "./fonts/GeistMonoVF.woff",
+    variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Jav Nihongo",
-  description: "Adult Japanese Learning App",
+    title: "Jav Nihongo",
+    description: "Adult Japanese Learning App",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <RedirectToDashboard>{children}</RedirectToDashboard>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" className="dark">
+            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                <RedirectToDashboard>{children}</RedirectToDashboard>
+            </body>
+        </html>
+    );
 }
