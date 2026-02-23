@@ -18,7 +18,7 @@ import {
     ImageIcon,
     Timer,
 } from "lucide-react";
-import { fisherYatesShuffle } from "@/lib/utils";
+import { fisherYatesShuffle, transformSectionIdString } from "@/lib/utils";
 import { markSectionComplete, saveSectionResult, isSectionDone } from "@/lib/storage";
 import { unlockReward, type RewardImage } from "@/lib/rewards";
 import { Header } from "./header";
@@ -59,16 +59,7 @@ function getQuestionLabel(id: string) {
    Each entry is placed by its romaji ending letter.            */
 const VOWEL_ORDER = ["a", "i", "u", "e", "o"] as const;
 
-function transformString(str: string) {
-    const firstDashIndex = str.indexOf("-");
-    if (firstDashIndex === -1) return str;
 
-    // Remove everything before first dash
-    const afterFirstDash = str.substring(firstDashIndex + 1);
-
-    // Replace ALL remaining dashes with space
-    return afterFirstDash.replace(/-/g, " ");
-}
 
 function buildKanaChart(entries: VocabEntry[]): (VocabEntry | null)[][] {
     // Group entries into rows of 5 by their romaji vowel
@@ -123,6 +114,7 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
     const [reward, setReward] = useState<RewardImage | null>(null);
     const [showReward, setShowReward] = useState(false);
     const [showFailImage, setShowFailImage] = useState(false);
+    const [wasAlready100, setWasAlready100] = useState(false);
 
     /* Build quiz cards */
     useEffect(() => {
@@ -153,6 +145,10 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
 
             saveSectionResult(Number(lessonId), sectionId as any, Math.max(score, pastScore));
             markSectionComplete(Number(lessonId), sectionId as any);
+
+            if (pastScore === 100) {
+                setWasAlready100(true);
+            }
 
             // only give reward if score is 100 AND it wasn't already 100
             if (score === 100 && pastScore < 100) {
@@ -200,7 +196,6 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
         setSaved(false);
         setTimer(0);
         setShowReward(false);
-        setShowHint(false);
         setShowFailImage(false);
     };
 
@@ -257,7 +252,11 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
         const isLast = studyIndex === vocab.length - 1;
 
         return (
-            <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16">
+            <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16 px-4 md:px-8 relative bg-black pt-4 md:pt-8 overflow-hidden">
+                {/* Background ambient effects */}
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
+                <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-4">
                 {showReward && <RewardModal />}
                 <Header />
 
@@ -274,23 +273,16 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                         <span className="flex items-center gap-1.5">
                             <BookOpen size={14} /> Study Mode
                         </span>
-                        <span>
-                            {studyIndex + 1} / {vocab.length}
-                        </span>
+                       
                     </div>
-                    <div className="w-full h-1.5 bg-white/10 rounded-full">
-                        <div
-                            className="h-full bg-pink-500 rounded-full transition-all duration-500"
-                            style={{ width: `${((studyIndex + 1) / vocab.length) * 100}%` }}
-                        />
-                    </div>
+                  
                 </div>
 
                 {/* Flashcard — all 3 rows always visible */}
                 <Card className="w-full max-w-2xl bg-black/40 border-white/10 shadow-xl select-none">
                     <CardHeader>
                         <CardTitle className="flex justify-center items-center gap-2 text-pink-400 text-sm font-normal tracking-widest uppercase">
-                            <BookOpen size={16} /> {transformString(sectionId)} — Study Mode
+                            <BookOpen size={16} /> {transformSectionIdString(sectionId)} — Study Mode
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col gap-6">
@@ -330,16 +322,8 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                         </div>
 
                         {/* Navigation — Prev | Start Quiz | Next */}
-                        <div className="flex gap-2 items-center pt-2">
-                            <button
-                                onClick={() => {
-                                    setStudyIndex((i) => Math.max(0, i - 1));
-                                }}
-                                disabled={isFirst}
-                                className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 disabled:opacity-30 text-sm transition flex-1 flex justify-center items-center gap-2"
-                            >
-                                <ArrowLeft size={16} /> Prev
-                            </button>
+
+                          <div className="flex gap-2 items-center justify-center pt-2">
 
                             {/* Start Quiz — always in the middle */}
                             <button
@@ -349,16 +333,8 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                                 <Target size={18} /> Start Quiz
                             </button>
 
-                            <button
-                                onClick={() => {
-                                    setStudyIndex((i) => Math.min(vocab.length - 1, i + 1));
-                                }}
-                                disabled={isLast}
-                                className="px-4 py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 disabled:opacity-30 text-sm transition flex-1 flex justify-center items-center gap-2"
-                            >
-                                Next <ArrowRight size={16} />
-                            </button>
                         </div>
+                       
                     </CardContent>
                 </Card>
 
@@ -368,6 +344,8 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                         <CardTitle className="text-sm text-gray-400 font-normal">
                             {isKana ? "Chart — click to jump" : `All ${vocab.length} items`}
                         </CardTitle>
+
+                        
                     </CardHeader>
                     <CardContent>
                         {isKana && kanaChart ? (
@@ -451,10 +429,13 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                                 ))}
                             </div>
                         )}
+
                     </CardContent>
+                       
                 </Card>
             </div>
-        );
+        </div>
+    );
     }
 
     /* ── QUIZ PHASE ──────────────────────────────────────────── */
@@ -483,7 +464,9 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
         };
 
         return (
-            <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16">
+                        <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16 px-4 md:px-8 relative bg-black pt-4 md:pt-8 overflow-hidden">
+                                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
                 <Header />
                 <Link
                     href={`/lesson/${lessonId}`}
@@ -496,7 +479,7 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                     <CardHeader>
                         <CardTitle className="flex justify-center items-center gap-2 text-pink-400">
                             <Target size={20} /> Quiz:{" "}
-                            {transformString(sectionId.toLocaleUpperCase())}
+                            {transformSectionIdString(sectionId.toLocaleUpperCase())}
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-5">
@@ -669,10 +652,16 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                             className={`border rounded-xl p-4 transition-colors ${score === 100 ? "bg-pink-950/20 border-pink-500/30" : "bg-red-950/20 border-red-500/30"}`}
                         >
                             {score === 100 ? (
-                                <p className="text-pink-300 text-sm font-medium">
-                                    Ara ara~ Perfect score?! Senpai clearly has been studying hard!!
-                                    Here is your reward~ 👀💕
-                                </p>
+                                wasAlready100 ? (
+                                    <p className="text-pink-300 text-sm font-medium">
+                                        Ara ara~ 100% again? You&apos;ve already earned this reward, but I love seeing you practice so hard! Keep it up, senpai~ 💕
+                                    </p>
+                                ) : (
+                                    <p className="text-pink-300 text-sm font-medium">
+                                        Ara ara~ Perfect score?! Senpai clearly has been studying hard!!
+                                        Here is your reward~ 👀💕
+                                    </p>
+                                )
                             ) : score >= 80 ? (
                                 <p className="text-red-300 text-sm font-medium">
                                     So close senpai... but I only reward perfection. You need 100%

@@ -127,23 +127,28 @@ export function getUnlockedRewards(): RewardImage[] {
     }
 }
 
-/** Unlock ONE random reward from a section and return it (or null if section has no rewards) */
+/** Unlock ONE random reward from the global pool and return it (or null if all unlocked) */
 export function unlockReward(sectionId: string): RewardImage | null {
-    const pool = REWARD_MAP[sectionId];
-    if (!pool || pool.length === 0) return null;
+    const pool = Object.values(REWARD_MAP).flat();
+    if (pool.length === 0) return null;
 
     const current = getUnlockedRewards();
     const unlockedSrcs = new Set(current.map((r) => r.src));
 
-    // Find ones not yet unlocked for this section
+    // Find ones not yet unlocked across the ENTIRE pool
     const available = pool.filter((p) => !unlockedSrcs.has(p.src));
+    
+    // If all rewards in the game have been unlocked already
     if (available.length === 0) {
-        // re-unlock a random one (already have them all)
-        return pool[Math.floor(Math.random() * pool.length)] as RewardImage;
+        return null;
     }
 
+    // Pick a completely random new reward
     const pick = available[Math.floor(Math.random() * available.length)]!;
+    
+    // Mark it as unlocked from this specific section
     const reward: RewardImage = { ...pick, sectionId, unlockedAt: Date.now() };
+    
     localStorage.setItem(REWARD_KEY, JSON.stringify([...current, reward]));
     return reward;
 }

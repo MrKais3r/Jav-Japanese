@@ -4,9 +4,12 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { fisherYatesShuffle } from "@/lib/utils";
-import { markSectionComplete, saveSectionResult } from "@/lib/storage";
+import { markSectionComplete, saveSectionResult, isSectionDone } from "@/lib/storage";
+import { unlockReward, type RewardImage } from "@/lib/rewards";
+import { Target, Gift, ImageIcon, ArrowLeft, Timer, Check, X } from "lucide-react";
+import Image from "next/image";
 import { Header } from "./header";
-import { quizData } from "@/data/quizData";
+import { quizData, grammarQuizData } from "@/data/quizData";
 
 const selectedCssMap: { [key: string]: string } = {
     correct: "bg-green-500 text-black",
@@ -25,24 +28,37 @@ export default function QuizPage({ params }: any) {
     const [wrong, setWrong] = useState(0);
     const [saved, setSaved] = useState(false);
     const [selectedCss, setSelectedCss] = useState(selectedCssMap["select"]);
+    
+    /* Reward Tracking */
+    const [reward, setReward] = useState<RewardImage | null>(null);
+    const [showReward, setShowReward] = useState(false);
+    const [showFailImage, setShowFailImage] = useState(false);
+    const [wasAlready100, setWasAlready100] = useState(false);
 
     // 🔥 Load data dynamically based on lesson/section
     useEffect(() => {
         async function loadData() {
-            const sectionKey = `lesson${lessonId}_section${sectionId}`;
+            let array: any[] | undefined;
 
-            const array = quizData[sectionKey as keyof typeof quizData];
+            // String section IDs (e.g. "1-grammar-1", "1-culture-1") → grammarQuizData
+            if (isNaN(Number(sectionId))) {
+                array = grammarQuizData[sectionId as keyof typeof grammarQuizData];
+            } else {
+                // Numeric IDs → legacy kana quizData
+                const sectionKey = `lesson${lessonId}_section${sectionId}`;
+                array = quizData[sectionKey as keyof typeof quizData];
+            }
 
             if (!array) {
                 setQuestions([]);
                 return;
-            } else {
-                const shuffled = fisherYatesShuffle(array).map((q) => ({
-                    ...q,
-                    options: fisherYatesShuffle(q.options),
-                }));
-                setQuestions(shuffled);
             }
+
+            const shuffled = fisherYatesShuffle(array as any[]).map((q: any) => ({
+                ...q,
+                options: fisherYatesShuffle(q.options),
+            }));
+            setQuestions(shuffled);
         }
 
         loadData();
@@ -77,62 +93,232 @@ export default function QuizPage({ params }: any) {
         }, 600);
     }
     // Quiz complete
-
     useEffect(() => {
         if (questions.length > 0 && index >= questions.length && !saved) {
             const score = Math.round((correct / questions.length) * 100);
+            const pastScore = isSectionDone(Number(lessonId), sectionId as any);
 
-            saveSectionResult(lessonId, sectionId, score);
-            markSectionComplete(lessonId, sectionId);
+            saveSectionResult(Number(lessonId), sectionId as any, Math.max(score, pastScore));
+            markSectionComplete(Number(lessonId), sectionId as any);
+
+            if (pastScore === 100) {
+                setWasAlready100(true);
+            }
+
+            // Only give reward if score is 100 AND it wasn't already 100
+            if (score === 100 && pastScore < 100) {
+                const r = unlockReward(sectionId);
+                if (r) {
+                    setReward(r);
+                    setShowReward(true);
+                }
+            } else if (score < 100) {
+                setShowFailImage(true);
+            }
+
             setSaved(true);
         }
-    }, [index, questions, saved]);
-
-    if (!q)
-        return (
-            <div className="flex flex-col items-center justify-center h-dvh text-white text-center px-4">
-                <h1 className="text-3xl mb-2 text-pink-400">Quiz Complete 🎉</h1>
-
-                {/* Score summary */}
-                <p className="text-lg text-gray-300 mb-4">
-                    You got <span className="text-green-400 font-bold">{correct}</span> right and{" "}
-                    <span className="text-red-400 font-bold">{wrong}</span> wrong.
-                </p>
-
-                {/* JAV-style playful result */}
-                <div className="bg-black/40 border border-white/10 p-4 rounded-xl max-w-md">
-                    {correct >= wrong ? (
-                        <p className="text-pink-300 text-sm">
-                            Ara ara~ senpai… you did *so well*. Looks like someone’s been practicing
-                            👀💕 Keep this up and I'll have to reward you~
-                        </p>
-                    ) : (
-                        <p className="text-red-300 text-sm">
-                            Ehh~? You made *that* many mistakes? Baka senpai… I guess I’ll have to
-                            train you… Slowly… patiently… one character at a time 😌🔥
-                        </p>
-                    )}
-                </div>
-
-                <Link href={`/lesson/${lessonId}`} className="underline text-blue-400 mt-6 text-lg">
-                    Back to Lesson
-                </Link>
-            </div>
-        );
+    }, [index, questions.length, saved, correct, lessonId, sectionId]);
 
     // Format timer
     const formatTime = (t: number) =>
         `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
 
-    return (
-        <div className="min-h-dvh w-full flex flex-col items-center  gap-10 text-gray-200">
-            <Header />
-            <Link
-                href={`/lesson/${lessonId}`}
-                className="text-black-400 hover:text-black-200 underline text-sm"
+    const resetAll = () => {
+        setIndex(0);
+        setCorrect(0);
+        setWrong(0);
+        setSaved(false);
+        setTimer(0);
+        setShowReward(false);
+        setShowFailImage(false);
+        setQuestions(fisherYatesShuffle([...questions]));
+    };
+
+    /* ── REWARD MODAL ─────────────────────────────────────────── */
+    const RewardModal = () => (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setShowReward(false)}
+        >
+            <div
+                className="relative max-w-sm w-full bg-black/90 border border-pink-500/50 rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20"
+                onClick={(e) => e.stopPropagation()}
             >
-                {`← Back to lesson ${lessonId} overview`}
-            </Link>
+                <div className="absolute inset-0 bg-gradient-to-b from-pink-500/10 to-transparent pointer-events-none" />
+                <div className="p-4 text-center border-b border-pink-500/20">
+                    <div className="text-2xl mb-1 flex items-center justify-center gap-2">
+                        <Gift className="text-pink-400" /> Reward Unlocked!
+                    </div>
+                    <div className="text-pink-300 text-sm">
+                        You&apos;ve earned a new gallery image~
+                    </div>
+                </div>
+                {reward && (
+                    <div className="relative aspect-[3/4] w-full">
+                        <Image src={reward.src} alt={reward.kana} fill className="object-cover" />
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-4 text-center">
+                            <div className="text-5xl font-bold text-white">{reward.kana}</div>
+                            <div className="text-pink-300 text-sm">{reward.romaji}</div>
+                        </div>
+                    </div>
+                )}
+                <div className="p-4 flex gap-3">
+                    <button
+                        onClick={() => setShowReward(false)}
+                        className="flex-1 py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-sm transition text-gray-300"
+                    >
+                        Close
+                    </button>
+                    <Link
+                        href="/gallery"
+                        className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold transition text-center"
+                    >
+                        <ImageIcon size={16} /> View Gallery
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
+
+    if (!q) {
+        const score = Math.round((correct / questions.length) * 100);
+
+        return (
+            <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16 px-4 md:px-8 relative bg-black pt-4 md:pt-8 overflow-hidden">
+                {/* Background ambient effects */}
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
+                <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-4">
+                    {showReward && <RewardModal />}
+                    <Header />
+
+                    <div className="flex flex-col items-center justify-center w-full max-w-lg mt-8">
+                        <div className="mb-6 flex flex-col items-center text-center">
+                            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 mb-2 flex items-center gap-2">
+                                <span className="text-4xl">🎉</span> Perfect Score!
+                            </h1>
+                        </div>
+
+                        <Card className="w-full bg-black/40 border-white/10 shadow-2xl backdrop-blur-sm overflow-hidden relative">
+                            <CardContent className="p-6 sm:p-10 flex flex-col items-center gap-8 relative z-10">
+                                {showFailImage && (
+                                    <div className="w-full relative aspect-video rounded-xl overflow-hidden shadow-2xl shadow-red-500/20 border border-red-500/30">
+                                        <Image
+                                            src="/photo/try_again.jpg"
+                                            alt="Try Again"
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent pointer-events-none" />
+                                        <div className="absolute bottom-3 left-0 right-0 flex justify-center text-center">
+                                            <span className="bg-red-950/80 text-red-100 text-xs font-bold px-3 py-1.5 rounded-full border border-red-500/50 backdrop-blur-sm">
+                                                PUNISHMENT TIME? 💢
+                                            </span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="flex flex-col items-center gap-1">
+                                    <div className="text-6xl font-bold text-white mb-2">
+                                        {score}
+                                        <span className="text-2xl text-gray-400">%</span>
+                                    </div>
+                                    <div className="text-sm text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                                        {correct} / {questions.length} correct
+                                    </div>
+                                    <div className="flex justify-center items-center gap-1 text-xs text-gray-500 mt-2">
+                                        <Timer size={14} /> {formatTime(timer)}
+                                    </div>
+                                </div>
+
+                                <div
+                                    className={`border rounded-xl p-4 transition-colors ${score === 100 ? "bg-pink-950/20 border-pink-500/30" : "bg-red-950/20 border-red-500/30"}`}
+                                >
+                                    {score === 100 ? (
+                                        wasAlready100 ? (
+                                            <p className="text-pink-300 text-sm font-medium">
+                                                Ara ara~ 100% again? You&apos;ve already earned a reward here, but I love seeing you practice so hard! Keep it up, senpai~ 💕
+                                            </p>
+                                        ) : (
+                                            <p className="text-pink-300 text-sm font-medium">
+                                                Ara ara~ Perfect score?! Senpai clearly has been studying hard!!
+                                                Here is your reward~ 👀💕
+                                            </p>
+                                        )
+                                    ) : score >= 80 ? (
+                                        <p className="text-red-300 text-sm font-medium">
+                                            So close senpai... but I only reward perfection. You need 100%
+                                            to earn my prize. Try again! 😌🔥
+                                        </p>
+                                    ) : score >= 50 ? (
+                                        <p className="text-red-400 text-sm font-medium">
+                                            Hmm~ not bad… but 100% is the rule! Baka senpai... do it again
+                                            if you want the reward. 😏
+                                        </p>
+                                    ) : (
+                                        <p className="text-red-500 text-sm font-bold animate-pulse">
+                                            Ehh~? Only {score}%? Pathetic... Do you even want the reward,
+                                            senpai?! Back to studying!! 💢
+                                        </p>
+                                    )}
+                                </div>
+
+                                {reward && score === 100 && (
+                                    <button
+                                        onClick={() => setShowReward(true)}
+                                        className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-pink-600 hover:bg-pink-500 border border-pink-400 text-white shadow-[0_0_15px_rgba(219,39,119,0.5)] transition-all"
+                                    >
+                                        <Gift size={18} className="animate-bounce" /> Claim your reward!
+                                    </button>
+                                )}
+
+                                <div className="flex gap-3 w-full">
+                                    <button
+                                        onClick={resetAll}
+                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold transition"
+                                    >
+                                        <Target size={18} /> Retry Quiz
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col items-center gap-3 pt-2">
+                                    <Link
+                                        href={`/lesson/${lessonId}`}
+                                        className="flex items-center justify-center gap-1.5 text-gray-400 hover:text-pink-400 text-sm underline-offset-4 hover:underline transition"
+                                    >
+                                        <ArrowLeft size={16} /> Back to Lesson {lessonId}
+                                    </Link>
+                                    <Link
+                                        href="/gallery"
+                                        className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-pink-400 text-xs underline-offset-4 hover:underline transition"
+                                    >
+                                        <ImageIcon size={14} /> Gallery
+                                    </Link>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16 px-4 md:px-8 relative bg-black pt-4 md:pt-8 overflow-hidden">
+            {/* Background ambient effects */}
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
+            
+            <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-4">
+                {showReward && <RewardModal />}
+                <Header />
+                <Link
+                    href={`/lesson/${lessonId}`}
+                    className="flex items-center gap-1.5 text-gray-400 hover:text-gray-200 transition underline-offset-4 hover:underline text-sm self-start sm:self-center"
+                >
+                    {`← Back to lesson ${lessonId} overview`}
+                </Link>
             <Card className="w-full max-w-3xl bg-black/40 border-white/10 shadow-xl">
                 <CardHeader>
                     <CardTitle className="text-center text-pink-400">
@@ -141,11 +327,37 @@ export default function QuizPage({ params }: any) {
                 </CardHeader>
 
                 <CardContent className="space-y-8">
+                    {/* Reference table shown as exercise context (e.g. character data table) */}
+                    {q.tableContext && (
+                        <div className="overflow-x-auto rounded-lg border border-white/10 text-sm">
+                            <table className="w-full text-center">
+                                <thead>
+                                    <tr className="bg-pink-500/20 text-pink-300 font-bold">
+                                        {q.tableContext.headers.map((h: string, i: number) => (
+                                            <th key={i} className="px-3 py-2 border border-white/10" dangerouslySetInnerHTML={{ __html: h }} />
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {q.tableContext.rows.map((row: string[], ri: number) => (
+                                        <tr key={ri} className={ri % 2 === 0 ? "bg-white/5" : "bg-white/2"}>
+                                            {row.map((cell: string, ci: number) => (
+                                                <td key={ci} className={`px-3 py-2 border border-white/10 ${ci === 0 ? "font-bold text-pink-300" : ""}`} dangerouslySetInnerHTML={{ __html: cell }} />
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
                     <div className="w-full bg-pink-500/90 text-black text-sm p-3 rounded text-center">
-                        Choose the correct Romaji for:
-                        <span className="text-white"> {q.character}</span>
+                        {q.prompt || "Choose the correct answer for:"}
+                        <span className="text-white block mt-2 text-xl font-bold"> {q.character}</span>
                     </div>
-                    <img src={q.imageSrc} alt="lesson visual" className="w-full rounded-lg" />
+                    {q.imageSrc && (
+                        <img src={q.imageSrc} alt="lesson visual" className="w-full rounded-lg" />
+                    )}
 
                     <div className="space-y-3">
                         {q.options.map((opt: string, i: number) => (
@@ -178,7 +390,8 @@ export default function QuizPage({ params }: any) {
                         Time Elapsed: {formatTime(timer)}
                     </div>
                 </CardContent>
-            </Card>
+                </Card>
+            </div>
         </div>
     );
 }

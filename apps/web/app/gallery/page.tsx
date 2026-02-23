@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/header";
 import { getUnlockedRewards, getTotalRewards, REWARD_MAP, type RewardImage } from "@/lib/rewards";
+import { transformSectionIdString } from "@/lib/utils";
 
 export default function GalleryPage() {
     const [unlocked, setUnlocked] = useState<RewardImage[]>([]);
@@ -24,13 +25,18 @@ export default function GalleryPage() {
     if (!mounted) return null;
 
     return (
-        <div className="min-h-dvh text-white pb-16">
-            <Header />
+        <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16 px-4 md:px-8 relative bg-black pt-4 md:pt-8 overflow-hidden">
+            {/* Background ambient effects */}
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
+            
+            <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-4">
+                <Header />
 
-            <div className="max-w-5xl mx-auto px-4 pt-6">
+                <div className="w-full max-w-5xl mx-auto pt-2">
                 {/* Header */}
                 <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold text-pink-400 mb-2">🖼️ Reward Gallery</h1>
+                    <h1 className="text-3xl font-bold text-pink-400 mb-2">Reward Gallery</h1>
                     <p className="text-gray-400 text-sm">
                         Complete quiz sections to unlock your rewards~
                     </p>
@@ -145,6 +151,7 @@ export default function GalleryPage() {
                     </div>
                 )}
             </div>
+        </div>
 
             {/* Lightbox */}
             {selected && (
@@ -167,7 +174,7 @@ export default function GalleryPage() {
                             <div className="text-6xl font-bold text-white">{selected.kana}</div>
                             <div className="text-pink-300 text-xl mt-1">{selected.romaji}</div>
                             <div className="text-gray-500 text-xs mt-2">
-                                {selected.type} · unlocked from {selected.sectionId}
+                                {selected.type} · unlocked from {transformSectionIdString(selected.sectionId)}
                             </div>
                         </div>
                         <button

@@ -3,9 +3,9 @@ import { LockOpen, Heart } from "lucide-react";
 
 export function Header() {
     return (
-        <div className="flex items-center justify-between w-full max-w-6xl mx-auto py-4 px-6 mb-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl transition-all hover:border-pink-500/30">
+        <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-6xl mx-auto py-4 px-4 sm:px-6 mb-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl transition-all hover:border-pink-500/30 gap-4 sm:gap-0">
             {/* Logo */}
-            <Link href="/" className="group flex flex-col items-baseline cursor-pointer">
+            <Link href="/" className="group flex flex-col items-center sm:items-baseline cursor-pointer">
                 <div className="text-3xl font-bold flex items-center align-middle gap-1 tracking-tight transition-transform group-hover:scale-[1.02]">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400">
                         日本語
@@ -14,13 +14,13 @@ export function Header() {
                         Jav
                     </span>
                 </div>
-                <span className="self-end text-[10px] uppercase font-bold tracking-widest text-muted-foreground/60 transition-colors group-hover:text-pink-400/80">
+                <span className="sm:self-end text-[10px] uppercase font-bold tracking-widest text-muted-foreground/60 transition-colors group-hover:text-pink-400/80 mt-1 sm:mt-0">
                     v1.0
                 </span>
             </Link>
 
             {/* Navigation Links */}
-            <div className="flex items-center gap-4 text-sm font-medium">
+            <div className="flex items-center gap-3 sm:gap-4 text-sm font-medium w-full sm:w-auto justify-center sm:justify-end">
                 <Link
                     href="/gallery"
                     className="group relative flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5 hover:border-pink-500/40 hover:bg-pink-500/10 transition-all duration-300"

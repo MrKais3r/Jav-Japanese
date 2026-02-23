@@ -13,3 +13,14 @@ export function fisherYatesShuffle(array: any[]) {
     }
     return arr;
 }
+
+export function transformSectionIdString(str: string) {
+    const firstDashIndex = str.indexOf("-");
+    if (firstDashIndex === -1) return str;
+
+    // Remove everything before first dash
+    const afterFirstDash = str.substring(firstDashIndex + 1);
+
+    // Replace ALL remaining dashes with space
+    return afterFirstDash.replace(/-/g, " ");
+}

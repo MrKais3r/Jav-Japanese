@@ -5,20 +5,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { data } from "@/data/mainLesson";
 import SectionStatus from "./SectionStatus";
-import { quizData } from "@/data/quizData";
+import { quizData, grammarQuizData } from "@/data/quizData";
 import { vocabData } from "@/data/vocabData";
-
-// Determine if a section ID has content available
-function isSectionAvailable(sectionId: string | number | undefined): boolean {
-    if (!sectionId) return false;
-    const key = String(sectionId);
-    // String ID (e.g. "1-vocab-1") → check vocabData
-    if (isNaN(Number(key))) {
-        return key in vocabData;
-    }
-    // Numeric ID → check quizData
-    return false; // quizData check handled per lesson below
-}
 
 // Badge label for section type
 function getSectionBadge(sectionId: string | number): string {
@@ -29,6 +17,7 @@ function getSectionBadge(sectionId: string | number): string {
     if (key.includes("numbers")) return "Numbers";
     if (key.includes("vocab")) return "Vocab";
     if (key.includes("grammar")) return "Grammar";
+    if (key.includes("culture")) return "Culture";
     return "Quiz";
 }
 
@@ -52,13 +41,13 @@ export default function Lesson({ params }: { params: { lessonId: string } }) {
                 </Link>
 
                 <Card className="w-full max-w-5xl border-0 bg-white/[0.03] backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20">
-                    <CardHeader className="border-b border-white/5 pb-8 pt-10 px-8">
-                        <CardTitle className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm">
+                    <CardHeader className="border-b border-white/5 pb-6 pt-8 px-4 sm:pb-8 sm:pt-10 sm:px-8">
+                        <CardTitle className="text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm">
                             Lesson {lessonId}: <span className="text-white">{lesson?.title}</span>
                         </CardTitle>
                     </CardHeader>
 
-                    <CardContent className="flex flex-col gap-10 p-8 sm:p-10 text-sm text-gray-300 leading-relaxed">
+                    <CardContent className="flex flex-col gap-6 sm:gap-10 p-4 sm:p-10 text-sm text-gray-300 leading-relaxed">
                         {lesson?.sections?.map((sec, i) => {
                             return (
                                 <div key={i} className="space-y-5">
@@ -75,9 +64,10 @@ export default function Lesson({ params }: { params: { lessonId: string } }) {
                                             const isNumeric =
                                                 sectionId && !isNaN(Number(sectionKey));
 
-                                            // For string IDs: check vocabData
+                                            // For string IDs: check vocabData and grammarQuizData
                                             const strAvailable =
-                                                isString && sectionKey in vocabData;
+                                                isString &&
+                                                (sectionKey in vocabData || sectionKey in grammarQuizData);
                                             // For numeric IDs: check quizData
                                             const numAvailable =
                                                 isNumeric &&
@@ -88,38 +78,40 @@ export default function Lesson({ params }: { params: { lessonId: string } }) {
                                             return (
                                                 <div key={idx} className="flex items-center gap-2">
                                                     {disabled ? (
-                                                        <span className="flex items-center gap-3 text-sm px-5 py-4 rounded-2xl border border-white/5 bg-white/5 text-gray-500 cursor-not-allowed w-full">
-                                                            <span className="whitespace-nowrap font-medium text-gray-400">
+                                                        <span className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-sm px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border border-white/5 bg-white/5 text-gray-500 cursor-not-allowed w-full">
+                                                            <span className="whitespace-normal leading-tight font-medium text-gray-400">
                                                                 {item.label}
                                                             </span>
-                                                            <span className="text-xs px-2 py-0.5 rounded-full border border-gray-500/20 bg-gray-500/10 opacity-70 ml-auto">
+                                                            <span className="text-xs px-2 py-0.5 rounded-full border border-gray-500/20 bg-gray-500/10 opacity-70 sm:ml-auto mt-2 sm:mt-0">
                                                                 Coming soon
                                                             </span>
                                                         </span>
                                                     ) : (
                                                         <Link
                                                             href={`/lesson/${lessonId}/section/${sectionId}`}
-                                                            className="flex items-center gap-3 text-sm px-5 py-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-pink-500/30 transition-all duration-300 w-full group relative overflow-hidden"
+                                                            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-sm px-4 sm:px-5 py-3 sm:py-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-pink-500/30 transition-all duration-300 w-full group relative overflow-hidden"
                                                         >
                                                             <div className="absolute inset-0 bg-gradient-to-r from-pink-500/0 via-pink-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out pointer-events-none" />
-                                                            <span className="whitespace-nowrap flex-1 font-medium text-gray-300 group-hover:text-white transition-colors">
+                                                            <span className="whitespace-normal leading-tight sm:whitespace-nowrap break-words flex-1 font-medium text-gray-300 group-hover:text-white transition-colors w-full">
                                                                 {item.label}
                                                             </span>
-                                                            <span className="text-xs font-bold tracking-wide uppercase bg-gradient-to-r from-pink-500/20 to-rose-500/20 text-pink-300 px-3 py-1 rounded-full border border-pink-500/20 shrink-0 shadow-sm">
-                                                                {getSectionBadge(sectionId)}
-                                                            </span>
-                                                            {isString && (
-                                                                <SectionStatus
-                                                                    lessonId={Number(lessonId)}
-                                                                    sectionId={sectionKey as any}
-                                                                />
-                                                            )}
-                                                            {isNumeric && (
-                                                                <SectionStatus
-                                                                    lessonId={Number(lessonId)}
-                                                                    sectionId={Number(sectionId)}
-                                                                />
-                                                            )}
+                                                            <div className="flex items-center gap-2 mt-2 sm:mt-0 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
+                                                                <span className="text-xs font-bold tracking-wide uppercase bg-gradient-to-r from-pink-500/20 to-rose-500/20 text-pink-300 px-3 py-1 rounded-full border border-pink-500/20 shrink-0 shadow-sm">
+                                                                    {getSectionBadge(sectionId)}
+                                                                </span>
+                                                                {isString && (
+                                                                    <SectionStatus
+                                                                        lessonId={Number(lessonId)}
+                                                                        sectionId={sectionKey as any}
+                                                                    />
+                                                                )}
+                                                                {isNumeric && (
+                                                                    <SectionStatus
+                                                                        lessonId={Number(lessonId)}
+                                                                        sectionId={Number(sectionId)}
+                                                                    />
+                                                                )}
+                                                            </div>
                                                         </Link>
                                                     )}
                                                 </div>
