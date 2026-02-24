@@ -12,15 +12,13 @@ export type RewardImage = {
 
 
 export const REWARD_MAP: Record<string, Partial<RewardImage>[]> = {
-    "special": [
+    "rewards": [
         { src: "/photo/1_heart.jpg", title: "Heartfelt Welcome", rarity: "Common" },
         { src: "/photo/2_hi.jpg", title: "Sensei's Greeting", rarity: "Common" },
         { src: "/photo/3_happy.jpg", title: "Pure Joy", rarity: "Rare" },
         { src: "/photo/4_angry.jpg", title: "Divine Punishment", rarity: "Rare" },
         { src: "/photo/learn_japanese_with_us.jpg", title: "Study Buddy", rarity: "Common" },
         { src: "/photo/nihongo_donate.jpg", title: "Golden Supporter", rarity: "Legendary" },
-    ],
-    "0-hiragana-1": [
         { src: "/rewards/h/a.jpg", kana: "あ", romaji: "a", rarity: "Common" },
         { src: "/rewards/h/i.jpg", kana: "い", romaji: "i", rarity: "Common" },
         { src: "/rewards/h/u.jpg", kana: "う", romaji: "u", rarity: "Common" },
@@ -67,8 +65,6 @@ export const REWARD_MAP: Record<string, Partial<RewardImage>[]> = {
         { src: "/rewards/h/wa.jpg", kana: "わ", romaji: "wa", rarity: "Common" },
         { src: "/rewards/h/wo.jpg", kana: "を", romaji: "wo", rarity: "Common" },
         { src: "/rewards/h/n.jpg", kana: "ん", romaji: "n", rarity: "Common" },
-    ],
-    "0-katakana-1": [
         { src: "/rewards/k/a.jpg", kana: "ア", romaji: "a", rarity: "Common" },
         { src: "/rewards/k/i.jpg", kana: "イ", romaji: "i", rarity: "Common" },
         { src: "/rewards/k/u.jpg", kana: "ウ", romaji: "u", rarity: "Common" },
@@ -134,7 +130,7 @@ export function unlockReward(sectionId: string): RewardImage | null {
     const sectionPool = REWARD_MAP[sectionId] || [];
     const sectionAvailable = sectionPool.filter(p => p.src && !unlockedSrcs.has(p.src));
     
-    const specialPool = REWARD_MAP["special"] || [];
+    const specialPool = REWARD_MAP["rewards"] || [];
     const specialAvailable = specialPool.filter(p => p.src && !unlockedSrcs.has(p.src));
 
     // Choose pool: 70% Section, 30% Special (if available)

@@ -521,14 +521,14 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
 
                         {/* Skip back to study */}
                         <div className="flex items-center justify-between text-xs text-gray-600">
-                            <span className="flex items-center gap-3">
+                            {/* <span className="flex items-center gap-3">
                                 <span className="flex justify-center items-center gap-1">
                                     <Check size={14} className="text-green-500" /> {correct}
                                 </span>
                                 <span className="flex justify-center items-center gap-1">
                                     <X size={14} className="text-red-500" /> {wrong}
                                 </span>
-                            </span>
+                            </span> */}
                             <button
                                 onClick={() => {
                                     setPhase("study");
