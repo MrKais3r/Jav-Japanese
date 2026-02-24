@@ -157,7 +157,7 @@ export default function Home() {
                     <h2 className="text-2xl font-bold text-white tracking-tight italic">
                         Desired Lessons
                     </h2>
-                    <div className="h-px bg-gradient-to-r from-pink-500/50 to-transparent flex-1 ml-4" />
+                    <div className="h-px bg-linear-to-r from-pink-500/50 to-transparent flex-1 ml-4" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-20">

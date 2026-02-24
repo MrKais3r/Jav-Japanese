@@ -180,7 +180,7 @@ export default function UltimateVocabPage() {
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
             
-            <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-4">
+            <div className="w-full max-w-6xl h-full z-10 flex flex-col items-center gap-4">
                 <Header />
                 <Link href="/" className="flex items-center gap-1.5 text-gray-400 hover:text-gray-200 transition underline-offset-4 hover:underline text-sm self-start sm:self-center">
                     <ArrowLeft size={16} /> Retreat to safety
@@ -220,8 +220,8 @@ export default function UltimateVocabPage() {
 
                         {/* Right Side: Visual & Input */}
                         <div className="flex-[1.5] w-full flex flex-col gap-6">
-                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border-2 border-white/10 shadow-xl bg-black">
-                                {currentWord && <Image src={`/englishpics/${currentWord.word}.jpeg`} alt="Ultimate Visual" fill className="object-cover" priority />}
+                            <div className="relative w-full h-[50vh] min-h-[400px] md:h-[60vh] lg:h-[65vh] rounded-2xl overflow-hidden border-2 border-white/10 shadow-xl bg-black">
+                                {currentWord && <Image src={`/englishpics/${currentWord.word}.jpeg`} alt="Ultimate Visual" fill className="object-contain" priority />}
                             </div>
 
                             <form onSubmit={handleFormSubmit} className="relative">
