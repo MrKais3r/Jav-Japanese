@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { LockOpen, Heart, Flame, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getAppData, getRank, checkStreak, type AppData } from "@/lib/storage";
+import { getAppData, getRank, checkStreak, getLevelFromXP, getLevelProgress, type AppData } from "@/lib/storage";
 
 export function Header() {
     const [stats, setStats] = useState<AppData["user"] | null>(null);
@@ -17,8 +17,8 @@ export function Header() {
     if (!stats) return null;
 
     const currentRank = getRank(stats.xp);
-    const xpInLevel = stats.xp % 1000;
-    const progressPercent = (xpInLevel / 1000) * 100;
+    const level = getLevelFromXP(stats.xp);
+    const progressPercent = getLevelProgress(stats.xp);
 
     return (
         <div className="flex flex-col gap-4 w-full max-w-6xl mx-auto mb-8">
@@ -47,7 +47,7 @@ export function Header() {
                             />
                         </div>
                         <div className="text-[9px] text-zinc-500 font-bold uppercase tracking-tighter">
-                            {stats.xp} XP • Lv.{Math.floor(stats.xp / 1000) + 1}
+                            {stats.xp} XP • Lv.{level}
                         </div>
                     </div>
                 </div>

@@ -23,17 +23,52 @@ export type AppData = {
 };
 
 export const RANKS = [
-    { name: "Curious Kouhai", minXP: 0, color: "text-zinc-400" },
-    { name: "Devoted Disciple", minXP: 500, color: "text-blue-400" },
-    { name: "Language Lover", minXP: 1500, color: "text-purple-400" },
-    { name: "Sensei's Favorite", minXP: 3000, color: "text-pink-400" },
-    { name: "Ara Ara Master", minXP: 6000, color: "text-rose-400 font-bold" },
-    { name: "Nihongo Degenerate", minXP: 10000, color: "text-rose-500 font-black animate-pulse" },
-    { name: "Sensei's Only One", minXP: 20000, color: "text-pink-500 font-black drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]" },
+    { name: "Curious Kouhai",    minXP: 0,     color: "text-zinc-400" },
+    { name: "Devoted Disciple",  minXP: 300,   color: "text-blue-400" },
+    { name: "Language Lover",    minXP: 800,   color: "text-purple-400" },
+    { name: "Sensei's Favorite", minXP: 1800,  color: "text-pink-400" },
+    { name: "Ara Ara Master",    minXP: 3500,  color: "text-rose-400 font-bold" },
+    { name: "Nihongo Degenerate",minXP: 6000,  color: "text-rose-500 font-black animate-pulse" },
+    { name: "Sensei's Only One", minXP: 10000, color: "text-pink-500 font-black drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]" },
 ];
 
 export function getRank(xp: number) {
     return [...RANKS].reverse().find(r => xp >= r.minXP) || RANKS[0]!;
+}
+
+/** XP required to reach a given level (level 1 = 0, level 2 = 200, level 3 = 600, …  N = N*(N-1)/2 * 200) */
+export function getXPForLevel(level: number): number {
+    // Triangular: each level costs level*200 XP more than the previous
+    // Level 1: 0, Level 2: 200, Level 3: 600, Level 4: 1200, Level 5: 2000 …
+    const n = Math.max(1, level) - 1;
+    return (n * (n + 1)) / 2 * 200;
+}
+
+/** Level the user is currently at given XP */
+export function getLevelFromXP(xp: number): number {
+    let level = 1;
+    while (getXPForLevel(level + 1) <= xp) level++;
+    return level;
+}
+
+/** 0-100 progress percentage within the current level */
+export function getLevelProgress(xp: number): number {
+    const level = getLevelFromXP(xp);
+    const currentFloor = getXPForLevel(level);
+    const nextCeiling  = getXPForLevel(level + 1);
+    return Math.min(100, Math.round(((xp - currentFloor) / (nextCeiling - currentFloor)) * 100));
+}
+
+/** Total gacha cards the user has collected (reads rewards store) */
+export function getTotalUnlockedCards(): number {
+    if (typeof window === "undefined") return 0;
+    try {
+        const raw = localStorage.getItem("jav_rewards");
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr.length : 0;
+    } catch {
+        return 0;
+    }
 }
 
 export function getAppData(): AppData {
@@ -90,64 +125,70 @@ export function checkStreak() {
     const data = getAppData();
     const now = new Date();
     const today = now.toISOString().split("T")[0]!;
-    
+
     if (!data.user.streak.lastDate) {
-        data.user.streak = { count: 0, lastDate: today };
+        // First ever visit — start streak at 1
+        data.user.streak = { count: 1, lastDate: today };
+    } else if (data.user.streak.lastDate === today) {
+        // Already checked in today — no change
     } else {
         const last = new Date(data.user.streak.lastDate);
-        const diff = Math.floor((now.getTime() - last.getTime()) / (1000 * 60 * 60 * 24));
-        
+        // Use calendar-day difference to avoid DST edge cases
+        const diffMs = now.setHours(0,0,0,0) - last.setHours(0,0,0,0);
+        const diff = Math.round(diffMs / (1000 * 60 * 60 * 24));
+
         if (diff === 1) {
-            data.user.streak.count += 1;
+            // Consecutive day → increment
+            data.user.streak.count = (data.user.streak.count || 0) + 1;
             data.user.streak.lastDate = today;
         } else if (diff > 1) {
+            // Missed a day → reset to 1
             data.user.streak.count = 1;
             data.user.streak.lastDate = today;
         }
-        // if diff === 0, already checked today
     }
+
     saveAppData(data);
     return data.user.streak;
 }
 
-export function saveSectionResult(lessonId: number, sectionId: number, percentage: number) {
+export function saveSectionResult(lessonId: number, sectionId: number | string, percentage: number) {
     const data = getAppData();
     const lessonKey = `lesson_${lessonId}`;
 
-    if (!data.progress) {
-        data.progress = {};
-    }
-
+    if (!data.progress) data.progress = {};
     if (!data.progress[lessonKey]) {
-        data.progress[lessonKey] = {
-            sectionsCompleted: [],
-            sectionResults: {},
-        };
+        data.progress[lessonKey] = { sectionsCompleted: [], sectionResults: {} };
     }
 
     const lesson = data.progress[lessonKey]!;
+    if (!lesson.sectionResults) lesson.sectionResults = {};
 
-    // mark completed if not exists
-    if (!lesson.sectionsCompleted.includes(sectionId)) {
+    const prevScore = lesson.sectionResults[sectionId] || 0;
+    const isFirstCompletion = !lesson.sectionsCompleted.includes(sectionId);
+
+    if (isFirstCompletion) {
         lesson.sectionsCompleted.push(sectionId);
-        // XP Reward for first completion
-        data.user.xp += 100;
+        // Base XP for first ever completion
+        data.user.xp += 50;
     }
 
-    // Extra XP based on performance
-    if (percentage >= 100) {
-        data.user.xp += 50;
-    } else if (percentage > 90) {
-        data.user.xp += 25;
+    // Performance XP — only awarded when beating personal best
+    if (percentage > prevScore) {
+        if (percentage >= 100) {
+            data.user.xp += isFirstCompletion ? 150 : 75;  // 150 first perfect, 75 for re-perfect
+        } else if (percentage >= 80) {
+            data.user.xp += 30;
+        } else if (percentage >= 60) {
+            data.user.xp += 15;
+        }
     }
 
     // Update rank
     data.user.rank = getRank(data.user.xp).name;
 
-    // save percentage
-    if (!lesson.sectionResults) lesson.sectionResults = {};
-    const currentScore = lesson.sectionResults[sectionId] || 0;
-    lesson.sectionResults[sectionId] = Math.max(percentage, currentScore);
+    // Save best score
+    lesson.sectionResults[sectionId] = Math.max(percentage, prevScore);
 
     saveAppData(data);
 }

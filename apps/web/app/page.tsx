@@ -4,19 +4,20 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { data } from "@/data/mainLesson";
 import { useEffect, useState } from "react";
 import AgeGate from "@/components/AgeGate";
-import { getAppData, getName } from "@/lib/storage";
+import { getAppData, getName, getTotalUnlockedCards, getLevelFromXP, getLevelProgress, getXPForLevel } from "@/lib/storage";
 import { Header } from "@/components/header";
 import { BookOpen, Sparkles, Navigation, PlayCircle, Flame } from "lucide-react";
 
 export default function Home() {
     const [verified, setVerified] = useState(false);
-    const [appData, setAppData] = useState<any>(null); // SSR safe
+    const [appData, setAppData] = useState<any>(null);
     const [name, setName] = useState<string>("");
+    const [cardsUnlocked, setCardsUnlocked] = useState(0);
 
     useEffect(() => {
-        // this runs only on client, so localStorage is available
         setAppData(getAppData());
         setName(getName());
+        setCardsUnlocked(getTotalUnlockedCards());
     }, []);
 
     const isLessonTouched = (lessonId: number) => {
@@ -68,7 +69,7 @@ export default function Home() {
                             </div>
                             <CardTitle className="text-gray-100 text-3xl md:text-4xl font-extrabold tracking-tight">
                                 Hii{" "}
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm animate-naughty-pulse inline-block">
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-rose-400 drop-shadow-sm animate-naughty-pulse inline-block">
                                     {name || "Guest"}
                                 </span>
                                 -san!
@@ -88,21 +89,35 @@ export default function Home() {
                             </p>
                             
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
+                                {/* Streak */}
                                 <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
-                                    <div className="text-2xl font-black text-white">{appData?.user?.streak?.count || 0}</div>
+                                    <div className="text-2xl font-black text-white flex items-center justify-center gap-1">
+                                        {appData?.user?.streak?.count || 0}
+                                        {(appData?.user?.streak?.count || 0) > 0 && <span className="text-orange-400 text-base">🔥</span>}
+                                    </div>
                                     <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Streak</div>
                                 </div>
+                                {/* Total XP */}
                                 <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
                                     <div className="text-2xl font-black text-white">{appData?.user?.xp || 0}</div>
                                     <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Total XP</div>
                                 </div>
+                                {/* Cards Unlocked */}
                                 <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
-                                    <div className="text-2xl font-black text-white">{appData?.user?.inventory?.length || 0}</div>
+                                    <div className="text-2xl font-black text-white">{cardsUnlocked}</div>
                                     <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Cards Unlocked</div>
                                 </div>
-                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
-                                    <div className="text-2xl font-black text-pink-400">{Math.floor((appData?.user?.xp || 0) / 1000) + 1}</div>
+                                {/* Level */}
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105 relative overflow-hidden">
+                                    <div className="text-2xl font-black text-pink-400">{getLevelFromXP(appData?.user?.xp || 0)}</div>
                                     <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Current Level</div>
+                                    {/* mini XP bar inside card */}
+                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
+                                        <div
+                                            className="h-full bg-linear-to-r from-pink-500 to-rose-500 transition-all duration-700"
+                                            style={{ width: `${getLevelProgress(appData?.user?.xp || 0)}%` }}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
