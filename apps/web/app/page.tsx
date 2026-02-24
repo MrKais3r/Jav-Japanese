@@ -124,10 +124,24 @@ export default function Home() {
                             <p className="text-sm italic text-zinc-400 bg-linear-to-r from-pink-500/10 to-transparent p-3 rounded-lg border-l-2 border-pink-500">
                                 <strong>Sensei's Tip:</strong> Reach 100% on any lesson to unlock "special" rewards. I might even show you something secret if you're good enough~
                             </p>
+
+                            <div className="pt-4">
+                                <Link
+                                    href="/ultimate-vocab"
+                                    className="inline-flex items-center gap-2 bg-linear-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-black py-4 px-8 rounded-2xl shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all hover:scale-105 active:scale-95 text-xl w-full sm:w-auto justify-center group"
+                                >
+                                    <Flame className="w-6 h-6 animate-pulse" />
+                                    Play Ultimate Trial
+                                    <Flame className="w-6 h-6 animate-pulse" />
+                                </Link>
+                                <div className="text-sm font-bold text-pink-400 mt-3 italic animate-pulse">
+                                    Ready to be tested by Sensei? Let's see if you can beg properly~ 💕
+                                </div>
+                            </div>
                         </div>
 
                         <div className="relative w-full lg:w-[350px] shrink-0 group animate-float">
-                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 to-rose-500/30 blur-2xl rounded-3xl group-hover:scale-110 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-linear-to-br from-pink-500/30 to-rose-500/30 blur-2xl rounded-3xl group-hover:scale-110 transition-transform duration-500" />
                             <img
                                 src={"/photo/learn_japanese_with_us.jpg"}
                                 alt="lesson visual"

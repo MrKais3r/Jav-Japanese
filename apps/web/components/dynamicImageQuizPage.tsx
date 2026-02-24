@@ -91,6 +91,12 @@ export default function QuizPage({ params }: { params: { lessonId: string; secti
         setSelected(option);
         const isCorrect = option === q.answer;
 
+        if (isCorrect) {
+            window.dispatchEvent(new CustomEvent("mascot-state", { detail: "correct" }));
+        } else {
+            window.dispatchEvent(new CustomEvent("mascot-state", { detail: "wrong" }));
+        }
+
         setTimeout(() => {
             if (isCorrect) {
                 setCorrect((c) => c + 1);
@@ -107,6 +113,15 @@ export default function QuizPage({ params }: { params: { lessonId: string; secti
             setSelectedCss(selectedCssMap["select"]);
         }, 600);
     }
+    
+    function handleTextInputSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const fd = new FormData(e.currentTarget);
+        const val = (fd.get("answer") as string).trim();
+        if (!val) return;
+        handleSelect(val);
+    }
+
     // Quiz complete
     useEffect(() => {
         if (questions.length > 0 && index >= questions.length && !saved) {
@@ -120,15 +135,18 @@ export default function QuizPage({ params }: { params: { lessonId: string; secti
                 setWasAlready100(true);
             }
 
-            // Only give reward if score is 100 AND it wasn't already 100
             if (score === 100 && pastScore < 100) {
                 const r = unlockReward(sectionId);
                 if (r) {
                     setReward(r);
                     setShowReward(true);
                 }
+                window.dispatchEvent(new CustomEvent("mascot-state", { detail: "levelUp" }));
             } else if (score < 100) {
                 setShowFailImage(true);
+                window.dispatchEvent(new CustomEvent("mascot-state", { detail: "tease" }));
+            } else {
+                 window.dispatchEvent(new CustomEvent("mascot-state", { detail: "idle" }));
             }
 
             setSaved(true);
@@ -346,21 +364,45 @@ export default function QuizPage({ params }: { params: { lessonId: string; secti
                     )}
 
                     <div className="space-y-3">
-                        {q.options.map((opt: string, i: number) => (
-                            <button
-                                key={i}
-                                onClick={() => handleSelect(opt)}
-                                disabled={!!selected}
-                                className={`w-full text-left px-4 py-3 rounded border border-white/10 transition ${
-                                    selected === opt ? selectedCss : "bg-black/40"
-                                }`}
-                            >
-                                <span className="font-bold">{String.fromCharCode(65 + i)}:</span>
-                                <span dangerouslySetInnerHTML={{ __html: opt }} />
-                            </button>
-                        ))}
+                        {sectionId.includes("ultimate") ? (
+                            <form onSubmit={handleTextInputSubmit} className="flex flex-col gap-3">
+                                <input 
+                                    type="text" 
+                                    name="answer"
+                                    autoComplete="off"
+                                    autoFocus
+                                    disabled={!!selected}
+                                    className={`w-full p-4 rounded-xl bg-black/50 border border-white/20 text-2xl font-bold text-center outline-hidden focus:border-pink-500 transition-colors ${selected === q.answer ? "bg-green-500/20 border-green-500 text-green-400" : selected ? "bg-red-500/20 border-red-500 text-red-400" : "text-white"}`}
+                                    placeholder="Type Japanese here..." 
+                                />
+                                {selected && selected !== q.answer && (
+                                    <div className="text-red-400 text-sm font-bold text-center">Correct answer: {q.answer}</div>
+                                )}
+                                <button 
+                                    type="submit" 
+                                    disabled={!!selected} 
+                                    className="w-full p-3 font-bold bg-pink-600 hover:bg-pink-500 rounded-xl text-white transition-colors disabled:opacity-50"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                        ) : (
+                            q.options.map((opt: string, i: number) => (
+                                <button
+                                    key={i}
+                                    onClick={() => handleSelect(opt)}
+                                    disabled={!!selected}
+                                    className={`w-full text-left px-4 py-3 rounded border border-white/10 transition ${
+                                        selected === opt ? selectedCss : "bg-black/40"
+                                    }`}
+                                >
+                                    <span className="font-bold">{String.fromCharCode(65 + i)}:</span>
+                                    <span dangerouslySetInnerHTML={{ __html: opt }} />
+                                </button>
+                            ))
+                        )}
                     </div>
-
+                    
                     <div className="w-full h-2 bg-white/10 rounded">
                         <div
                             className="h-full bg-pink-500 rounded"

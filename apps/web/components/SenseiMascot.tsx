@@ -42,6 +42,7 @@ const SENSEI_MESSAGES = {
 };
 
 export function SenseiMascot({ state = "idle" }: { state?: "idle" | "correct" | "wrong" | "levelUp" }) {
+    const [currentState, setCurrentState] = useState<"idle" | "correct" | "wrong" | "levelUp" | "tease">(state);
     const [message, setMessage] = useState("");
     const [visible, setVisible] = useState(false);
     const [isTeasing, setIsTeasing] = useState(false);
@@ -55,18 +56,38 @@ export function SenseiMascot({ state = "idle" }: { state?: "idle" | "correct" | 
     };
 
     useEffect(() => {
-        showRandomMessage(state);
+        setCurrentState(state);
+    }, [state]);
+
+    useEffect(() => {
+        showRandomMessage(currentState);
         const data = getAppData();
         setXp(data.user?.xp || 0);
 
         const timer = setTimeout(() => setVisible(true), 1000);
-        return () => clearTimeout(timer);
-    }, [state]);
+
+        const handleMascotState = (e: Event) => {
+            const customEvent = e as CustomEvent<"idle" | "correct" | "wrong" | "levelUp" | "tease">;
+            setCurrentState(customEvent.detail);
+        };
+        window.addEventListener("mascot-state", handleMascotState);
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("mascot-state", handleMascotState);
+        };
+    }, [currentState]);
 
     const handleTease = () => {
         setIsTeasing(true);
         showRandomMessage("tease");
         setTimeout(() => setIsTeasing(false), 2000);
+    };
+
+    const getImageForState = () => {
+        if (currentState === "correct" || currentState === "levelUp") return "/mascot/mascort_correct.png";
+        if (currentState === "wrong") return "/mascot/mascort_worng.jpeg";
+        return "/mascot/mascort_start.jpeg";
     };
 
     return (
@@ -96,11 +117,11 @@ export function SenseiMascot({ state = "idle" }: { state?: "idle" | "correct" | 
                     className={`relative cursor-pointer transition-all duration-300 ${isTeasing ? 'scale-110' : 'hover:scale-105'}`}
                     onClick={handleTease}
                 >
-                    <div className={`w-20 h-20 rounded-full border-2 border-pink-500 absolute inset-0 blur-md opacity-50 ${isTeasing ? 'animate-naughty-pulse' : 'animate-pulse'}`} />
-                    <div className="w-20 h-20 rounded-full border-2 border-pink-500/50 bg-zinc-950 overflow-hidden relative z-10 shadow-xl">
+                    <div className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-pink-500 absolute inset-0 blur-md opacity-50 ${isTeasing ? 'animate-naughty-pulse' : 'animate-pulse'}`} />
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-pink-500/50 bg-zinc-950 overflow-hidden relative z-10 shadow-xl">
                         <img 
-                            src="/photo/2_hi.jpg" 
-                            className={`w-full h-full object-cover transition-all duration-500 ${isTeasing ? 'grayscale-0 saturate-200 contrast-125' : 'grayscale-[0.2] group-hover:grayscale-0'}`}
+                            src={getImageForState()} 
+                            className={`w-full h-full object-cover transition-all duration-500 ${isTeasing ? 'grayscale-0 saturate-200 contrast-125' : ''}`}
                             alt="Sensei"
                         />
                     </div>
