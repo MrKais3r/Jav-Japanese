@@ -65,11 +65,13 @@ export default function GalleryPage() {
 
                 {/* Section groups */}
                 {Object.entries(REWARD_MAP).map(([sectionId, images]) => {
-                    const sectionUnlocked = images.filter((img) => unlockedSrcs.has(img.src));
+                    const sectionUnlocked = images.filter((img) => img.src && unlockedSrcs.has(img.src));
                     const label =
                         sectionId === "0-hiragana-1"
                             ? "Hiragana (ひらがな)"
-                            : "Katakana (カタカナ)";
+                            : sectionId === "0-katakana-1"
+                            ? "Katakana (カタカナ)"
+                            : "Special Rewards";
 
                     return (
                         <div key={sectionId} className="mb-12">
@@ -80,51 +82,55 @@ export default function GalleryPage() {
                                 </span>
                             </div>
 
-                            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                                 {images.map((img) => {
+                                    if (!img.src) return null;
                                     const isUnlocked = unlockedSrcs.has(img.src);
+                                    const unlockedData = unlocked.find((r) => r.src === img.src);
 
                                     return (
                                         <button
                                             key={img.src}
-                                            onClick={() =>
-                                                isUnlocked &&
-                                                setSelected(
-                                                    unlocked.find((r) => r.src === img.src) ?? null
-                                                )
-                                            }
+                                            onClick={() => isUnlocked && setSelected(unlockedData ?? null)}
                                             disabled={!isUnlocked}
-                                            className={`relative aspect-square rounded-xl overflow-hidden border transition-all duration-200 group ${
+                                            className={`relative aspect-3/4 rounded-xl overflow-hidden border transition-all duration-300 group ${
                                                 isUnlocked
-                                                    ? "border-pink-500/40 hover:border-pink-400 hover:scale-105 cursor-pointer"
-                                                    : "border-white/5 cursor-default"
+                                                    ? "border-pink-500/40 hover:border-pink-400 hover:scale-105 cursor-pointer shadow-lg shadow-pink-500/10"
+                                                    : "border-white/5 cursor-default grayscale"
                                             }`}
                                         >
                                             {isUnlocked ? (
                                                 <>
                                                     <Image
                                                         src={img.src}
-                                                        alt={img.kana}
+                                                        alt={img.title || ""}
                                                         fill
                                                         className="object-cover"
                                                     />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                                                        <span className="text-white text-xs font-bold">
-                                                            {img.romaji}
-                                                        </span>
+                                                    <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 to-transparent p-3 pt-8 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                                                        <div className="text-[10px] uppercase tracking-tighter text-pink-400 font-bold mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                            {img.rarity || "Common"}
+                                                        </div>
+                                                        <div className="text-white text-xs font-medium truncate">
+                                                            {img.title || img.romaji}
+                                                        </div>
                                                     </div>
-                                                    <div className="absolute top-1 right-1 text-white text-xs font-bold drop-shadow bg-black/40 rounded px-0.5">
-                                                        {img.kana}
-                                                    </div>
+                                                    {img.kana && (
+                                                        <div className="absolute top-2 right-2 text-white text-sm font-bold drop-shadow-md bg-black/40 rounded-lg px-2 py-1 backdrop-blur-xs">
+                                                            {img.kana}
+                                                        </div>
+                                                    )}
                                                 </>
                                             ) : (
-                                                <div className="absolute inset-0 bg-white/3 flex flex-col items-center justify-center gap-1">
-                                                    <span className="text-2xl grayscale opacity-30">
-                                                        {img.kana}
-                                                    </span>
-                                                    <span className="text-gray-700 text-[10px]">
+                                                <div className="absolute inset-0 bg-white/5 flex flex-col items-center justify-center gap-3">
+                                                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-xl opacity-20">
                                                         🔒
-                                                    </span>
+                                                    </div>
+                                                    {img.kana && (
+                                                        <span className="text-2xl font-bold text-white/5">
+                                                            {img.kana}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             )}
                                         </button>
@@ -165,16 +171,24 @@ export default function GalleryPage() {
                     >
                         <Image
                             src={selected.src}
-                            alt={selected.kana}
+                            alt={selected.title || "Reward"}
                             width={600}
                             height={800}
                             className="w-full h-auto object-cover"
                         />
-                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-6 text-center">
-                            <div className="text-6xl font-bold text-white">{selected.kana}</div>
-                            <div className="text-pink-300 text-xl mt-1">{selected.romaji}</div>
-                            <div className="text-gray-500 text-xs mt-2">
-                                {selected.type} · unlocked from {transformSectionIdString(selected.sectionId)}
+                        <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/99 via-black/80 to-transparent p-8 text-center">
+                            {selected.kana && (
+                                <div className="text-7xl font-bold text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                                    {selected.kana}
+                                </div>
+                            )}
+                            <div className="text-pink-400 text-2xl font-bold tracking-tight mb-1">
+                                {selected.title}
+                            </div>
+                            <div className="flex items-center justify-center gap-2 text-xs text-gray-400 mt-3 bg-white/5 py-1.5 px-3 rounded-full border border-white/10 w-fit mx-auto">
+                                <span className="text-pink-500 font-bold">{selected.rarity}</span>
+                                <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                                <span>Unlocked from {transformSectionIdString(selected.sectionId)}</span>
                             </div>
                         </div>
                         <button

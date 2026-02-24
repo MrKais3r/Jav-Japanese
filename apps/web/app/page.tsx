@@ -39,6 +39,27 @@ export default function Home() {
 
             {/* Intro */}
             <div className="w-full max-w-6xl flex flex-col gap-8 relative z-10">
+                {appData?.user?.streak?.count > 0 && (
+                    <div className="w-full bg-linear-to-r from-orange-600/20 via-rose-600/20 to-transparent border border-orange-500/20 rounded-2xl p-4 flex items-center justify-between animate-in fade-in slide-in-from-top-4 duration-1000">
+                        <div className="flex items-center gap-4">
+                            <div className="p-3 rounded-xl bg-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.4)] animate-pulse">
+                                <Flame className="w-6 h-6 text-white fill-white" />
+                            </div>
+                            <div>
+                                <div className="text-xl font-black text-orange-400 italic uppercase tracking-tighter">
+                                    {appData.user.streak.count} DAY STREAK! 🔥
+                                </div>
+                                <div className="text-xs text-orange-300/60 font-medium italic">
+                                    You're on fire, {name || "Darling"}-san! Keep it up~
+                                </div>
+                            </div>
+                        </div>
+                        <div className="hidden sm:block text-[10px] font-black text-orange-400/40 uppercase tracking-[0.2em]">
+                            Daily Study Heat Index
+                        </div>
+                    </div>
+                )}
+
                 <Card className="border-0 bg-white/[0.03] backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20">
                     <CardHeader className="space-y-4 p-8 md:p-10 pb-4">
                         <div className="flex items-center gap-3">
@@ -50,7 +71,7 @@ export default function Home() {
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm">
                                     {name || "Guest"}
                                 </span>
-                                -san, welcome to Nihongo Jav!
+                                -san!
                             </CardTitle>
                         </div>
                     </CardHeader>
@@ -58,59 +79,45 @@ export default function Home() {
                     <CardContent className="flex flex-col lg:flex-row gap-10 p-8 md:p-10 pt-2 items-center">
                         <div className="text-base md:text-lg leading-relaxed text-gray-300 flex-1 space-y-6">
                             <p>
-                                Jav Nihongo is the{" "}
+                                Welcome back to{" "}
                                 <span className="text-pink-400 font-semibold px-1 bg-pink-500/10 rounded-md">
-                                    adult
-                                </span>{" "}
-                                way of learning{" "}
-                                <span className="text-pink-400 font-semibold px-1 bg-pink-500/10 rounded-md">
-                                    Japanese
+                                    Jav Nihongo
                                 </span>
-                                . Where Japanese learning meets a bold, grown-up vibe. No kiddie
-                                cartoons, no boring worksheets—just clean explanations, memorable
-                                examples, and a style made for adults who want their study time to
-                                feel… a little more{" "}
-                                <span className="text-pink-400 font-semibold underline decoration-pink-500/50 decoration-2 underline-offset-4">
-                                    exciting
-                                </span>
-                                .
+                                . You've earned <span className="text-white font-bold">{appData?.user?.xp || 0} XP</span> so far. 
+                                {appData?.user?.xp < 500 ? " Just getting started? Don't worry, I'll take good care of you~" : " You're becoming quite the regular, aren't you?"}
                             </p>
-                            <p>
-                                Here, you’ll explore the language in a way that’s{" "}
-                                <span className="text-white font-medium">fun, modern</span>, and
-                                just a bit seductive—because learning should feel good, not
-                                stressful. Each lesson guides you step by step, mixing real-world
-                                Japanese with playful humor and practical context.
-                            </p>
-                            <p>
-                                Whether you’re exploring your first kana or leveling up your
-                                conversation game, Jav Nihongo keeps things{" "}
-                                <span className="text-pink-400 font-semibold italic">
-                                    smooth, mature,
-                                </span>{" "}
-                                and seriously enjoyable. Learn at your pace. Savor each lesson. And
-                                enjoy the journey.
+                            
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                    <div className="text-2xl font-black text-white">{appData?.user?.streak?.count || 0}</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Streak</div>
+                                </div>
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                    <div className="text-2xl font-black text-white">{appData?.user?.xp || 0}</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Total XP</div>
+                                </div>
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                    <div className="text-2xl font-black text-white">{appData?.user?.inventory?.length || 0}</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Cards</div>
+                                </div>
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                    <div className="text-2xl font-black text-white">Lv.{Math.floor((appData?.user?.xp || 0) / 1000) + 1}</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Level</div>
+                                </div>
+                            </div>
+
+                            <p className="text-sm italic text-zinc-400">
+                                Tip: Completing a lesson with 100% unlocks rare collectible cards in your Reward gallery!
                             </p>
                         </div>
 
-                        <div className="relative w-full lg:w-[400px] shrink-0 group">
+                        <div className="relative w-full lg:w-[350px] shrink-0 group">
                             <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 to-rose-500/30 blur-2xl rounded-3xl group-hover:scale-105 transition-transform duration-500" />
                             <img
                                 src={"/photo/learn_japanese_with_us.jpg"}
                                 alt="lesson visual"
                                 className="w-full h-auto object-cover rounded-3xl relative z-10 border border-white/10 shadow-2xl group-hover:-translate-y-2 transition-transform duration-500"
                             />
-                            <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-2xl p-4 border border-white/10 flex items-center gap-3 z-20">
-                                <PlayCircle className="w-8 h-8 text-pink-400" />
-                                <div>
-                                    <div className="text-sm font-bold text-white">
-                                        Ready to start?
-                                    </div>
-                                    <div className="text-xs text-gray-400">
-                                        Jump right into the lessons below
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </CardContent>
                 </Card>

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import RedirectToDashboard from "@/components/RedirectToDashboard";
 import { Analytics } from "@vercel/analytics/react";
+import { SenseiMascot } from "@/components/SenseiMascot";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -28,6 +29,7 @@ export default function RootLayout({
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
                 <RedirectToDashboard>{children}</RedirectToDashboard>
                 <Analytics />
+                <SenseiMascot />
             </body>
         </html>
     );

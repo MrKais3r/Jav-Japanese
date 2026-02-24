@@ -22,6 +22,7 @@ import { fisherYatesShuffle, transformSectionIdString } from "@/lib/utils";
 import { markSectionComplete, saveSectionResult, isSectionDone } from "@/lib/storage";
 import { unlockReward, type RewardImage } from "@/lib/rewards";
 import { Header } from "./header";
+import { GachaCardReveal } from "./GachaCardReveal";
 import { vocabData, VocabEntry } from "@/data/vocabData";
 
 /* ─── Types ─────────────────────────────────────────────────── */
@@ -199,51 +200,6 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
         setShowFailImage(false);
     };
 
-    /* ── REWARD MODAL ─────────────────────────────────────────── */
-    const RewardModal = () => (
-        <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-            onClick={() => setShowReward(false)}
-        >
-            <div
-                className="relative max-w-sm w-full bg-black/90 border border-pink-500/50 rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <div className="absolute inset-0 bg-gradient-to-b from-pink-500/10 to-transparent pointer-events-none" />
-                <div className="p-4 text-center border-b border-pink-500/20">
-                    <div className="text-2xl mb-1 flex items-center justify-center gap-2">
-                        <Gift className="text-pink-400" /> Reward Unlocked!
-                    </div>
-                    <div className="text-pink-300 text-sm">
-                        You&apos;ve earned a new gallery image~
-                    </div>
-                </div>
-                {reward && (
-                    <div className="relative aspect-[3/4] w-full">
-                        <Image src={reward.src} alt={reward.kana} fill className="object-cover" />
-                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-4 text-center">
-                            <div className="text-5xl font-bold text-white">{reward.kana}</div>
-                            <div className="text-pink-300 text-sm">{reward.romaji}</div>
-                        </div>
-                    </div>
-                )}
-                <div className="p-4 flex gap-3">
-                    <button
-                        onClick={() => setShowReward(false)}
-                        className="flex-1 py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-sm transition text-gray-300"
-                    >
-                        Close
-                    </button>
-                    <Link
-                        href="/gallery"
-                        className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-pink-600 hover:bg-pink-500 text-white text-sm font-semibold transition text-center"
-                    >
-                        <ImageIcon size={16} /> View Gallery
-                    </Link>
-                </div>
-            </div>
-        </div>
-    );
 
     /* ── STUDY PHASE ─────────────────────────────────────────── */
     if (phase === "study") {
@@ -257,7 +213,6 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/20 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
                 <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-4">
-                {showReward && <RewardModal />}
                 <Header />
 
                 <Link
@@ -601,7 +556,16 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-600/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="w-full max-w-6xl z-10 flex flex-col items-center gap-6">
-                {showReward && <RewardModal />}
+                {showReward && reward && (
+                    <GachaCardReveal 
+                        card={{
+                            src: reward.src,
+                            title: reward.title || "Reward Unlocked",
+                            rarity: reward.rarity || "Common"
+                        }} 
+                        onClose={() => setShowReward(false)} 
+                    />
+                )}
                 <Header />
 
                 <h1 className="flex justify-center items-center gap-3 text-3xl font-bold text-pink-400">
