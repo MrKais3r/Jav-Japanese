@@ -337,7 +337,7 @@ export default function QuizPage({ params }: { params: { lessonId: string; secti
 
                     <div className="w-full bg-pink-500/90 text-black text-sm p-3 rounded text-center">
                         {q.prompt || "Choose the correct answer for:"}
-                        <span className="text-white block mt-2 text-xl font-bold"> {q.character}</span>
+                        <span className="text-white block mt-2 text-xl font-bold" dangerouslySetInnerHTML={{ __html: q.character }} />
                     </div>
                     {q.imageSrc && (
                         <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/10">
@@ -356,7 +356,7 @@ export default function QuizPage({ params }: { params: { lessonId: string; secti
                                 }`}
                             >
                                 <span className="font-bold">{String.fromCharCode(65 + i)}:</span>
-                                {opt}
+                                <span dangerouslySetInnerHTML={{ __html: opt }} />
                             </button>
                         ))}
                     </div>
