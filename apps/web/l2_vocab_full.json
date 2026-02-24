@@ -1,0 +1,616 @@
+{
+  "vocab-1": [
+    {
+      "japanese": "これ",
+      "romaji": "これ",
+      "english": "this one"
+    },
+    {
+      "japanese": "それ",
+      "romaji": "それ",
+      "english": "that one"
+    },
+    {
+      "japanese": "あれ",
+      "romaji": "あれ",
+      "english": "that one (over there)"
+    },
+    {
+      "japanese": "どれ",
+      "romaji": "どれ",
+      "english": "which one"
+    },
+    {
+      "japanese": "この",
+      "romaji": "この",
+      "english": "this..."
+    },
+    {
+      "japanese": "その",
+      "romaji": "その",
+      "english": "that..."
+    },
+    {
+      "japanese": "あの",
+      "romaji": "あの",
+      "english": "that... (over there)"
+    },
+    {
+      "japanese": "どの",
+      "romaji": "どの",
+      "english": "which..."
+    },
+    {
+      "japanese": "ここ",
+      "romaji": "ここ",
+      "english": "here"
+    },
+    {
+      "japanese": "そこ",
+      "romaji": "そこ",
+      "english": "there"
+    },
+    {
+      "japanese": "あそこ",
+      "romaji": "あそこ",
+      "english": "over there"
+    },
+    {
+      "japanese": "どこ",
+      "romaji": "どこ",
+      "english": "where"
+    },
+    {
+      "japanese": "だれ",
+      "romaji": "だれ",
+      "english": "who"
+    }
+  ],
+  "vocab-2": [
+    {
+      "japanese": "おいしい",
+      "romaji": "おいしい",
+      "english": "delicious"
+    },
+    {
+      "japanese": "さかな",
+      "romaji": "さかな",
+      "english": "fish"
+    },
+    {
+      "japanese": "とんかつ",
+      "romaji": "とんかつ",
+      "english": "pork cutlet"
+    },
+    {
+      "japanese": "にく",
+      "romaji": "にく",
+      "english": "meat"
+    },
+    {
+      "japanese": "メニュー",
+      "romaji": "メニュー",
+      "english": "menu"
+    },
+    {
+      "japanese": "やさい",
+      "romaji": "やさい",
+      "english": "vegetable"
+    }
+  ],
+  "vocab-3": [
+    {
+      "japanese": "かさ",
+      "romaji": "かさ",
+      "english": "umbrella"
+    },
+    {
+      "japanese": "かばん",
+      "romaji": "かばん",
+      "english": "bag"
+    },
+    {
+      "japanese": "くつ",
+      "romaji": "くつ",
+      "english": "shoes"
+    },
+    {
+      "japanese": "さいふ",
+      "romaji": "さいふ",
+      "english": "wallet"
+    },
+    {
+      "japanese": "ジーンズ",
+      "romaji": "ジーンズ",
+      "english": "jeans"
+    },
+    {
+      "japanese": "じてんしゃ",
+      "romaji": "じてんしゃ",
+      "english": "bicycle"
+    },
+    {
+      "japanese": "しんぶん",
+      "romaji": "しんぶん",
+      "english": "newspaper"
+    },
+    {
+      "japanese": "スマホ",
+      "romaji": "スマホ",
+      "english": "smartphone; mobile"
+    },
+    {
+      "japanese": "Tシャツ",
+      "romaji": "Tシャツ",
+      "english": "T-shirt"
+    },
+    {
+      "japanese": "とけい",
+      "romaji": "とけい",
+      "english": "watch; clock"
+    },
+    {
+      "japanese": "ノート",
+      "romaji": "ノート",
+      "english": "notebook"
+    },
+    {
+      "japanese": "ペン",
+      "romaji": "ペン",
+      "english": "pen"
+    },
+    {
+      "japanese": "ぼうし",
+      "romaji": "ぼうし",
+      "english": "hat; cap"
+    },
+    {
+      "japanese": "ほん",
+      "romaji": "ほん",
+      "english": "book"
+    }
+  ],
+  "vocab-4": [
+    {
+      "japanese": "ぎんこう",
+      "romaji": "ぎんこう",
+      "english": "bank"
+    },
+    {
+      "japanese": "コンビニ",
+      "romaji": "コンビニ",
+      "english": "convenience store"
+    },
+    {
+      "japanese": "トイレ",
+      "romaji": "トイレ",
+      "english": "toilet; restroom"
+    },
+    {
+      "japanese": "としょかん",
+      "romaji": "としょかん",
+      "english": "library"
+    },
+    {
+      "japanese": "ゆうびんきょく",
+      "romaji": "ゆうびんきょく",
+      "english": "post office"
+    },
+    {
+      "japanese": "イギリス",
+      "romaji": "イギリス",
+      "english": "Britain"
+    },
+    {
+      "japanese": "かんこく",
+      "romaji": "かんこく",
+      "english": "Korea"
+    },
+    {
+      "japanese": "ちゅうごく",
+      "romaji": "ちゅうごく",
+      "english": "China"
+    }
+  ],
+  "vocab-5": [
+    {
+      "japanese": "えいご",
+      "romaji": "えいご",
+      "english": "English (language)"
+    },
+    {
+      "japanese": "けいざい",
+      "romaji": "けいざい",
+      "english": "economics"
+    },
+    {
+      "japanese": "コンピューター",
+      "romaji": "コンピューター",
+      "english": "computer"
+    },
+    {
+      "japanese": "ビジネス",
+      "romaji": "ビジネス",
+      "english": "business"
+    },
+    {
+      "japanese": "れきし",
+      "romaji": "れきし",
+      "english": "history"
+    },
+    {
+      "japanese": "おかあさん",
+      "romaji": "おかあさん",
+      "english": "mother"
+    },
+    {
+      "japanese": "おとうさん",
+      "romaji": "おとうさん",
+      "english": "father"
+    }
+  ],
+  "vocab-6": [
+    {
+      "japanese": "いくら",
+      "romaji": "いくら",
+      "english": "how much"
+    },
+    {
+      "japanese": "～えん",
+      "romaji": "～えん",
+      "english": "...yen"
+    },
+    {
+      "japanese": "たかい",
+      "romaji": "たかい",
+      "english": "expensive; high"
+    },
+    {
+      "japanese": "いらっしゃいませ",
+      "romaji": "いらっしゃいませ",
+      "english": "Welcome (to our store)."
+    },
+    {
+      "japanese": "（～を）おねがいします",
+      "romaji": "（～を）おねがいします",
+      "english": "..., please."
+    },
+    {
+      "japanese": "（～を）ください",
+      "romaji": "（～を）ください",
+      "english": "Please give me..."
+    },
+    {
+      "japanese": "じゃあ",
+      "romaji": "じゃあ",
+      "english": "then...; if that is the case,..."
+    },
+    {
+      "japanese": "どうぞ",
+      "romaji": "どうぞ",
+      "english": "Please.; Here it is."
+    },
+    {
+      "japanese": "どうも",
+      "romaji": "どうも",
+      "english": "Thank you."
+    }
+  ],
+  "vocab-7": [
+    {
+      "japanese": "ひゃく",
+      "romaji": "ひゃく",
+      "english": "100"
+    },
+    {
+      "japanese": "にひゃく",
+      "romaji": "にひゃく",
+      "english": "200"
+    },
+    {
+      "japanese": "さんびゃく",
+      "romaji": "さんびゃく",
+      "english": "300"
+    },
+    {
+      "japanese": "よんひゃく",
+      "romaji": "よんひゃく",
+      "english": "400"
+    },
+    {
+      "japanese": "ごひゃく",
+      "romaji": "ごひゃく",
+      "english": "500"
+    },
+    {
+      "japanese": "ろっぴゃく",
+      "romaji": "ろっぴゃく",
+      "english": "600"
+    },
+    {
+      "japanese": "ななひゃく",
+      "romaji": "ななひゃく",
+      "english": "700"
+    },
+    {
+      "japanese": "はっぴゃく",
+      "romaji": "はっぴゃく",
+      "english": "800"
+    },
+    {
+      "japanese": "きゅうひゃく",
+      "romaji": "きゅうひゃく",
+      "english": "900"
+    }
+  ],
+  "vocab-8": [
+    {
+      "japanese": "せん",
+      "romaji": "せん",
+      "english": "1,000"
+    },
+    {
+      "japanese": "にせん",
+      "romaji": "にせん",
+      "english": "2,000"
+    },
+    {
+      "japanese": "さんぜん",
+      "romaji": "さんぜん",
+      "english": "3,000"
+    },
+    {
+      "japanese": "よんせん",
+      "romaji": "よんせん",
+      "english": "4,000"
+    },
+    {
+      "japanese": "ごせん",
+      "romaji": "ごせん",
+      "english": "5,000"
+    },
+    {
+      "japanese": "ろくせん",
+      "romaji": "ろくせん",
+      "english": "6,000"
+    },
+    {
+      "japanese": "ななせん",
+      "romaji": "ななせん",
+      "english": "7,000"
+    },
+    {
+      "japanese": "はっせん",
+      "romaji": "はっせん",
+      "english": "8,000"
+    },
+    {
+      "japanese": "きゅうせん",
+      "romaji": "きゅうせん",
+      "english": "9,000"
+    }
+  ],
+  "vocab-9": [
+    {
+      "japanese": "いちまん",
+      "romaji": "いちまん",
+      "english": "10,000"
+    },
+    {
+      "japanese": "にまん",
+      "romaji": "にまん",
+      "english": "20,000"
+    },
+    {
+      "japanese": "さんまん",
+      "romaji": "さんまん",
+      "english": "30,000"
+    },
+    {
+      "japanese": "よんまん",
+      "romaji": "よんまん",
+      "english": "40,000"
+    },
+    {
+      "japanese": "ごまん",
+      "romaji": "ごまん",
+      "english": "50,000"
+    },
+    {
+      "japanese": "ろくまん",
+      "romaji": "ろくまん",
+      "english": "60,000"
+    },
+    {
+      "japanese": "ななまん",
+      "romaji": "ななまん",
+      "english": "70,000"
+    },
+    {
+      "japanese": "はちまん",
+      "romaji": "はちまん",
+      "english": "80,000"
+    },
+    {
+      "japanese": "きゅうまん",
+      "romaji": "きゅうまん",
+      "english": "90,000"
+    }
+  ],
+  "vocab-10": [
+    {
+      "japanese": "ていしょく",
+      "romaji": "ていしょく",
+      "english": "set meal; special (of the day)"
+    },
+    {
+      "japanese": "パスタ",
+      "romaji": "パスタ",
+      "english": "pasta"
+    },
+    {
+      "japanese": "カレー",
+      "romaji": "カレー",
+      "english": "curry"
+    },
+    {
+      "japanese": "そば",
+      "romaji": "そば",
+      "english": "soba"
+    },
+    {
+      "japanese": "うどん",
+      "romaji": "うどん",
+      "english": "udon"
+    },
+    {
+      "japanese": "サンドイッチ",
+      "romaji": "サンドイッチ",
+      "english": "sandwich"
+    },
+    {
+      "japanese": "アイスクリーム",
+      "romaji": "アイスクリーム",
+      "english": "ice cream"
+    },
+    {
+      "japanese": "ラーメン",
+      "romaji": "ラーメン",
+      "english": "ramen"
+    },
+    {
+      "japanese": "ハンバーガー",
+      "romaji": "ハンバーガー",
+      "english": "hamburger"
+    },
+    {
+      "japanese": "コーヒー",
+      "romaji": "コーヒー",
+      "english": "coffee"
+    },
+    {
+      "japanese": "コーラ",
+      "romaji": "コーラ",
+      "english": "cola"
+    },
+    {
+      "japanese": "サラダ",
+      "romaji": "サラダ",
+      "english": "salad"
+    },
+    {
+      "japanese": "こうちゃ",
+      "romaji": "こうちゃ",
+      "english": "black tea"
+    },
+    {
+      "japanese": "ジュース",
+      "romaji": "ジュース",
+      "english": "juice"
+    },
+    {
+      "japanese": "ミルク",
+      "romaji": "ミルク",
+      "english": "milk"
+    }
+  ],
+  "vocab-11": [
+    {
+      "japanese": "こくばん",
+      "romaji": "こくばん",
+      "english": "blackboard"
+    },
+    {
+      "japanese": "でんき",
+      "romaji": "でんき",
+      "english": "light"
+    },
+    {
+      "japanese": "ドア",
+      "romaji": "ドア",
+      "english": "door"
+    },
+    {
+      "japanese": "カーテン",
+      "romaji": "カーテン",
+      "english": "curtain"
+    },
+    {
+      "japanese": "まど",
+      "romaji": "まど",
+      "english": "window"
+    },
+    {
+      "japanese": "いす",
+      "romaji": "いす",
+      "english": "chair"
+    },
+    {
+      "japanese": "つくえ",
+      "romaji": "つくえ",
+      "english": "desk"
+    },
+    {
+      "japanese": "けしゴム",
+      "romaji": "けしゴム",
+      "english": "eraser"
+    },
+    {
+      "japanese": "ほん",
+      "romaji": "ほん",
+      "english": "book"
+    },
+    {
+      "japanese": "じしょ",
+      "romaji": "じしょ",
+      "english": "dictionary"
+    },
+    {
+      "japanese": "えんぴつ",
+      "romaji": "えんぴつ",
+      "english": "pencil"
+    }
+  ],
+  "vocab-12": [
+    {
+      "japanese": "わかりましたか。",
+      "romaji": "わかりましたか。",
+      "english": "Do you understand?"
+    },
+    {
+      "japanese": "わかりました。",
+      "romaji": "わかりました。",
+      "english": "I understand./I understood."
+    },
+    {
+      "japanese": "わかりません。",
+      "romaji": "わかりません。",
+      "english": "I don\\'t understand./I don\\'t know."
+    },
+    {
+      "japanese": "ゆっくりいってください。",
+      "romaji": "ゆっくりいってください。",
+      "english": "Please say it slowly."
+    },
+    {
+      "japanese": "もういちどいってください。",
+      "romaji": "もういちどいってください。",
+      "english": "Please say it again."
+    },
+    {
+      "japanese": "ちょっとまってください。",
+      "romaji": "ちょっとまってください。",
+      "english": "Please wait for a while."
+    },
+    {
+      "japanese": "きいてください。",
+      "romaji": "きいてください。",
+      "english": "Please listen./Please ask."
+    },
+    {
+      "japanese": "10ページをみてください。",
+      "romaji": "10ページをみてください。",
+      "english": "Please look at page 10."
+    }
+  ]
+}

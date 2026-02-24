@@ -1,0 +1,912 @@
+{
+  "lesson1_culture_1": [
+    {
+      "id": 1,
+      "character": "When Japanese give their name, they give their _____ name first.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "family",
+        "given",
+        "middle"
+      ],
+      "answer": "family"
+    },
+    {
+      "id": 2,
+      "character": "The Japanese give their _____ name last.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "given",
+        "family",
+        "middle"
+      ],
+      "answer": "given"
+    },
+    {
+      "id": 3,
+      "character": "_____ names do not exist.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "middle",
+        "family",
+        "given"
+      ],
+      "answer": "middle"
+    },
+    {
+      "id": 4,
+      "character": "When Japanese introduce themselves, they often say only their family name.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "true",
+        "false"
+      ],
+      "answer": "true"
+    },
+    {
+      "id": 5,
+      "character": "Most Japanese names are written in _____.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "Kanji",
+        "Hiragana",
+        "Katakana"
+      ],
+      "answer": "Kanji"
+    },
+    {
+      "id": 6,
+      "character": "Family names are often related to _____.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "nature or geographical features",
+        "life or death",
+        "myths or legends"
+      ],
+      "answer": "nature or geographical features"
+    },
+    {
+      "id": 7,
+      "character": "Because many kanji share the same reading, names with the same pronunciation may be written with different kanji.",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "true",
+        "false"
+      ],
+      "answer": "true"
+    }
+  ],
+  "lesson1_grammar_1": [
+    {
+      "id": 1,
+      "character": "What is Mary\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "メアリーさんはアメリカじんです。",
+        "メアリーさんはアメリカです。",
+        "メアリーさんアメリカじんです。"
+      ],
+      "answer": "メアリーさんはアメリカじんです。"
+    },
+    {
+      "id": 2,
+      "character": "What is Takeshi\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "たけしさんはにほんじんです。",
+        "たけしさんはにほんです。",
+        "たけしさんにほんじんです。"
+      ],
+      "answer": "たけしさんはにほんじんです。"
+    },
+    {
+      "id": 3,
+      "character": "What is Sora\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ソラさんはかんこくじんです。",
+        "ソラさんはかんこくです。",
+        "ソラさんかんこくじんです。"
+      ],
+      "answer": "ソラさんはかんこくじんです。"
+    },
+    {
+      "id": 4,
+      "character": "What is Robert\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ロバートさんはイギリスじんです。",
+        "ロバートさんはイギリスです。",
+        "ロバートさんイギリスじんです。"
+      ],
+      "answer": "ロバートさんはイギリスじんです。"
+    },
+    {
+      "id": 5,
+      "character": "What is Professor Yamashita\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "やましたせんせいはにほんじんです。",
+        "やましたせんせいはにほんです。",
+        "やましたせんせいにほんじんです。"
+      ],
+      "answer": "やましたせんせいはにほんじんです。"
+    }
+  ],
+  "lesson1_grammar_10": [
+    {
+      "id": 1,
+      "character": "やましたせんせい<br>283-9547",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "にはちさんのきゅうごよんなな",
+        "はちにさんのごきゅうよんなな",
+        "ごいちよんのきゅうにさんなな"
+      ],
+      "answer": "にはちさんのきゅうごよんなな"
+    },
+    {
+      "id": 2,
+      "character": "だいがく<br>951-0326",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "きゅうごいちのゼロさんにろく",
+        "きゅういちごのゼロさんろくに",
+        "きゅうにはちのゼロよんごろく"
+      ],
+      "answer": "きゅうごいちのゼロさんにろく"
+    },
+    {
+      "id": 3,
+      "character": "せんせい<br>362-4519",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "さんろくにのよんごいちきゅう",
+        "ろくさんにのよんごきゅういち",
+        "よんろくごのさんにはちきゅう"
+      ],
+      "answer": "さんろくにのよんごいちきゅう"
+    },
+    {
+      "id": 4,
+      "character": "メアリーさん<br>020-6921-4236",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ゼロにゼロのろくきゅうにいちのよんにさんろく",
+        "ゼロにゼロのきゅうろくにいちのよんさんにろく",
+        "ゼロにゼロろくきゅうにいちのよんにさんろく"
+      ],
+      "answer": "ゼロにゼロのろくきゅうにいちのよんにさんろく"
+    },
+    {
+      "id": 5,
+      "character": "たけしさん<br>030-8522-1032",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ゼロさんゼロのはちごににのいちゼロさんに",
+        "ゼロさんゼロのはちにごにのいちゼロにさん",
+        "ゼロさんゼロはちごににのいちゼロさんに"
+      ],
+      "answer": "ゼロさんゼロのはちごににのいちゼロさんに"
+    }
+  ],
+  "lesson1_grammar_11": [
+    {
+      "id": 1,
+      "character": "{!IMG|3rd-l1-g11-1.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いちじはんです。",
+        "いちじです。",
+        "はちじはんです。",
+        "はちじです。"
+      ],
+      "answer": "いちじはんです。"
+    },
+    {
+      "id": 2,
+      "character": "{!IMG|3rd-l1-g11-2.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "さんじです。",
+        "よじです。",
+        "にじです。",
+        "いちじです。"
+      ],
+      "answer": "さんじです。"
+    },
+    {
+      "id": 3,
+      "character": "{!IMG|3rd-l1-g11-3.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "くじです。",
+        "きゅうじです。",
+        "ごじです。",
+        "じゅうじです。"
+      ],
+      "answer": "くじです。"
+    },
+    {
+      "id": 4,
+      "character": "{!IMG|3rd-l1-g11-4.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "じゅういちじです。",
+        "じゅうにじです。",
+        "じゅうじです。",
+        "じゅういちじはんです。"
+      ],
+      "answer": "じゅういちじです。"
+    },
+    {
+      "id": 5,
+      "character": "{!IMG|3rd-l1-g11-5.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "しちじです。",
+        "ななじです。",
+        "いちじです。",
+        "はちじです。"
+      ],
+      "answer": "しちじです。"
+    },
+    {
+      "id": 6,
+      "character": "{!IMG|3rd-l1-g11-6.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "にじはんです。",
+        "にじです。",
+        "さんじです。",
+        "さんじはんです。"
+      ],
+      "answer": "にじはんです。"
+    },
+    {
+      "id": 7,
+      "character": "{!IMG|3rd-l1-g11-7.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "よじはんです。",
+        "よんじはんです。",
+        "さんじはんです。",
+        "よじです。"
+      ],
+      "answer": "よじはんです。"
+    },
+    {
+      "id": 8,
+      "character": "{!IMG|3rd-l1-g11-8.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "じゅうにじです。",
+        "じゅういちじです。",
+        "じゅうじです。",
+        "じゅうにじはんです。"
+      ],
+      "answer": "じゅうにじです。"
+    },
+    {
+      "id": 9,
+      "character": "{!IMG|3rd-l1-g11-9.png}",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ろくじです。",
+        "しちじです。",
+        "ごじです。",
+        "くじです。"
+      ],
+      "answer": "ろくじです。"
+    }
+  ],
+  "lesson1_grammar_12": [
+    {
+      "id": 1,
+      "character": "とうきょうはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごぜんさんじです。",
+        "ごごさんじです。",
+        "ごぜんさんじはんです。",
+        "ごごさんじはんです。"
+      ],
+      "answer": "ごぜんさんじです。"
+    },
+    {
+      "id": 2,
+      "character": "ロンドンはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごごろくじです。",
+        "ごぜんろくじです。",
+        "ごごくじです。",
+        "ごぜんくじです。"
+      ],
+      "answer": "ごごろくじです。"
+    },
+    {
+      "id": 3,
+      "character": "ストックホルムはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごごしちじです。",
+        "ごぜんしちじです。",
+        "ごごななじです。",
+        "ごぜんななじです。"
+      ],
+      "answer": "ごごしちじです。"
+    },
+    {
+      "id": 4,
+      "character": "ナイロビはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごごくじです。",
+        "ごぜんくじです。",
+        "ごごきゅうじです。",
+        "ごぜんきゅうじです。"
+      ],
+      "answer": "ごごくじです。"
+    },
+    {
+      "id": 5,
+      "character": "ニューデリーはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごごじゅういちじはんです。",
+        "ごぜんじゅういちじはんです。",
+        "ごごじゅういちじです。",
+        "ごぜんじゅういちじです。"
+      ],
+      "answer": "ごごじゅういちじはんです。"
+    },
+    {
+      "id": 6,
+      "character": "バンコクはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごぜんいちじです。",
+        "ごごいちじです。",
+        "ごぜんしちじです。",
+        "ごごしちじです。"
+      ],
+      "answer": "ごぜんいちじです。"
+    },
+    {
+      "id": 7,
+      "character": "シドニーはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごぜんよじです。",
+        "ごごよじです。",
+        "ごぜんよんじです。",
+        "ごごよんじです。"
+      ],
+      "answer": "ごぜんよじです。"
+    },
+    {
+      "id": 8,
+      "character": "ニューヨークはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごごいちじです。",
+        "ごぜんいちじです。",
+        "ごごはちじです。",
+        "ごぜんはちじです。"
+      ],
+      "answer": "ごごいちじです。"
+    },
+    {
+      "id": 9,
+      "character": "リオデジャネイロはいまなんじですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ごごさんじです。",
+        "ごぜんさんじです。",
+        "ごごさんじはんです。",
+        "ごぜんさんじはんです。"
+      ],
+      "answer": "ごごさんじです。"
+    }
+  ],
+  "lesson1_grammar_2": [
+    {
+      "id": 1,
+      "character": "What year of university is Mary in?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "メアリーさんはにねんせいです。",
+        "メアリーさんはよねんせいです。",
+        "メアリーさんにねんせいです。"
+      ],
+      "answer": "メアリーさんはにねんせいです。"
+    },
+    {
+      "id": 2,
+      "character": "What year of university is Takeshi in?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "たけしさんはよねんせいです。",
+        "たけしさんはにねんせいです。",
+        "たけしさんよねんせいです。"
+      ],
+      "answer": "たけしさんはよねんせいです。"
+    },
+    {
+      "id": 3,
+      "character": "What year of university is Sora in?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ソラさんはさんねんせいです。",
+        "ソラさんはいちねんせいです。",
+        "ソラさんさんねんせいです。"
+      ],
+      "answer": "ソラさんはさんねんせいです。"
+    },
+    {
+      "id": 4,
+      "character": "What year of university is Robert in?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ロバートさんはよねんせいです。",
+        "ロバートさんはにねんせいです。",
+        "ロバートさんよねんせいです。"
+      ],
+      "answer": "ロバートさんはよねんせいです。"
+    }
+  ],
+  "lesson1_grammar_3": [
+    {
+      "id": 1,
+      "character": "How old is Mary?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "メアリーさんはじゅうきゅうさいです。",
+        "メアリーさんはじゅうきゅうです。",
+        "メアリーさんじゅうきゅうさいです。"
+      ],
+      "answer": "メアリーさんはじゅうきゅうさいです。"
+    },
+    {
+      "id": 2,
+      "character": "How old is Takeshi?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "たけしさんはにじゅうにさいです。",
+        "たけしさんはにじゅうにです。",
+        "たけしさんにじゅうにさいです。"
+      ],
+      "answer": "たけしさんはにじゅうにさいです。"
+    },
+    {
+      "id": 3,
+      "character": "How old is Sora?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ソラさんははたちです。",
+        "ソラさんはにじゅうさいです。",
+        "ソラさんにじゅうさいです。"
+      ],
+      "answer": "ソラさんははたちです。"
+    },
+    {
+      "id": 4,
+      "character": "How old is Robert?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ロバートさんはにじゅうにさいです。",
+        "ロバートさんはにじゅうにです。",
+        "ロバートさんにじゅうにさいです。"
+      ],
+      "answer": "ロバートさんはにじゅうにさいです。"
+    },
+    {
+      "id": 5,
+      "character": "How old is Professor Yamashita?",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "やましたせんせいはよんじゅうななさいです。",
+        "やましたせんせいはよんじゅうななです。",
+        "やましたせんせいよんじゅうななさいです。"
+      ],
+      "answer": "やましたせんせいはよんじゅうななさいです。"
+    }
+  ],
+  "lesson1_grammar_6": [
+    {
+      "id": 1,
+      "character": "おとうさんはかいしゃいんですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "はい、そうです。",
+        "いいえ、べんごしです。",
+        "いいえ、いしゃです。"
+      ],
+      "answer": "はい、そうです。"
+    },
+    {
+      "id": 2,
+      "character": "おとうさんはなんさいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "よんじゅうはっさいです。",
+        "よんじゅうはちさいです。",
+        "さんじゅうはっさいです。"
+      ],
+      "answer": "よんじゅうはっさいです。"
+    },
+    {
+      "id": 3,
+      "character": "おかあさんはせんせいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、かんごしです。",
+        "はい、そうです。",
+        "いいえ、しゅふです。"
+      ],
+      "answer": "いいえ、かんごしです。"
+    },
+    {
+      "id": 4,
+      "character": "おかあさんはなんさいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "よんじゅうごさいです。",
+        "さんじゅうごさいです。",
+        "よんじゅうにさいです。"
+      ],
+      "answer": "よんじゅうごさいです。"
+    },
+    {
+      "id": 5,
+      "character": "おにいさんはかいしゃいんですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、だいがくいんせいです。",
+        "はい、そうです。",
+        "いいえ、だいがくせいです。"
+      ],
+      "answer": "いいえ、だいがくいんせいです。"
+    },
+    {
+      "id": 6,
+      "character": "おにいさんはなんさいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "にじゅうさんさいです。",
+        "ごじゅうさんさいです。",
+        "にじゅうよんさいです。"
+      ],
+      "answer": "にじゅうさんさいです。"
+    },
+    {
+      "id": 7,
+      "character": "いもうとはだいがくせいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、こうこうせいです。",
+        "はい、そうです。",
+        "いいえ、だいがくせいです。"
+      ],
+      "answer": "いいえ、こうこうせいです。"
+    },
+    {
+      "id": 8,
+      "character": "いもうとはなんさいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "じゅうろくさいです。",
+        "じゅうはっさいです。",
+        "ろくじゅっさいです。"
+      ],
+      "answer": "じゅうろくさいです。"
+    }
+  ],
+  "lesson1_grammar_7": [
+    {
+      "id": 1,
+      "character": "student of the Japanese language",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "にほんごのがくせい",
+        "がくせいのにほんご",
+        "にほんごはがくせい",
+        "がくせいはにほんご"
+      ],
+      "answer": "にほんごのがくせい"
+    },
+    {
+      "id": 2,
+      "character": "my teacher",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "わたしのせんせい",
+        "せんせいのわたし",
+        "わたしはせんせい",
+        "せんせいはわたし"
+      ],
+      "answer": "わたしのせんせい"
+    },
+    {
+      "id": 3,
+      "character": "my telephone number",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "わたしのでんわばんごう",
+        "でんわばんごうのわたし",
+        "わたしはでんわばんごう",
+        "でんわばんごうはわたし"
+      ],
+      "answer": "わたしのでんわばんごう"
+    },
+    {
+      "id": 4,
+      "character": "my name",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "わたしのなまえ",
+        "なまえのわたし",
+        "わたしはなまえ",
+        "なまえはわたし"
+      ],
+      "answer": "わたしのなまえ"
+    },
+    {
+      "id": 5,
+      "character": "Takeshi\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "たけしさんのせんこう",
+        "せんこうのたけしさん",
+        "たけしさんはせんこう",
+        "せんこうはたけしさん"
+      ],
+      "answer": "たけしさんのせんこう"
+    },
+    {
+      "id": 6,
+      "character": "Mary\\",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "メアリーさんのともだち",
+        "ともだちのメアリーさん",
+        "メアリーさんはともだち",
+        "ともだちはメアリーさん"
+      ],
+      "answer": "メアリーさんのともだち"
+    },
+    {
+      "id": 7,
+      "character": "student of the University of London",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ロンドンだいがくのがくせい",
+        "がくせいのロンドンだいがく",
+        "ロンドンだいがくはがくせい",
+        "がくせいはロンドンだいがく"
+      ],
+      "answer": "ロンドンだいがくのがくせい"
+    },
+    {
+      "id": 8,
+      "character": "teacher of the Japanese language",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "にほんごのせんせい",
+        "せんせいのにほんご",
+        "にほんごはせんせい",
+        "せんせいはにほんご"
+      ],
+      "answer": "にほんごのせんせい"
+    },
+    {
+      "id": 9,
+      "character": "high school teacher",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "こうこうのせんせい",
+        "せんせいのこうこう",
+        "こうこうはせんせい",
+        "せんせいはこうこう"
+      ],
+      "answer": "こうこうのせんせい"
+    }
+  ],
+  "lesson1_grammar_8": [
+    {
+      "id": 1,
+      "character": "メアリーさん／School",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "メアリーさんはアリゾナだいがくのがくせいです。",
+        "メアリーさんはがくせいのアリゾナだいがくです。",
+        "メアリーさんのアリゾナだいがくはがくせいです。",
+        "メアリーさんのがくせいはアリゾナだいがくです。"
+      ],
+      "answer": "メアリーさんはアリゾナだいがくのがくせいです。"
+    },
+    {
+      "id": 2,
+      "character": "たけしさん／School",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "たけしさんはさくらだいがくのがくせいです。",
+        "たけしさんはがくせいのさくらだいがくです。",
+        "たけしさんのさくらだいがくはがくせいです。",
+        "たけしさんのがくせいはさくらだいがくです。"
+      ],
+      "answer": "たけしさんはさくらだいがくのがくせいです。"
+    },
+    {
+      "id": 3,
+      "character": "ソラさん／School",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ソラさんはソウルだいがくのがくせいです。",
+        "ソラさんはがくせいのソウルだいがくです。",
+        "ソラさんのソウルだいがくはがくせいです。",
+        "ソラさんのがくせいはソウルだいがくです。"
+      ],
+      "answer": "ソラさんはソウルだいがくのがくせいです。"
+    },
+    {
+      "id": 4,
+      "character": "ロバートさん／School",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ロバートさんはロンドンだいがくのがくせいです。",
+        "ロバートさんはがくせいのロンドンだいがくです。",
+        "ロバートさんのロンドンだいがくはがくせいです。",
+        "ロバートさんのがくせいはロンドンだいがくです。"
+      ],
+      "answer": "ロバートさんはロンドンだいがくのがくせいです。"
+    },
+    {
+      "id": 5,
+      "character": "やましたせんせい／School",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "やましたせんせいはさくらだいがくのせんせいです。",
+        "やましたせんせいはせんせいのさくらだいがくです。",
+        "やましたせんせいはさくらだいがくのがくせいです。",
+        "やましたせんせいはがくせいのさくらだいがくです。"
+      ],
+      "answer": "やましたせんせいはさくらだいがくのせんせいです。"
+    },
+    {
+      "id": 6,
+      "character": "メアリーさん／Major",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "メアリーさんのせんこうはにほんごです。",
+        "メアリーさんのにほんごはせんこうです。",
+        "メアリーさんはせんこうのにほんごです。",
+        "メアリーさんはにほんごのせんこうです。"
+      ],
+      "answer": "メアリーさんのせんこうはにほんごです。"
+    },
+    {
+      "id": 7,
+      "character": "たけしさん／Major",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "たけしさんのせんこうはれきしです。",
+        "たけしさんのれきしはせんこうです。",
+        "たけしさんはせんこうのれきしです。",
+        "たけしさんはれきしのせんこうです。"
+      ],
+      "answer": "たけしさんのせんこうはれきしです。"
+    },
+    {
+      "id": 8,
+      "character": "ソラさん／Major",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ソラさんのせんこうはコンピューターです。",
+        "ソラさんのコンピューターはせんこうです。",
+        "ソラさんはせんこうのコンピューターです。",
+        "ソラさんはコンピューターのせんこうです。"
+      ],
+      "answer": "ソラさんのせんこうはコンピューターです。"
+    },
+    {
+      "id": 9,
+      "character": "ロバートさん／Major",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ロバートさんのせんこうはビジネスです。",
+        "ロバートさんのビジネスはせんこうです。",
+        "ロバートさんはせんこうのビジネスです。",
+        "ロバートさんはビジネスのせんこうです。"
+      ],
+      "answer": "ロバートさんのせんこうはビジネスです。"
+    }
+  ],
+  "lesson1_grammar_9": [
+    {
+      "id": 1,
+      "character": "メアリーさんのせんこうはビジネスですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、にほんごです。",
+        "いいえ、れきしです。",
+        "いいえ、けいざいです。",
+        "はい、そうです。"
+      ],
+      "answer": "いいえ、にほんごです。"
+    },
+    {
+      "id": 2,
+      "character": "たけしさんはアリゾナだいがくのがくせいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、さくらだいがくのがくせいです。",
+        "いいえ、さくらだいがくのせんせいです。",
+        "いいえ、ロンドンだいがくのがくせいです。",
+        "はい、そうです。"
+      ],
+      "answer": "いいえ、さくらだいがくのがくせいです。"
+    },
+    {
+      "id": 3,
+      "character": "たけしさんのせんこうはなんですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "れきしです。",
+        "にほんごです。",
+        "けいざいです。",
+        "ビジネスです。"
+      ],
+      "answer": "れきしです。"
+    },
+    {
+      "id": 4,
+      "character": "ロバートさんはロンドンだいがくのがくせいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "はい、そうです。",
+        "いいえ、さくらだいがくのがくせいです。",
+        "いいえ、ロンドンだいがくのせんせいです。",
+        "いいえ、アリゾナだいがくのがくせいです。"
+      ],
+      "answer": "はい、そうです。"
+    },
+    {
+      "id": 5,
+      "character": "ロバートさんのせんこうはなんですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "ビジネスです。",
+        "コンピューターです。",
+        "ぶんがくです。",
+        "れきしです。"
+      ],
+      "answer": "ビジネスです。"
+    },
+    {
+      "id": 6,
+      "character": "ソラさんのせんこうはけいざいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、コンピューターです。",
+        "いいえ、ビジネスです。",
+        "いいえ、せいじです。",
+        "はい、そうです。"
+      ],
+      "answer": "いいえ、コンピューターです。"
+    },
+    {
+      "id": 7,
+      "character": "やましたせんせいはにほんだいがくのせんせいですか。",
+      "prompt": "Choose the correct answer:",
+      "options": [
+        "いいえ、さくらだいがくのせんせいです。",
+        "いいえ、さくらだいがくのがくせいです。",
+        "いいえ、ソウルだいがくのせんせいです。",
+        "はい、そうです。"
+      ],
+      "answer": "いいえ、さくらだいがくのせんせいです。"
+    }
+  ]
+}
