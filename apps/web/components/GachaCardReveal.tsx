@@ -63,7 +63,7 @@ export function GachaCardReveal({
                     {/* Front (Hidden) */}
                     <div className="absolute inset-0 backface-hidden z-20">
                         <div className="w-full h-full rounded-3xl bg-linear-to-br from-zinc-800 to-zinc-950 border-4 border-white/10 flex flex-col items-center justify-center gap-6 shadow-2xl relative overflow-hidden">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-pink-500/20 via-transparent to-transparent animate-pulse" />
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-pink-500/20 via-transparent to-transparent animate-pulse" />
                             <div className="relative z-10 p-6 rounded-full bg-white/5 border border-white/10 group-hover:scale-110 transition-transform">
                                 <Star className="w-16 h-16 text-pink-500 fill-pink-500" />
                             </div>

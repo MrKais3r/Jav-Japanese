@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getAppData } from "@/lib/storage";
-import { MessageCircle, Heart, Star, Sparkles, Flame, X } from "lucide-react";
+import { MessageCircle, X } from "lucide-react";
 
 const SENSEI_MESSAGES = {
     idle: [
@@ -85,7 +85,7 @@ export function SenseiMascot({ state = "idle" }: { state?: "idle" | "correct" | 
                         <MessageCircle size={12} /> Sensei
                     </div>
                     <p className="text-[13px] text-zinc-100 leading-tight italic">
-                        "{message}"
+                        &quot;{message}&quot;
                     </p>
                     {/* Tail */}
                     <div className="absolute top-full right-6 w-3 h-3 bg-zinc-900 border-r border-b border-pink-500/30 transform rotate-45 -mt-1.5" />

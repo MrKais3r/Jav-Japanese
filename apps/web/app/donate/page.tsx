@@ -70,16 +70,15 @@ export default function DonatePage() {
             </div>
 
             <div className="w-full max-w-4xl z-10 space-y-8">
-                <Card className="border-0 bg-white/[0.03] backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20">
+                <Card className="border-0 bg-white/3 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20 animate-shimmer">
                     <CardHeader className="text-center border-b border-white/5 pb-8 pt-10">
                         <div className="flex justify-center mb-4">
-                            <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-[0_0_30px_rgba(236,72,153,0.3)]">
+                            <div className="w-16 h-16 rounded-3xl bg-linear-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-[0_0_30px_rgba(236,72,153,0.3)] animate-glow-pink">
                                 <Heart className="w-8 h-8 text-white fill-white/20" />
                             </div>
                         </div>
                         <CardTitle className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                            Support{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400">
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-rose-400">
                                 Nihongo Jav
                             </span>
                         </CardTitle>
@@ -98,25 +97,25 @@ export default function DonatePage() {
                                 alt="Support us"
                                 className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105 relative z-10"
                             />
-                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-20" />
-                            <div className="absolute bottom-6 left-0 w-full text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-rose-200 tracking-[0.2em] text-xl z-30 drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]">
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-20" />
+                            <div className="absolute bottom-6 left-0 w-full text-center font-extrabold text-transparent bg-clip-text bg-linear-to-r from-pink-300 to-rose-200 tracking-[0.2em] text-xl z-30 drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]">
                                 THANK YOU SENPAI~ 💕
                             </div>
                         </div>
 
                         {/* Crypto Grid */}
-                        <div className="w-full grid grid-cols- md:grid-cols-1 gap-6">
+                        <div className="w-full grid grid-cols-1 md:grid-cols-1 gap-6">
                             {CRYPTO_OPTIONS.map((crypto, index) => {
                                 const isShowingQr = activeQr === index;
 
                                 return (
                                     <div
                                         key={crypto.name}
-                                        className="p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/20 transition-all group overflow-hidden relative flex flex-col gap-4"
+                                        className="p-6 rounded-3xl bg-white/2 border border-white/5 hover:bg-white/5 hover:border-white/20 transition-all group overflow-hidden relative flex flex-col gap-4"
                                     >
                                         {/* Glow effect */}
                                         <div
-                                            className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${crypto.color} opacity-10 blur-[50px] group-hover:opacity-20 transition-opacity pointer-events-none`}
+                                            className={`absolute -right-20 -top-20 w-40 h-40 bg-linear-to-br ${crypto.color} opacity-10 blur-[50px] group-hover:opacity-20 transition-opacity pointer-events-none`}
                                         />
 
                                         <div className="flex items-center justify-between relative z-10">

@@ -1,6 +1,11 @@
 // KEY for everything
 const APP_KEY = "japanese_learning_app";
 
+export type LessonProgress = {
+    sectionsCompleted: (number | string)[];
+    sectionResults?: Record<string | number, number>;
+};
+
 export type AppData = {
     user: {
         name: string;
@@ -14,7 +19,7 @@ export type AppData = {
         };
         inventory: string[]; // for gacha card IDs
     };
-    progress: Record<string, any>;
+    progress: Record<string, LessonProgress>;
 };
 
 export const RANKS = [
@@ -28,7 +33,7 @@ export const RANKS = [
 ];
 
 export function getRank(xp: number) {
-    return [...RANKS].reverse().find(r => xp >= r.minXP) || RANKS[0];
+    return [...RANKS].reverse().find(r => xp >= r.minXP) || RANKS[0]!;
 }
 
 export function getAppData(): AppData {
@@ -40,7 +45,7 @@ export function getAppData(): AppData {
     if (raw) {
         try {
             data = JSON.parse(raw);
-        } catch (e) {
+        } catch {
             data = {} as AppData;
         }
     } else {
@@ -54,7 +59,7 @@ export function getAppData(): AppData {
             ageVerified: false,
             createdAt: new Date().toISOString(),
             xp: 0,
-            rank: RANKS[0].name,
+            rank: RANKS[0]!.name,
             streak: { count: 0, lastDate: null },
             inventory: [],
         };
@@ -62,7 +67,7 @@ export function getAppData(): AppData {
 
     // Migration/Fix for missing fields
     if (data.user.xp === undefined) data.user.xp = 0;
-    if (!data.user.rank) data.user.rank = RANKS[0].name;
+    if (!data.user.rank) data.user.rank = RANKS[0]!.name;
     if (!data.user.streak) data.user.streak = { count: 0, lastDate: null };
     if (!data.user.inventory) data.user.inventory = [];
 
@@ -84,7 +89,7 @@ export function addXP(amount: number) {
 export function checkStreak() {
     const data = getAppData();
     const now = new Date();
-    const today = now.toISOString().split("T")[0];
+    const today = now.toISOString().split("T")[0]!;
     
     if (!data.user.streak.lastDate) {
         data.user.streak = { count: 0, lastDate: today };
@@ -120,7 +125,7 @@ export function saveSectionResult(lessonId: number, sectionId: number, percentag
         };
     }
 
-    const lesson = data.progress[lessonKey];
+    const lesson = data.progress[lessonKey]!;
 
     // mark completed if not exists
     if (!lesson.sectionsCompleted.includes(sectionId)) {

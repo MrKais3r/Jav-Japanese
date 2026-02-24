@@ -10,7 +10,6 @@ import {
     BookOpen,
     Target,
     ArrowLeft,
-    ArrowRight,
     Check,
     X,
     PartyPopper,
@@ -129,7 +128,7 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
             return { ...v, options: fisherYatesShuffle([v.english, ...distractors]) };
         });
         setCards(fisherYatesShuffle(built));
-    }, [sectionId]);
+    }, [sectionId, vocab]);
 
     /* Timer */
     useEffect(() => {
@@ -204,8 +203,6 @@ export default function VocabPage({ params }: { params: { lessonId: string; sect
     /* ── STUDY PHASE ─────────────────────────────────────────── */
     if (phase === "study") {
         const word = vocab[studyIndex]!;
-        const isFirst = studyIndex === 0;
-        const isLast = studyIndex === vocab.length - 1;
 
         return (
             <div className="min-h-dvh w-full flex flex-col items-center gap-6 text-gray-200 pb-16 px-4 md:px-8 relative bg-black pt-4 md:pt-8 overflow-hidden">

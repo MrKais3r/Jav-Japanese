@@ -6,11 +6,23 @@ import Link from "next/link";
 import { fisherYatesShuffle } from "@/lib/utils";
 import { markSectionComplete, saveSectionResult, isSectionDone } from "@/lib/storage";
 import { unlockReward, type RewardImage } from "@/lib/rewards";
-import { Target, Gift, ImageIcon, ArrowLeft, Timer, Check, X, BookOpen } from "lucide-react";
+import { Target, Gift, ImageIcon, ArrowLeft, Timer } from "lucide-react";
 import Image from "next/image";
 import { Header } from "./header";
 import { GachaCardReveal } from "./GachaCardReveal";
 import { quizData, grammarQuizData } from "@/data/quizData";
+
+interface Question {
+    character: string;
+    answer: string;
+    options: string[];
+    prompt?: string;
+    imageSrc?: string;
+    tableContext?: {
+        headers: string[];
+        rows: string[][];
+    };
+}
 
 const selectedCssMap: { [key: string]: string } = {
     correct: "bg-green-500 text-black",
@@ -18,15 +30,15 @@ const selectedCssMap: { [key: string]: string } = {
     select: "bg-pink-500 text-black",
 };
 
-export default function QuizPage({ params }: any) {
+export default function QuizPage({ params }: { params: { lessonId: string; sectionId: string } }) {
     const { lessonId, sectionId } = params;
 
-    const [questions, setQuestions] = useState<any[]>([]);
+    const [questions, setQuestions] = useState<Question[]>([]);
     const [index, setIndex] = useState(0);
     const [selected, setSelected] = useState<string | null>(null);
     const [timer, setTimer] = useState(0);
     const [correct, setCorrect] = useState(0);
-    const [wrong, setWrong] = useState(0);
+    const [, setWrong] = useState(0);
     const [saved, setSaved] = useState(false);
     const [selectedCss, setSelectedCss] = useState(selectedCssMap["select"]);
     
@@ -55,10 +67,10 @@ export default function QuizPage({ params }: any) {
                 return;
             }
 
-            const shuffled = fisherYatesShuffle(array as any[]).map((q: any) => ({
+            const shuffled = fisherYatesShuffle(array).map((q: any) => ({
                 ...q,
                 options: fisherYatesShuffle(q.options),
-            }));
+            })) as Question[];
             setQuestions(shuffled);
         }
 
@@ -67,6 +79,7 @@ export default function QuizPage({ params }: any) {
 
     const q = questions[index];
 
+
     // Timer
     useEffect(() => {
         const t = setInterval(() => setTimer((t) => t + 1), 1000);
@@ -74,6 +87,7 @@ export default function QuizPage({ params }: any) {
     }, []);
 
     function handleSelect(option: string) {
+        if (!q) return;
         setSelected(option);
         const isCorrect = option === q.answer;
 
@@ -121,6 +135,11 @@ export default function QuizPage({ params }: any) {
         }
     }, [index, questions.length, saved, correct, lessonId, sectionId]);
 
+    // Loading state
+    if (questions.length === 0) {
+        return <div className="min-h-dvh bg-black flex items-center justify-center text-white">Loading quiz...</div>;
+    }
+
     // Format timer
     const formatTime = (t: number) =>
         `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
@@ -161,7 +180,7 @@ export default function QuizPage({ params }: any) {
 
                     <div className="flex flex-col items-center justify-center w-full max-w-lg mt-8">
                         <div className="mb-6 flex flex-col items-center text-center">
-                            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 mb-2 flex items-center gap-2">
+                            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-rose-400 mb-2 flex items-center gap-2">
                                 <span className="text-4xl">🎉</span> Perfect Score!
                             </h1>
                         </div>
@@ -176,7 +195,7 @@ export default function QuizPage({ params }: any) {
                                             fill
                                             className="object-cover"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent pointer-events-none" />
+                                        <div className="absolute inset-0 bg-linear-to-t from-red-900/80 via-transparent to-transparent pointer-events-none" />
                                         <div className="absolute bottom-3 left-0 right-0 flex justify-center text-center">
                                             <span className="bg-red-950/80 text-red-100 text-xs font-bold px-3 py-1.5 rounded-full border border-red-500/50 backdrop-blur-sm">
                                                 PUNISHMENT TIME? 💢
@@ -321,7 +340,9 @@ export default function QuizPage({ params }: any) {
                         <span className="text-white block mt-2 text-xl font-bold"> {q.character}</span>
                     </div>
                     {q.imageSrc && (
-                        <img src={q.imageSrc} alt="lesson visual" className="w-full rounded-lg" />
+                        <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-white/10">
+                            <Image src={q.imageSrc} alt="lesson visual" fill className="object-cover" />
+                        </div>
                     )}
 
                     <div className="space-y-3">

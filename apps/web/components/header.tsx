@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LockOpen, Heart, Flame, Star, Trophy } from "lucide-react";
+import { LockOpen, Heart, Flame, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getAppData, getRank, checkStreak, type AppData } from "@/lib/storage";
 

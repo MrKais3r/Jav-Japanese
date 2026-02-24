@@ -42,7 +42,7 @@ export default function Lesson({ params }: { params: { lessonId: string } }) {
 
                 <Card className="w-full max-w-5xl border-0 bg-white/[0.03] backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20">
                     <CardHeader className="border-b border-white/5 pb-6 pt-8 px-4 sm:pb-8 sm:pt-10 sm:px-8">
-                        <CardTitle className="text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm">
+                        <CardTitle className="text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-rose-400 drop-shadow-sm">
                             Lesson {lessonId}: <span className="text-white">{lesson?.title}</span>
                         </CardTitle>
                     </CardHeader>
@@ -91,12 +91,12 @@ export default function Lesson({ params }: { params: { lessonId: string } }) {
                                                             href={`/lesson/${lessonId}/section/${sectionId}`}
                                                             className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-sm px-4 sm:px-5 py-3 sm:py-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.06] hover:border-pink-500/30 transition-all duration-300 w-full group relative overflow-hidden"
                                                         >
-                                                            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/0 via-pink-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out pointer-events-none" />
+                                                            <div className="absolute inset-0 bg-linear-to-r from-pink-500/0 via-pink-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out pointer-events-none" />
                                                             <span className="whitespace-normal leading-tight sm:whitespace-nowrap break-words flex-1 font-medium text-gray-300 group-hover:text-white transition-colors w-full">
                                                                 {item.label}
                                                             </span>
                                                             <div className="flex items-center gap-2 mt-2 sm:mt-0 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
-                                                                <span className="text-xs font-bold tracking-wide uppercase bg-gradient-to-r from-pink-500/20 to-rose-500/20 text-pink-300 px-3 py-1 rounded-full border border-pink-500/20 shrink-0 shadow-sm">
+                                                                <span className="text-xs font-bold tracking-wide uppercase bg-linear-to-r from-pink-500/20 to-rose-500/20 text-pink-300 px-3 py-1 rounded-full border border-pink-500/20 shrink-0 shadow-sm">
                                                                     {getSectionBadge(sectionId)}
                                                                 </span>
                                                                 {isString && (

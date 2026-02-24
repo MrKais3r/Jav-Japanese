@@ -50,7 +50,7 @@ export default function GalleryPage() {
                         </div>
                         <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                             <div
-                                className="h-full bg-gradient-to-r from-pink-600 to-pink-400 rounded-full transition-all duration-700"
+                                className="h-full bg-linear-to-r from-pink-600 to-pink-400 rounded-full transition-all duration-700"
                                 style={{ width: `${(unlockedCount / total) * 100}%` }}
                             />
                         </div>
