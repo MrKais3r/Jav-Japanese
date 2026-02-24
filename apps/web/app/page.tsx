@@ -60,15 +60,15 @@ export default function Home() {
                     </div>
                 )}
 
-                <Card className="border-0 bg-white/[0.03] backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20">
+                <Card className="border-0 bg-white/[0.03] backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/10 transition-all hover:ring-white/20 animate-shimmer">
                     <CardHeader className="space-y-4 p-8 md:p-10 pb-4">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg shadow-pink-500/20">
+                            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg shadow-pink-500/20 animate-glow-pink">
                                 <Sparkles className="w-5 h-5 text-white" />
                             </div>
                             <CardTitle className="text-gray-100 text-3xl md:text-4xl font-extrabold tracking-tight">
                                 Hii{" "}
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 drop-shadow-sm animate-naughty-pulse inline-block">
                                     {name || "Guest"}
                                 </span>
                                 -san!
@@ -84,49 +84,49 @@ export default function Home() {
                                     Jav Nihongo
                                 </span>
                                 . You've earned <span className="text-white font-bold">{appData?.user?.xp || 0} XP</span> so far. 
-                                {appData?.user?.xp < 500 ? " Just getting started? Don't worry, I'll take good care of you~" : " You're becoming quite the regular, aren't you?"}
+                                {appData?.user?.xp < 500 ? " Just getting started? Don't worry, I'll take good care of you~" : " You're becoming quite the regular, aren't you? Sensei likes a committed student."}
                             </p>
                             
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
-                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
                                     <div className="text-2xl font-black text-white">{appData?.user?.streak?.count || 0}</div>
-                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Streak</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Streak</div>
                                 </div>
-                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
                                     <div className="text-2xl font-black text-white">{appData?.user?.xp || 0}</div>
-                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Total XP</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Total XP</div>
                                 </div>
-                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
                                     <div className="text-2xl font-black text-white">{appData?.user?.inventory?.length || 0}</div>
-                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Cards</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Cards Unlocked</div>
                                 </div>
-                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
-                                    <div className="text-2xl font-black text-white">Lv.{Math.floor((appData?.user?.xp || 0) / 1000) + 1}</div>
-                                    <div className="text-[10px] uppercase text-zinc-500 font-bold">Level</div>
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-center transition-transform hover:scale-105">
+                                    <div className="text-2xl font-black text-pink-400">{Math.floor((appData?.user?.xp || 0) / 1000) + 1}</div>
+                                    <div className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest">Current Level</div>
                                 </div>
                             </div>
 
-                            <p className="text-sm italic text-zinc-400">
-                                Tip: Completing a lesson with 100% unlocks rare collectible cards in your Reward gallery!
+                            <p className="text-sm italic text-zinc-400 bg-linear-to-r from-pink-500/10 to-transparent p-3 rounded-lg border-l-2 border-pink-500">
+                                <strong>Sensei's Tip:</strong> Reach 100% on any lesson to unlock "special" rewards. I might even show you something secret if you're good enough~
                             </p>
                         </div>
 
-                        <div className="relative w-full lg:w-[350px] shrink-0 group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 to-rose-500/30 blur-2xl rounded-3xl group-hover:scale-105 transition-transform duration-500" />
+                        <div className="relative w-full lg:w-[350px] shrink-0 group animate-float">
+                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 to-rose-500/30 blur-2xl rounded-3xl group-hover:scale-110 transition-transform duration-500" />
                             <img
                                 src={"/photo/learn_japanese_with_us.jpg"}
                                 alt="lesson visual"
-                                className="w-full h-auto object-cover rounded-3xl relative z-10 border border-white/10 shadow-2xl group-hover:-translate-y-2 transition-transform duration-500"
+                                className="w-full h-auto object-cover rounded-3xl relative z-10 border border-white/10 shadow-2xl group-hover:-translate-y-4 group-hover:rotate-2 transition-transform duration-500"
                             />
                         </div>
                     </CardContent>
                 </Card>
 
                 {/* Quick Navigation */}
-                <div className="flex items-center gap-3 mt-4 mb-2">
-                    <Navigation className="w-6 h-6 text-pink-400" />
-                    <h2 className="text-2xl font-bold text-white tracking-tight">
-                        Select a Lesson
+                <div className="flex items-center gap-3 mt-4 mb-2 animate-in fade-in slide-in-from-left-4 duration-1000">
+                    <Navigation className="w-6 h-6 text-pink-400 animate-pulse" />
+                    <h2 className="text-2xl font-bold text-white tracking-tight italic">
+                        Desired Lessons
                     </h2>
                     <div className="h-px bg-gradient-to-r from-pink-500/50 to-transparent flex-1 ml-4" />
                 </div>
@@ -140,7 +140,7 @@ export default function Home() {
                             <Link
                                 key={id}
                                 href={`/lesson/${id}`}
-                                className="group relative flex flex-col p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-pink-500/30 transition-all duration-300 overflow-hidden"
+                                className={`group relative flex flex-col p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-pink-500/40 transition-all duration-300 overflow-hidden ${touched ? "animate-glow-pink ring-1 ring-pink-500/20" : ""}`}
                             >
                                 {/* Background glow effect on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-pink-500/0 to-pink-500/0 group-hover:from-pink-500/5 group-hover:to-pink-600/5 transition-colors duration-500" />

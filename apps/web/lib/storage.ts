@@ -18,11 +18,13 @@ export type AppData = {
 };
 
 export const RANKS = [
-    { name: "Newbie Kouhai", minXP: 0, color: "text-zinc-400" },
-    { name: "Diligent Student", minXP: 500, color: "text-blue-400" },
-    { name: "Language Lover", minXP: 2000, color: "text-purple-400" },
-    { name: "Sensei's Favorite", minXP: 5000, color: "text-pink-400" },
-    { name: "Jav Nihongo Master", minXP: 10000, color: "text-rose-500 font-black" },
+    { name: "Curious Kouhai", minXP: 0, color: "text-zinc-400" },
+    { name: "Devoted Disciple", minXP: 500, color: "text-blue-400" },
+    { name: "Language Lover", minXP: 1500, color: "text-purple-400" },
+    { name: "Sensei's Favorite", minXP: 3000, color: "text-pink-400" },
+    { name: "Ara Ara Master", minXP: 6000, color: "text-rose-400 font-bold" },
+    { name: "Nihongo Degenerate", minXP: 10000, color: "text-rose-500 font-black animate-pulse" },
+    { name: "Sensei's Only One", minXP: 20000, color: "text-pink-500 font-black drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]" },
 ];
 
 export function getRank(xp: number) {
